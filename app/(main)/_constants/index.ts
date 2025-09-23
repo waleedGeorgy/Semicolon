@@ -1,5 +1,15 @@
 import { Theme } from "@/app/types";
 import { Monaco } from "@monaco-editor/react";
+import JavaScriptLogo from "@/public/javascript.png";
+import TypeScriptLogo from "@/public/typescript.png";
+import PythonLogo from "@/public/python.png";
+import JavaLogo from "@/public/java.png";
+import GoLogo from "@/public/go.png";
+import RustLogo from "@/public/rust.png";
+import RubyLogo from "@/public/ruby.png";
+import CppLogo from "@/public/cpp.png";
+import CSharpLogo from "@/public/csharp.png";
+import SwiftLogo from "@/public/swift.png";
 
 type LanguageConfig = Record<
   string,
@@ -17,8 +27,8 @@ export const LANGUAGE_CONFIG: LanguageConfig = {
   javascript: {
     id: "javascript",
     label: "JavaScript",
-    logoPath: "/javascript.png",
-    pistonRuntime: { language: "javascript", version: "18.15.0" }, // api that we're gonna be using
+    logoPath: JavaScriptLogo.src,
+    pistonRuntime: { language: "javascript", version: "18.15.0" },
     monacoLanguage: "javascript",
     defaultCode: `// JavaScript Playground
 const numbers = [1, 2, 3, 4, 5];
@@ -39,7 +49,7 @@ console.log('Sum of numbers:', sum);`,
   typescript: {
     id: "typescript",
     label: "TypeScript",
-    logoPath: "/typescript.png",
+    logoPath: TypeScriptLogo.src,
     pistonRuntime: { language: "typescript", version: "5.0.3" },
     monacoLanguage: "typescript",
     defaultCode: `// TypeScript Playground
@@ -76,7 +86,7 @@ console.log('Sum of numbers:', math.sum());`,
   python: {
     id: "python",
     label: "Python",
-    logoPath: "/python.png",
+    logoPath: PythonLogo.src,
     pistonRuntime: { language: "python", version: "3.10.0" },
     monacoLanguage: "python",
     defaultCode: `# Python Playground
@@ -98,7 +108,7 @@ print(f"Sum of numbers: {numbers_sum}")`,
   java: {
     id: "java",
     label: "Java",
-    logoPath: "/java.png",
+    logoPath: JavaLogo.src,
     pistonRuntime: { language: "java", version: "15.0.2" },
     monacoLanguage: "java",
     defaultCode: `public class Main {
@@ -137,84 +147,10 @@ print(f"Sum of numbers: {numbers_sum}")`,
   }
 }`,
   },
-  go: {
-    id: "go",
-    label: "Go",
-    logoPath: "/go.png",
-    pistonRuntime: { language: "go", version: "1.16.2" },
-    monacoLanguage: "go",
-    defaultCode: `package main
-
-import "fmt"
-
-func main() {
-  // Create slice
-  numbers := []int{1, 2, 3, 4, 5}
-  
-  // Print original numbers
-  fmt.Println("Original numbers:", numbers)
-  
-  // Calculate squares
-  squares := make([]int, len(numbers))
-  for i, n := range numbers {
-      squares[i] = n * n
-  }
-  fmt.Println("Squared numbers:", squares)
-  
-  // Filter even numbers
-  var evenNumbers []int
-  for _, n := range numbers {
-      if n%2 == 0 {
-          evenNumbers = append(evenNumbers, n)
-      }
-  }
-  fmt.Println("Even numbers:", evenNumbers)
-  
-  // Calculate sum
-  sum := 0
-  for _, n := range numbers {
-      sum += n
-  }
-  fmt.Println("Sum of numbers:", sum)
-}`,
-  },
-  rust: {
-    id: "rust",
-    label: "Rust",
-    logoPath: "/rust.png",
-    pistonRuntime: { language: "rust", version: "1.68.2" },
-    monacoLanguage: "rust",
-    defaultCode: `fn main() {
-    // Create vector
-    let numbers = vec![1, 2, 3, 4, 5];
-    
-    // Print original numbers
-    println!("Original numbers: {:?}", numbers);
-    
-    // Calculate squares
-    let squares: Vec<i32> = numbers
-        .iter()
-        .map(|&n| n * n)
-        .collect();
-    println!("Squared numbers: {:?}", squares);
-    
-    // Filter even numbers
-    let even_numbers: Vec<i32> = numbers
-        .iter()
-        .filter(|&&n| n % 2 == 0)
-        .cloned()
-        .collect();
-    println!("Even numbers: {:?}", even_numbers);
-    
-    // Calculate sum
-    let sum: i32 = numbers.iter().sum();
-    println!("Sum of numbers: {}", sum);
-}`,
-  },
   cpp: {
     id: "cpp",
     label: "C++",
-    logoPath: "/cpp.png",
+    logoPath: CppLogo.src,
     pistonRuntime: { language: "cpp", version: "10.2.0" },
     monacoLanguage: "cpp",
     defaultCode: `#include <iostream>
@@ -258,7 +194,7 @@ int main() {
   csharp: {
     id: "csharp",
     label: "C#",
-    logoPath: "/csharp.png",
+    logoPath: CSharpLogo.src,
     pistonRuntime: { language: "csharp", version: "6.12.0" },
     monacoLanguage: "csharp",
     defaultCode: `using System;
@@ -286,10 +222,85 @@ class Program {
     }
 }`,
   },
+  go: {
+    id: "go",
+    label: "Go",
+    logoPath: GoLogo.src,
+    pistonRuntime: { language: "go", version: "1.16.2" },
+    monacoLanguage: "go",
+    defaultCode: `package main
+
+import "fmt"
+
+func main() {
+  // Create slice
+  numbers := []int{1, 2, 3, 4, 5}
+  
+  // Print original numbers
+  fmt.Println("Original numbers:", numbers)
+  
+  // Calculate squares
+  squares := make([]int, len(numbers))
+  for i, n := range numbers {
+      squares[i] = n * n
+  }
+  fmt.Println("Squared numbers:", squares)
+  
+  // Filter even numbers
+  var evenNumbers []int
+  for _, n := range numbers {
+      if n%2 == 0 {
+          evenNumbers = append(evenNumbers, n)
+      }
+  }
+  fmt.Println("Even numbers:", evenNumbers)
+  
+  // Calculate sum
+  sum := 0
+  for _, n := range numbers {
+      sum += n
+  }
+  fmt.Println("Sum of numbers:", sum)
+}`,
+  },
+  rust: {
+    id: "rust",
+    label: "Rust",
+    logoPath: RustLogo.src,
+    pistonRuntime: { language: "rust", version: "1.68.2" },
+    monacoLanguage: "rust",
+    defaultCode: `fn main() {
+    // Create vector
+    let numbers = vec![1, 2, 3, 4, 5];
+    
+    // Print original numbers
+    println!("Original numbers: {:?}", numbers);
+    
+    // Calculate squares
+    let squares: Vec<i32> = numbers
+        .iter()
+        .map(|&n| n * n)
+        .collect();
+    println!("Squared numbers: {:?}", squares);
+    
+    // Filter even numbers
+    let even_numbers: Vec<i32> = numbers
+        .iter()
+        .filter(|&&n| n % 2 == 0)
+        .cloned()
+        .collect();
+    println!("Even numbers: {:?}", even_numbers);
+    
+    // Calculate sum
+    let sum: i32 = numbers.iter().sum();
+    println!("Sum of numbers: {}", sum);
+}`,
+  },
+
   ruby: {
     id: "ruby",
     label: "Ruby",
-    logoPath: "/ruby.png",
+    logoPath: RubyLogo.src,
     pistonRuntime: { language: "ruby", version: "3.0.1" },
     monacoLanguage: "ruby",
     defaultCode: `# Create array
@@ -313,7 +324,7 @@ puts "Sum of numbers: #{sum}"`,
   swift: {
     id: "swift",
     label: "Swift",
-    logoPath: "/swift.png",
+    logoPath: SwiftLogo.src,
     pistonRuntime: { language: "swift", version: "5.3.3" },
     monacoLanguage: "swift",
     defaultCode: `// Create array
@@ -344,7 +355,17 @@ export const THEMES: Theme[] = [
   { id: "solarized-dark", label: "Solarized Dark", color: "#002b36" },
 ];
 
-export const THEME_DEFINITONS = {
+type BuiltinTheme = "vs" | "vs-dark" | "hc-black";
+
+export const THEME_DEFINITIONS: Record<
+  string,
+  {
+    base: BuiltinTheme;
+    inherit: boolean;
+    rules: { token: string; foreground: string }[];
+    colors: Record<string, string>;
+  }
+> = {
   "github-dark": {
     base: "vs-dark",
     inherit: true,
@@ -421,7 +442,7 @@ export const THEME_DEFINITONS = {
 
 // Helper function to define themes in Monaco
 export const defineMonacoThemes = (monaco: Monaco) => {
-  Object.entries(THEME_DEFINITONS).forEach(([themeName, themeData]) => {
+  Object.entries(THEME_DEFINITIONS).forEach(([themeName, themeData]) => {
     monaco.editor.defineTheme(themeName, {
       base: themeData.base,
       inherit: themeData.inherit,

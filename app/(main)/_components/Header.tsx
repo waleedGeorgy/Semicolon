@@ -1,7 +1,7 @@
 import { api } from "@/convex/_generated/api";
 import { currentUser } from "@clerk/nextjs/server";
 import { ConvexHttpClient } from "convex/browser";
-import { Code2, CodeSquare, Sparkles, Star } from "lucide-react";
+import { Code2, CodeSquare, Star } from "lucide-react";
 import { SignedIn } from "@clerk/nextjs";
 import RunButton from "./RunButton";
 import HeaderProfileButton from "./HeaderProfileButton";
@@ -18,53 +18,44 @@ async function Header() {
     });
 
     return (
-        <div className="relative z-10">
+        <div className="relative z-10 mb-2">
             <div
-                className="flex items-center lg:justify-between justify-center bg-gray-950/75 backdrop-blur-xl p-5 rounded-lg"
+                className="flex flex-wrap items-center lg:justify-between justify-center bg-gray-950/75 backdrop-blur-xl px-5 py-4 rounded-lg gap-6"
             >
-                <div className="hidden lg:flex items-center gap-6">
+                <div className="flex items-center gap-4 lg:gap-8">
                     <Link href="/" className="flex items-center gap-2 group relative">
                         <div
-                            className="absolute -inset-2 bg-gradient-to-r from-cyan-400/30 to-purple-400/30 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300 blur-xl"
+                            className="absolute -inset-2 bg-gradient-to-r from-blue-400/30 to-purple-400/30 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300 blur-lg"
                         />
-                        <div>
-                            <CodeSquare className="size-7 text-cyan-500 transform -rotate-190 group-hover:rotate-0 transition-transform duration-500" />
-                        </div>
-                        <div className="flex flex-col">
-                            <span className="text-3xl bg-gradient-to-r from-cyan-400 to-purple-400 text-transparent bg-clip-text font-roboto-condensed">
-                                Semicolon
-                            </span>
-                        </div>
+                        <CodeSquare className="size-7 text-blue-400 transform -rotate-190 group-hover:rotate-0 transition-transform duration-500" />
+                        <span className="text-3xl bg-gradient-to-r from-blue-400 to-purple-400 text-transparent bg-clip-text font-roboto-condensed hidden lg:inline-block">
+                            Semicolon
+                        </span>
                     </Link>
-                    <nav>
+                    <nav className="flex flex-row items-center gap-3">
                         <Link
                             href="/snippets"
-                            className="relative group flex items-center gap-2 px-4 py-1.5 rounded-full bg-zinc-800 transition-all duration-300"
+                            className="relative group flex items-center gap-2 px-3 py-1.5 rounded-lg text-gray-300 bg-gray-900 border border-blue-900 hover:border-blue-400/40 hover:bg-gradient-to-r hover:from-blue-400/40 hover:to-purple-400/40 transition-colors duration-300 shadow-lg overflow-hidden"
                         >
-                            <div
-                                className="absolute -inset-0.5 -z-10 bg-gradient-to-r from-cyan-400/80 to-purple-400/80 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300"
-                            />
-                            <Code2 className="size-4 relative z-10 group-hover:rotate-z-180 transition-transform" />
-                            <span
-                                className="text-sm font-semibold relative z-10 transition-colors"
-                            >
-                                Code Snippets
+                            <Code2 className="size-4 z-10 group-hover:rotate-z-180 transition-transform duration-300 group-hover:text-white" />
+                            <span className="text-sm z-10 group-hover:text-white transition-colors hidden lg:inline-block">
+                                Snippets
                             </span>
                         </Link>
+                        {!convexUser?.isPro && (
+                            <Link
+                                href="/pricing"
+                                className="flex group items-center gap-2 px-3 py-1.5 rounded-lg border border-amber-400/20 hover:border-amber-400/60 bg-gradient-to-r from-amber-400/10 to-orange-400/10 hover:from-amber-400/20 hover:to-orange-400/20 transition-colors duration-300"
+                            >
+                                <Star className="size-4 text-amber-400 group-hover:text-amber-300" />
+                                <span className="text-sm font-medium text-amber-400/90 group-hover:text-amber-300 hidden lg:inline-block">
+                                    Go Pro
+                                </span>
+                            </Link>
+                        )}
                     </nav>
                 </div>
-                <nav className="flex items-center gap-4">
-                    {!convexUser?.isPro && (
-                        <Link
-                            href="/pricing"
-                            className="flex group items-center gap-2 px-3 py-1.5 rounded-lg border border-amber-400/20 hover:border-amber-400/60 bg-gradient-to-r from-amber-500/10 to-orange-500/10 hover:from-amber-500/20 hover:to-orange-500/20 transition-all duration-300"
-                        >
-                            <Star className="size-4 text-amber-400 group-hover:text-amber-300 group-hover:scale-115" />
-                            <span className="text-sm font-medium text-amber-400/90 group-hover:text-amber-300">
-                                Go Pro
-                            </span>
-                        </Link>
-                    )}
+                <nav className="flex items-center gap-3">
                     <ThemePicker />
                     <LanguagePicker hasAccess={Boolean(convexUser?.isPro)} />
                     <SignedIn>
