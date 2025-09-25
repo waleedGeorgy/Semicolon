@@ -296,7 +296,6 @@ func main() {
     println!("Sum of numbers: {}", sum);
 }`,
   },
-
   ruby: {
     id: "ruby",
     label: "Ruby",

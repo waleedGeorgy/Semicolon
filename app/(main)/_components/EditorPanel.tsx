@@ -45,56 +45,51 @@ const EditorPanel = () => {
   if (!mounted) return null;
 
   return (
-    <div className="bg-[#12121a]/95 backdrop-blur rounded-xl border border-stone-700/50 px-5 py-4">
+    <div className="bg-[#1b1b27] rounded-xl px-5 py-4">
       {/* Code editor header */}
-      <div className="flex items-center justify-between mb-4">
-        <div className="flex items-center gap-2.5">
-          <Image src={"/" + language + ".png"} alt="Logo" width={24} height={24} />
-          <h2 className="font-roboto-condensed font-light text-lg">Code Editor</h2>
-        </div>
-        <div className="flex items-center gap-3">
-          {/* Font Size Slider */}
-          <div className="flex items-center gap-3 px-3 py-1.5 bg-[#1e1e2e] rounded-lg outline outline-gray-700/50">
-            <TypeIcon className="size-4 text-gray-400" />
-            <div className="flex items-center gap-3">
-              <input
-                type="range"
-                min="12"
-                max="24"
-                value={fontSize}
-                onChange={(e) => handleFontSizeChange(parseInt(e.target.value))}
-                className="w-20 h-1 cursor-grab"
-              />
-              <span className="text-sm">
-                {fontSize}
-              </span>
-            </div>
+      <div className="flex items-center gap-3 mb-4">
+        <Image src={"/" + language + ".png"} alt={`Logo of ${language}`} width={32} height={32} />
+        {/* Font Size Slider */}
+        <div className="flex items-center gap-3 px-3 py-1.5 bg-[#1e1e2e] rounded-lg outline outline-gray-700">
+          <TypeIcon className="size-4 text-gray-400" />
+          <div className="flex items-center gap-3">
+            <input
+              type="range"
+              min="12"
+              max="24"
+              value={fontSize}
+              onChange={(e) => handleFontSizeChange(parseInt(e.target.value))}
+              className="w-20 h-1 cursor-grab"
+            />
+            <span className="text-sm">
+              {fontSize}
+            </span>
           </div>
-          {/* Code reset button */}
-          <motion.button
-            whileHover={{ scale: 1.07 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={handleResetEditor}
-            className="p-2 bg-[#1e1e2e] hover:bg-[#2a2a3a] rounded-lg outline outline-gray-700/50 transition-colors cursor-pointer"
-            aria-label="Reset to default code"
-          >
-            <RotateCcwIcon className="size-4" />
-          </motion.button>
-          {/* Share code snippet button */}
-          <motion.button
-            whileTap={{ scale: 0.98 }}
-            onClick={() => setIsShareDialogOpen(true)}
-            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg overflow-hidden bg-gradient-to-r from-indigo-500/75 to-indigo-600/75 opacity-85 hover:opacity-100 transition-opacity duration-300 cursor-pointer"
-          >
-            <ShareIcon className="size-4" />
-            <span className="text-sm">Share snippet</span>
-          </motion.button>
         </div>
+        {/* Code reset button */}
+        <motion.button
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          onClick={handleResetEditor}
+          className="py-2 px-4 bg-[#1e1e2e] hover:bg-[#2a2a3a] rounded-lg outline outline-gray-700 transition-colors cursor-pointer"
+          aria-label="Reset to default code button"
+        >
+          <RotateCcwIcon className="size-4" />
+        </motion.button>
+        {/* Share code snippet button */}
+        <motion.button
+          whileTap={{ scale: 0.98 }}
+          onClick={() => setIsShareDialogOpen(true)}
+          className="inline-flex ml-auto items-center gap-1.5 px-3.5 py-1.5 rounded-lg overflow-hidden bg-gradient-to-r from-indigo-500/75 to-indigo-600/75 hover:from-indigo-400/75 hover:to-indigo-700/75 transition-colors duration-300 cursor-pointer"
+        >
+          <ShareIcon className="size-4" />
+          <span className="text-sm">Share snippet</span>
+        </motion.button>
       </div>
       {/* Code editor body  */}
-      <div className="group rounded-sm overflow-hidden outline outline-gray-700/50">
+      <div className="group rounded-sm overflow-hidden outline outline-slate-700">
         <Editor
-          height="582px"
+          height="588px"
           language={LANGUAGE_CONFIG[language].monacoLanguage}
           onChange={handleEditorChange}
           theme={theme}

@@ -5,7 +5,14 @@ import { User2 } from "lucide-react";
 const HeaderProfileButton = () => {
   return (
     <>
-      <UserButton>
+      <UserButton appearance={{
+        elements: {
+          avatarBox: {
+            width: "2rem",
+            height: "2rem",
+          },
+        },
+      }}>
         <UserButton.MenuItems>
           <UserButton.Link
             label="Profile"

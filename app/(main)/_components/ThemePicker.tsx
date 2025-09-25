@@ -10,7 +10,7 @@ const ThemePicker = () => {
     const [isOpen, setIsOpen] = useState(false);
 
     const mounted = useMounted();
-    
+
     const { theme, setTheme } = useCodeEditorStore();
 
     const dropdownRef = useRef<HTMLDivElement>(null);
@@ -35,16 +35,19 @@ const ThemePicker = () => {
         <div className="relative" ref={dropdownRef}>
             {/* Dropdown activator */}
             <motion.button
-                whileTap={{ scale: 0.98 }}
                 onClick={() => setIsOpen(!isOpen)}
-                className="group relative flex items-center gap-2 px-3 py-1.5 bg-[#1e1e2e]/80 rounded-lg border border-gray-800 hover:border-gray-700 w-[180px] hover:bg-gradient-to-r hover:from-blue-500/10 hover:to-purple-500/5 transition-colors duration-300"
+                className="group cursor-pointer relative flex items-center gap-2 px-3 py-1.5 bg-[#1e1e2e]/80 rounded-lg border border-gray-700 min-w-44 hover:bg-gradient-to-r hover:from-blue-500/10 hover:to-purple-500/10 transition-colors duration-300"
             >
                 {/* hover state bg decorator */}
                 <div className="relative size-3.5 rounded-full border border-gray-600 group-hover:border-gray-500 transition-colors" style={{ background: currentTheme?.color }} />
                 <span className="text-gray-300 text-left group-hover:text-white transition-colors text-sm font-medium">
                     {currentTheme?.label}
                 </span>
-                {isOpen ? (<ChevronDown className="size-4 rotate-z-180 transition-all duration-200 ml-auto" />) : (<ChevronDown className="size-4 rotate-z-0 transition-all duration-200 ml-auto" />)}
+                {isOpen ?
+                    (<ChevronDown className="size-4 rotate-z-180 text-gray-400 group-hover:text-gray-300 transition-all duration-200 ml-auto" />)
+                    :
+                    (<ChevronDown className="size-4 rotate-z-0 text-gray-400 group-hover:text-gray-300 transition-all duration-200 ml-auto" />)
+                }
             </motion.button>
             {/* Theme list */}
             <AnimatePresence>
@@ -54,7 +57,7 @@ const ThemePicker = () => {
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: -12, scale: 1 }}
                         transition={{ duration: 0.3 }}
-                        className="absolute top-full left-0 mt-1.5 w-full min-w-[240px] bg-[#1e1e2e]/95 backdrop-blur-xl rounded-lg border border-stone-800 shadow-xl z-50"
+                        className="absolute top-full left-0 mt-1.5 w-full min-w-52 bg-[#1e1e2e]/95 backdrop-blur-xl rounded-lg outline outline-gray-700 shadow-xl z-50"
                     >
                         <div className="px-3 py-2">
                             <p className="text-xs font-medium text-gray-400">Select a theme</p>

@@ -43,29 +43,25 @@ const LanguagePicker = ({ hasAccess }: { hasAccess: boolean }) => {
     return (
         <div className="relative" ref={dropdownRef}>
             <motion.button
-                whileTap={{ scale: 0.98 }}
                 onClick={() => setIsOpen(!isOpen)}
-                className={`group relative flex items-center gap-2 px-3 py-1.5 bg-[#1e1e2e]/80 rounded-lg transition-colors duration-300 border border-gray-800/50 hover:border-gray-700 hover:bg-gradient-to-r hover:from-blue-500/10 hover:to-purple-500/5 ${!hasAccess && language !== "javascript" ? "opacity-50 cursor-not-allowed" : ""}`}
+                className={`group cursor-pointer flex items-center gap-1.5 px-3 py-1.5 min-w-44 bg-[#1e1e2e]/80 rounded-lg transition-colors duration-300 border border-gray-700 hover:bg-gradient-to-r hover:from-blue-500/10 hover:to-purple-500/10 ${!hasAccess && language !== "javascript" ? "opacity-50 cursor-not-allowed" : ""}`}
             >
-                <div className="size-4">
+                <div className="size-5">
                     <Image
                         src={languageData.logoPath}
                         alt="programming language logo"
-                        width={24}
-                        height={24}
+                        width={18}
+                        height={18}
                         className="w-full h-full object-contain relative z-10"
                     />
                 </div>
-
-                <span className="text-gray-200 min-w-[80px] text-left group-hover:text-white transition-colors text-sm">
+                <span className="text-gray-200 group-hover:text-white transition-colors text-sm">
                     {languageData.label}
                 </span>
-
                 <ChevronDownIcon
-                    className={`size-4 text-gray-400 transition-all duration-300 group-hover:text-gray-300 ${isOpen ? "rotate-180" : ""}`}
+                    className={`size-4 text-gray-400 ml-auto transition-all duration-300 group-hover:text-gray-300 ${isOpen ? "rotate-180" : ""}`}
                 />
             </motion.button>
-
             <AnimatePresence>
                 {isOpen && (
                     <motion.div
@@ -73,12 +69,11 @@ const LanguagePicker = ({ hasAccess }: { hasAccess: boolean }) => {
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: -12, scale: 1 }}
                         transition={{ duration: 0.25 }}
-                        className="absolute top-full left-0 mt-1.5 w-64 bg-[#1e1e2e]/95 backdrop-blur-xl rounded-lg border border-stone-800 shadow-xl z-50"
+                        className="absolute top-full left-0 mt-1.5 min-w-56 bg-[#1e1e2e]/95 backdrop-blur-xl rounded-lg outline outline-gray-700 shadow-xl z-50"
                     >
                         <div className="px-3 py-2">
                             <p className="text-xs font-medium text-gray-400">Select a language</p>
                         </div>
-
                         <div className="overflow-y-auto overflow-x-hidden">
                             {Object.values(LANGUAGE_CONFIG).map((lang, index) => {
                                 const isLocked = !hasAccess && lang.id !== "javascript";
@@ -92,13 +87,13 @@ const LanguagePicker = ({ hasAccess }: { hasAccess: boolean }) => {
                                         className="relative group"
                                     >
                                         <button
-                                            className={`relative w-full flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gradient-to-r hover:from-blue-500/10 hover:to-purple-500/10 transition-all duration-200 ${language === lang.id ? "bg-blue-500/10 text-blue-400" : "text-gray-300"} ${isLocked ? "opacity-50" : "hover:bg-[#262637]"}`}
+                                            className={`relative cursor-pointer w-full flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gradient-to-r hover:from-blue-500/10 hover:to-purple-500/10 transition-all duration-200 ${language === lang.id ? "bg-blue-500/10 text-blue-400" : "text-gray-300"} ${isLocked ? "opacity-50" : "hover:bg-[#262637]"}`}
                                             onClick={() => handleLanguageSelection(lang.id)}
                                             disabled={isLocked}
                                         >
                                             <Image
-                                                width={16}
-                                                height={16}
+                                                width={20}
+                                                height={20}
                                                 src={lang.logoPath}
                                                 alt={`${lang.label} logo`}
                                                 className="object-contain relative z-10 w-auto h-auto"

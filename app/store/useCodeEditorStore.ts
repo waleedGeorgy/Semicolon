@@ -1,6 +1,7 @@
 import { create } from "zustand";
 import { CodeEditorState } from "../types";
 import type { editor } from "monaco-editor";
+import { LANGUAGE_CONFIG } from "../(main)/_constants";
 
 const getInitialState = () => {
   if (typeof window === "undefined") {
@@ -24,8 +25,8 @@ const getInitialState = () => {
 
 export const useCodeEditorStore = create<CodeEditorState>((set, get) => ({
   ...getInitialState(),
-  output: "",
   editor: null,
+  output: "",
   error: null,
   runResult: null,
   isRunning: false,
@@ -71,5 +72,75 @@ export const useCodeEditorStore = create<CodeEditorState>((set, get) => ({
     });
   },
 
-  runCode: async () => {},
+  runCode: async () => {
+    const { language, getCode } = get();
+    const code = getCode();
+
+    if (!code) {
+      set({ error: "No code to run." });
+      return;
+    }
+
+    set({ output: "", error: null, isRunning: true });
+
+    try {
+      const runtime = LANGUAGE_CONFIG[language].pistonRuntime;
+      const res = await fetch("https://emkc.org/api/v2/piston/execute", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          language: runtime.language,
+          version: runtime.version,
+          files: [{ content: code }],
+        }),
+      });
+
+      const data = await res.json();
+      if (data.message) {
+        set({
+          error: data.message,
+          runResult: { code, output: "", error: data.message },
+        });
+        return;
+      }
+
+      if (data.compile && data.compile.code !== 0) {
+        const compilationError = data.compile.stderr || data.compile.output;
+        set({
+          error: compilationError,
+          runResult: { output: "", code, error: compilationError },
+        });
+        return;
+      }
+
+      if (data.run && data.run.code !== 0) {
+        const interpretationError = data.run.stderr || data.run.output;
+        set({
+          error: interpretationError,
+          runResult: { output: "", code, error: interpretationError },
+        });
+        return;
+      }
+
+      const output = data.run.output;
+
+      set({
+        output: output.trim(),
+        error: null,
+        runResult: { output: output.trim(), code, error: null },
+      });
+    } catch (error) {
+      console.log(error);
+      set({
+        error: "Failed to run the code",
+        runResult: { error: "Failed to run the code", output: "", code },
+      });
+    } finally {
+      set({ isRunning: false });
+    }
+  },
 }));
+
+export const getCodeRunResults = () => useCodeEditorStore.getState().runResult;
