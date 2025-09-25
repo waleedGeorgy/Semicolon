@@ -7,6 +7,7 @@ import { RotateCcwIcon, ShareIcon, TypeIcon } from "lucide-react";
 import { motion } from "framer-motion"
 import { Editor } from "@monaco-editor/react";
 import useMounted from "@/app/hooks/useMounted";
+import SharedCodeSnippetDialog from "./SharedCodeSnippetDialog";
 
 const EditorPanel = () => {
   const { editor, fontSize, theme, language, setFontSize, setEditor } = useCodeEditorStore();
@@ -45,7 +46,7 @@ const EditorPanel = () => {
   if (!mounted) return null;
 
   return (
-    <div className="bg-[#1b1b27] rounded-xl px-5 py-4">
+    <div className="bg-[#1b1b27] rounded-xl px-5 py-4 relative">
       {/* Code editor header */}
       <div className="flex items-center gap-3 mb-4">
         <Image src={"/" + language + ".png"} alt={`Logo of ${language}`} width={32} height={32} />
@@ -116,6 +117,7 @@ const EditorPanel = () => {
           }}
         />
       </div>
+      {isShareDialogOpen && <SharedCodeSnippetDialog closeDialog={() => setIsShareDialogOpen(false)}/>}
     </div>
   )
 }
