@@ -12,7 +12,7 @@
   --font-mono: var(--font-geist-mono);
   --font-roboto-condensed: var(--font-roboto-condensed);
 
-  --animate-wiggle: wiggle 1s ease-in-out infinite;
+  --animate-wiggle: wiggle 2s ease-in-out infinite;
   --animate-spin-with-delay: spin-with-delay 2.5s ease-in-out infinite;
 
   @keyframes wiggle {

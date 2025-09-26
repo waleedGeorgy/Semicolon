@@ -7,7 +7,7 @@ import { RotateCcwIcon, ShareIcon, TypeIcon } from "lucide-react";
 import { motion } from "framer-motion"
 import { Editor } from "@monaco-editor/react";
 import useMounted from "@/app/hooks/useMounted";
-import SharedCodeSnippetDialog from "./SharedCodeSnippetDialog";
+import ShareCodeSnippetDialog from "./ShareCodeSnippetDialog";
 
 const EditorPanel = () => {
   const { editor, fontSize, theme, language, setFontSize, setEditor } = useCodeEditorStore();
@@ -117,7 +117,7 @@ const EditorPanel = () => {
           }}
         />
       </div>
-      {isShareDialogOpen && <SharedCodeSnippetDialog closeDialog={() => setIsShareDialogOpen(false)}/>}
+      {isShareDialogOpen && <ShareCodeSnippetDialog closeDialog={() => setIsShareDialogOpen(false)} />}
     </div>
   )
 }

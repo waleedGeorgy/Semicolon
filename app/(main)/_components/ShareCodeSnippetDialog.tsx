@@ -5,7 +5,7 @@ import { useMutation } from "convex/react";
 import { Loader2, X } from "lucide-react";
 import { useState } from "react";
 
-const SharedCodeSnippetDialog = ({ closeDialog }: { closeDialog: () => void }) => {
+const ShareCodeSnippetDialog = ({ closeDialog }: { closeDialog: () => void }) => {
     const [snippetTitle, setSnippetTitle] = useState("");
     const [isSnippetSharing, setIsSnippetSharing] = useState(false);
 
@@ -78,4 +78,4 @@ const SharedCodeSnippetDialog = ({ closeDialog }: { closeDialog: () => void }) =
     )
 }
 
-export default SharedCodeSnippetDialog
+export default ShareCodeSnippetDialog;

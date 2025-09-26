@@ -2,7 +2,7 @@
 import { SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 import { User2 } from "lucide-react";
 
-const HeaderProfileButton = () => {
+const ProfileButton = () => {
   return (
     <>
       <UserButton appearance={{
@@ -28,4 +28,4 @@ const HeaderProfileButton = () => {
   );
 };
 
-export default HeaderProfileButton;
+export default ProfileButton;
