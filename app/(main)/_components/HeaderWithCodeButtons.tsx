@@ -1,8 +1,8 @@
 import { api } from "@/convex/_generated/api";
 import { currentUser } from "@clerk/nextjs/server";
 import { ConvexHttpClient } from "convex/browser";
-import { Code2, CodeSquare, Star } from "lucide-react";
-import { SignedIn } from "@clerk/nextjs";
+import { Code2, CodeSquare, Star, LogIn } from "lucide-react";
+import { SignedIn, SignedOut, SignInButton } from "@clerk/nextjs";
 import RunButton from "./RunButton";
 import Link from "next/link";
 import ThemePicker from "./ThemePicker";
@@ -32,7 +32,7 @@ async function HeaderWithCodeButtons() {
                         href="/snippets"
                         className="group flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-gray-300 border border-indigo-500/60 hover:border-indigo-400/60 hover:bg-indigo-500/50 transition-colors duration-300 shadow-lg overflow-hidden"
                     >
-                        <Code2 className="size-4 z-10 group-hover:rotate-z-180 transition-transform duration-300 group-hover:text-white" />
+                        <Code2 className="size-4 z-10 group-hover:rotate-z-180 transition-all duration-300 group-hover:text-white" />
                         <span className="text-sm z-10 group-hover:text-white transition-colors hidden lg:inline-block">
                             Snippets
                         </span>
@@ -55,7 +55,17 @@ async function HeaderWithCodeButtons() {
                             </span>
                         </Link>
                     )}
-                    <ProfileButton />
+                    <SignedIn>
+                        <ProfileButton />
+                    </SignedIn>
+                    <SignedOut>
+                        <SignInButton>
+                            <button className="px-3 py-1.5 rounded-lg flex flex-row items-center gap-2 text-gray-300 border border-indigo-500/60 hover:border-indigo-400/60 hover:bg-indigo-500/50 transition-colors duration-300 shadow-lg overflow-hidden cursor-pointer group">
+                                <LogIn className="size-4 group-hover:text-white transition-colors duration-300" />
+                                <span className="text-sm group-hover:text-white transition-colors duration-300">Sign In</span>
+                            </button>
+                        </SignInButton>
+                    </SignedOut>
                 </nav>
             </div>
         </div>

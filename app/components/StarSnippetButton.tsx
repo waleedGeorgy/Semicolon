@@ -3,7 +3,7 @@ import { api } from "@/convex/_generated/api"
 import { Id } from "@/convex/_generated/dataModel"
 import { useAuth } from "@clerk/nextjs"
 import { useMutation, useQuery } from "convex/react"
-import { Star } from "lucide-react"
+import { Loader, Star } from "lucide-react"
 
 const StarSnippetButton = ({ snippetId }: { snippetId: Id<"snippets"> }) => {
     const { isSignedIn } = useAuth();
@@ -25,11 +25,17 @@ const StarSnippetButton = ({ snippetId }: { snippetId: Id<"snippets"> }) => {
                 }`}
             onClick={handleStarSnippet}
         >
-            <Star className={`size-4 ${isSnippetStarred ? "fill-yellow-500" : "fill-none"}`} />
-            <span className={`text-xs font-medium ${isSnippetStarred ? "text-yellow-500" : "text-gray-400"}`}>
-                {snippetStarCount}
-            </span>
-        </button>
+            {snippetStarCount === undefined && isSnippetStarred === undefined ?
+                (<Loader className="size-4 animate-spin" />)
+                :
+                (<>
+                    <Star className={`size-4 ${isSnippetStarred ? "fill-yellow-500" : "fill-none"}`} />
+                    <span className={`text-xs font-medium ${isSnippetStarred ? "text-yellow-500" : "text-gray-400"}`}>
+                        {snippetStarCount}
+                    </span>
+                </>)
+            }
+        </button >
     )
 }
 

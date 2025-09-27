@@ -1,5 +1,5 @@
 import { SignedOut } from "@clerk/nextjs"
-import { Code2, CodeSquare, Star } from "lucide-react"
+import { Code2, CodeSquare, Star, Terminal } from "lucide-react"
 import Link from "next/link"
 import ProfileButton from "./ProfileButton"
 
@@ -29,6 +29,15 @@ const Header = () => {
             </Link>
           </div>
           <div className="flex items-center gap-3">
+            <Link
+              href="/"
+              className="group flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-gray-300 border border-blue-500/60 hover:border-blue-400/60 hover:bg-blue-500/50 transition-colors duration-300 shadow-lg overflow-hidden"
+            >
+              <Terminal className="size-4 group-hover:text-white" />
+              <span className="text-sm group-hover:text-white transition-colors">
+                Back to editor
+              </span>
+            </Link>
             <SignedOut>
               <Link
                 href="/pricing"

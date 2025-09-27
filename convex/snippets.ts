@@ -69,6 +69,67 @@ export const getAllSnippets = query({
   },
 });
 
+export const getSnippetById = query({
+  args: { snippetId: v.id("snippets") },
+  handler: async (ctx, args) => {
+    const snippet = await ctx.db.get(args.snippetId);
+    if (!snippet) throw new ConvexError("Snippet not found");
+    return snippet;
+  },
+});
+
+export const getSnippetComments = query({
+  args: { snippetId: v.id("snippets") },
+  handler: async (ctx, args) => {
+    const comments = await ctx.db
+      .query("snippetComments")
+      .withIndex("by_snippet_id")
+      .filter((q) => q.eq(q.field("snippetId"), args.snippetId))
+      .order("desc")
+      .collect();
+
+    return comments;
+  },
+});
+
+export const addComment = mutation({
+  args: { snippetId: v.id("snippets"), contents: v.string() },
+  handler: async (ctx, args) => {
+    const identity = await ctx.auth.getUserIdentity();
+    if (!identity) throw new ConvexError("User not authorized");
+
+    const existingUser = await ctx.db
+      .query("users")
+      .withIndex("by_user_id")
+      .filter((q) => q.eq(q.field("userId"), identity.subject))
+      .first();
+    if (!existingUser) throw new ConvexError("User does not exist");
+
+    return await ctx.db.insert("snippetComments", {
+      userId: identity.subject,
+      snippetId: args.snippetId,
+      contents: args.contents,
+      username: existingUser.name,
+    });
+  },
+});
+
+export const deleteComment = mutation({
+  args: { commentId: v.id("snippetComments") },
+  handler: async (ctx, args) => {
+    const identity = await ctx.auth.getUserIdentity();
+    if (!identity) throw new ConvexError("User not authorized");
+
+    const comment = await ctx.db.get(args.commentId);
+    if (!comment) throw new ConvexError("Comment does not exist");
+
+    if (comment.userId !== identity.subject)
+      throw new ConvexError("Not allowed to delete this comment");
+
+    await ctx.db.delete(args.commentId);
+  },
+});
+
 export const starCodeSnippet = mutation({
   args: { snippetId: v.id("snippets") },
   handler: async (ctx, args) => {
