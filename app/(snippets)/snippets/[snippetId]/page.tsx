@@ -42,8 +42,8 @@ const SnippetDetailsPage = () => {
                                                 src={`/${snippetDetails.language}.png`}
                                                 alt={`${snippetDetails.language} logo`}
                                                 className="size-11 object-contain relative z-10"
-                                                width={20}
-                                                height={20}
+                                                width={30}
+                                                height={30}
                                             />
                                         </div>
                                     </div>

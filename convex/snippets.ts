@@ -69,6 +69,22 @@ export const getAllSnippets = query({
   },
 });
 
+export const getUserSnippets = query({
+  handler: async (ctx) => {
+    const identity = await ctx.auth.getUserIdentity();
+    if (!identity) return [];
+
+    const userSnippets = await ctx.db
+      .query("snippets")
+      .withIndex("by_user_id")
+      .filter((q) => q.eq(q.field("userId"), identity.subject))
+      .order("desc")
+      .collect();
+
+    return userSnippets;
+  },
+});
+
 export const getSnippetById = query({
   args: { snippetId: v.id("snippets") },
   handler: async (ctx, args) => {
@@ -189,5 +205,24 @@ export const getSnippetStarCount = query({
       .collect();
 
     return snippetStars.length;
+  },
+});
+
+export const getStarredSnippets = query({
+  handler: async (ctx) => {
+    const identity = await ctx.auth.getUserIdentity();
+    if (!identity) return [];
+
+    const snippetStars = await ctx.db
+      .query("stars")
+      .withIndex("by_user_id")
+      .filter((q) => q.eq(q.field("userId"), identity.subject))
+      .collect();
+
+    const snippetsStarredByUser = await Promise.all(
+      snippetStars.map((star) => ctx.db.get(star.snippetId))
+    );
+
+    return snippetsStarredByUser.filter((snippet) => snippet !== null);
   },
 });

@@ -74,3 +74,25 @@ export interface Comment {
   snippetId: Id<"snippets">;
   contents: string;
 }
+
+export interface UserStats {
+  totalCodeRuns: number;
+  languagesCount: number;
+  languages: string[];
+  codeRunsLanguageStats: Record<string, number>;
+  codeRunsLast24Hours: number;
+  favoriteLanguage: string;
+  mostStarredLanguage: string;
+}
+
+export interface UserData {
+  _id: Id<"users">;
+  _creationTime: number;
+  proSince?: string | undefined;
+  lsCustomerId?: string | undefined;
+  lsOrderId?: string | undefined;
+  userId: string;
+  name: string;
+  email: string;
+  isPro: boolean;
+}

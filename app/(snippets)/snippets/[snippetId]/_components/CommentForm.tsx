@@ -61,7 +61,7 @@ const CommentForm = ({ addComment, isSubmitting }: { isSubmitting: boolean, addC
                     <div className="hidden sm:block text-xs text-gray-400 space-y-0.5">
                         <div className="space-y-0.5">
                             <p>Format code with <span className="italic text-indigo-400">```language</span>.</p>
-                            <p>Click on <span className="italic text-indigo-400">'Preview'</span> to check comment formatting.</p>
+                            <p>Click on <span className="italic text-indigo-400">Preview</span> to check comment formatting.</p>
                             <p>Press <span className="italic text-indigo-400">Tab</span> to insert spaces or indentation.</p>
                         </div>
                     </div>

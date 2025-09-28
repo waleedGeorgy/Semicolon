@@ -25,6 +25,7 @@
     "zustand": "^5.0.8"
   },
   "devDependencies": {
+    "@clerk/types": "^4.89.0",
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
