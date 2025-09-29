@@ -1,7 +1,7 @@
+import Image from "next/image";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { atomOneDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import CopyButton from "./CopyButton";
-import Image from "next/image";
 
 const CodeBlock = ({ language, code }: { language: string; code: string }) => {
     const trimmedCode = code
@@ -21,7 +21,7 @@ const CodeBlock = ({ language, code }: { language: string; code: string }) => {
                 </div>
                 <CopyButton code={trimmedCode} />
             </div>
-            {/* code block body with syntax highlighting */}
+            {/* Code block body with syntax highlighting */}
             <SyntaxHighlighter
                 language={language || "plaintext"}
                 style={atomOneDark}

@@ -1,5 +1,5 @@
-import { Theme } from "@/app/types";
 import { Monaco } from "@monaco-editor/react";
+import { Theme } from "@/app/types";
 import JavaScriptLogo from "@/public/javascript.png";
 import TypeScriptLogo from "@/public/typescript.png";
 import PythonLogo from "@/public/python.png";

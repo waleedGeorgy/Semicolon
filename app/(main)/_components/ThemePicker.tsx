@@ -1,9 +1,9 @@
 "use client"
-import { useCodeEditorStore } from "@/app/store/useCodeEditorStore";
 import { useEffect, useRef, useState } from "react";
-import { THEMES } from "../_constants";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
+import { THEMES } from "../_constants";
+import { useCodeEditorStore } from "@/app/store/useCodeEditorStore";
 import useMounted from "@/app/hooks/useMounted";
 
 const ThemePicker = () => {

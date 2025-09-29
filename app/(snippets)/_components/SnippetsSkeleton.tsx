@@ -1,4 +1,3 @@
-// TODO: fix this to match the actual layout
 const CardSkeleton = () => (
     <div className="relative group">
         <div className="bg-[#1b1b27] rounded-xl border border-gray-700/50 overflow-hidden">

@@ -1,13 +1,13 @@
 "use client"
-import { api } from "@/convex/_generated/api"
-import { useQuery } from "convex/react"
 import { useState } from "react";
-import SnippetsSkeleton from "../_components/SnippetsSkeleton";
-import SnippetsNavigation from "@/app/components/Header";
-import Header from "@/app/components/Header";
+import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion"
 import { Code2, Grid, Layers, Search, Tag, X } from "lucide-react";
-import Image from "next/image";
+import { useQuery } from "convex/react"
+import { api } from "@/convex/_generated/api"
+import SnippetsNavigation from "@/app/components/Header";
+import Header from "@/app/components/Header";
+import SnippetsSkeleton from "../_components/SnippetsSkeleton";
 import SnippetCard from "../_components/SnippetCard";
 
 const SnippetsPage = () => {

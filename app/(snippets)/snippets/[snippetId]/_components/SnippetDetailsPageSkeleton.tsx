@@ -4,44 +4,71 @@ const SnippetDetailsPageSkeleton = () => {
     return (
         <div className="min-h-screen bg-[#141414]">
             <Header />
-            <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 lg:py-12">
-                <div className="max-w-[1200px] mx-auto">
-                    {/* Skeleton Header */}
-                    <div className="bg-[#1b1b27] border border-gray-700/50 rounded-2xl p-6 sm:p-8 mb-6 backdrop-blur-xl">
-                        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
-                            <div className="flex items-center gap-4">
-                                <div className="flex items-center justify-center size-12 rounded-xl bg-gray-800 animate-pulse" />
-                                <div>
-                                    <div className="h-8 w-48 bg-gray-800 rounded-lg animate-pulse mb-2" />
-                                    <div className="flex gap-4">
-                                        <div className="h-5 w-24 bg-gray-800 rounded animate-pulse" />
-                                        <div className="h-5 w-24 bg-gray-800 rounded animate-pulse" />
+            <div className="p-5">
+                <div className="grid grid-col-1 lg:grid-cols-[0.9fr_1.1fr] gap-5">
+                    <section className="flex flex-col gap-3.5">
+                        {/* Snippet details header */}
+                        <div className="bg-[#1b1b27] border border-gray-700/50 rounded-2xl px-4 py-5">
+                            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                                <div className="flex items-center gap-4">
+                                    {/* Snippet language skeleton */}
+                                    <div className="relative p-1.5 rounded-lg outline outline-gray-700/50 bg-gray-800 animate-pulse">
+                                        <div className="size-11 object-contain relative z-10 bg-gray-800" />
+                                    </div>
+                                    {/* Snippet details skeleton */}
+                                    <div>
+                                        <div className="bg-gray-800 w-40 h-7 mb-2 animate-pulse rounded-full" />
+                                        <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+                                            <div className="bg-gray-800 w-32 h-5 animate-pulse rounded-full" />
+                                            <div className="bg-gray-800 w-32 h-5 animate-pulse rounded-full" />
+                                            <div className="bg-gray-800 w-32 h-5 animate-pulse rounded-full" />
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        {/* Skeleton Code Editor */}
-                        <div className="h-[400px] bg-gray-800 rounded-xl animate-pulse" />
-                    </div>
-                    {/* Skeleton Comments Section */}
-                    <div className="bg-[#1b1b27] border border-gray-700/50 rounded-2xl p-6 sm:p-8 backdrop-blur-xl">
-                        <div className="h-6 w-32 bg-gray-800 rounded animate-pulse mb-6" />
-                        <div className="space-y-4">
-                            {[1, 2, 3].map((i) => (
-                                <div key={i} className="flex gap-4">
-                                    <div className="h-10 w-10 rounded-full bg-gray-800 animate-pulse" />
-                                    <div className="flex-1">
-                                        <div className="h-4 w-32 bg-gray-800 rounded animate-pulse mb-2" />
-                                        <div className="h-16 bg-gray-800 rounded animate-pulse" />
-                                    </div>
+                        {/* Snippet comments skeleton */}
+                        <div className="bg-[#1b1b27] border border-gray-700/50 rounded-2xl overflow-hidden">
+                            {/* Comments header skelton */}
+                            <div className="px-5 py-4 border-b border-gray-700/50">
+                                <div className="bg-gray-800 w-52 h-8 rounded-full" />
+                            </div>
+                            <div className="p-4">
+                                {/* Comments skelton */}
+                                <div className="space-y-4">
+                                    {[...Array(4)].map((_, id) => (
+                                        <div className="group" key={id}>
+                                            <div className="bg-neutral-950 rounded-xl px-4 py-5 outline outline-gray-700/50">
+                                                {/* Comment header skelton */}
+                                                <div className="flex items-start sm:items-center justify-between gap-2 mb-4">
+                                                    <div className="flex items-center gap-2.5">
+                                                        <div className="size-9 bg-gray-800 rounded-full animate-pulse" />
+                                                        <div className="min-w-0 space-y-1.5">
+                                                            <div className="bg-gray-800 w-28 h-4 animate-pulse rounded-full" />
+                                                            <div className="bg-gray-800 w-32 h-4 animate-pulse rounded-full" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div className="bg-gray-800 animate-pulse w-full h-20 rounded" />
+                                            </div>
+                                        </div>
+                                    ))}
                                 </div>
-                            ))}
+                            </div>
                         </div>
-                    </div>
+                    </section>
+                    {/* Code editor skelton */}
+                    <section className="rounded-2xl overflow-hidden border border-gray-700/50 bg-[#1b1b27]">
+                        <div className="flex items-center justify-between px-4 py-3 border-b border-gray-700/50">
+                            <div className="bg-gray-800 animate-pulse w-28 h-6 rounded-full" />
+                            <div className="bg-gray-800 animate-pulse w-28 h-6 rounded-full" />
+                        </div>
+                        <div className="bg-gray-800 animate-pulse w-full h-full" />
+                    </section>
                 </div>
             </div>
         </div>
     )
 }
 
-export default SnippetDetailsPageSkeleton
+export default SnippetDetailsPageSkeleton;

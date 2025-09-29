@@ -1,18 +1,20 @@
 "use client"
-import Header from "@/app/components/Header";
-import { api } from "@/convex/_generated/api";
-import { useUser } from "@clerk/nextjs"
-import { usePaginatedQuery, useQuery } from "convex/react";
-import { useRouter } from "next/navigation";
 import { useState } from "react";
-import ProfileHeroSkeleton from "../_components/ProfileHeroSkeleton";
-import ProfileHero from "../_components/ProfileHero";
-import { AnimatePresence, motion } from "framer-motion"
-import { Calendar1, ChevronRight, Clock, Code, Loader2, MoreHorizontal, Star, TerminalSquare, UserPlus2 } from "lucide-react";
+import { useUser } from "@clerk/nextjs"
 import Image from "next/image";
 import Link from "next/link";
-import StarSnippetButton from "@/app/components/StarSnippetButton";
+import { useRouter } from "next/navigation";
+import { AnimatePresence, motion } from "framer-motion"
+import { Calendar1, Code, Loader2, MoreHorizontal, Star, TerminalSquare, Trash2, User2, UserPlus2 } from "lucide-react";
+import { useMutation, usePaginatedQuery, useQuery } from "convex/react";
+import { api } from "@/convex/_generated/api";
+import { Id } from "@/convex/_generated/dataModel";
+import ProfileHeroSkeleton from "../_components/ProfileHeroSkeleton";
+import ProfileHero from "../_components/ProfileHero";
 import ExpandableCodeBlock from "../_components/ExpandableCodeBlock";
+import Header from "@/app/components/Header";
+import StarSnippetButton from "@/app/components/StarSnippetButton";
+import { createToast } from "@/app/components/Toast";
 
 const ProfilePage = () => {
     const { user, isLoaded } = useUser();
@@ -20,6 +22,9 @@ const ProfilePage = () => {
     const router = useRouter();
 
     const [activeTab, setActiveTab] = useState<"codeRuns" | "userSnippets" | "starred">("codeRuns");
+    const [isSnippetDeleting, setIsSnippetDeleting] = useState(false);
+
+    const deleteCodeSnippet = useMutation(api.snippets.deleteCodeSnippet);
 
     const userStats = useQuery(api.users.getUserStats, {
         userId: user?.id ?? ""
@@ -28,7 +33,6 @@ const ProfilePage = () => {
     const starredSnippets = useQuery(api.snippets.getStarredSnippets);
 
     const userSnippets = useQuery(api.snippets.getUserSnippets);
-    console.log(userSnippets)
 
     const { results: codeRuns, status: codeRunsStatus, loadMore, isLoading: isLoadingCodeRuns } = usePaginatedQuery(api.codeRuns.getUserCodeRuns, {
         userId: user?.id ?? ""
@@ -41,6 +45,20 @@ const ProfilePage = () => {
     const handleLoadMore = async () => {
         if (codeRunsStatus === "CanLoadMore") loadMore(4);
     };
+
+    const handleDeleteSnippet = async (snippetId: Id<"snippets">) => {
+        setIsSnippetDeleting(true);
+
+        try {
+            await deleteCodeSnippet({ snippetId: snippetId });
+            createToast("success", "Snippet deleted successfully");
+        } catch (error) {
+            console.log(error);
+            createToast("error", "Failed to delete the snippet")
+        } finally {
+            setIsSnippetDeleting(false);
+        }
+    }
 
     const TABS = [
         {
@@ -65,11 +83,9 @@ const ProfilePage = () => {
     return (
         <div className="min-h-screen bg-[#141414] font-sans">
             <Header />
-            <div className="max-w-6xl mx-auto px-4 py-8">
+            <div className="max-w-7xl mx-auto px-4 py-8">
                 {/* Profile hero */}
-                {userStats && userData && (
-                    <ProfileHero userStats={userStats} userData={userData} user={user!} />
-                )}
+                {userStats && userData && (<ProfileHero userStats={userStats} userData={userData} user={user!} />)}
                 {(userStats === undefined || !isLoaded) && <ProfileHeroSkeleton />}
                 {/* Code related section */}
                 <div className="overflow-hidden">
@@ -108,14 +124,14 @@ const ProfilePage = () => {
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: -10 }}
                             transition={{ duration: 0.25 }}
-                            className="py-5"
+                            className="py-6"
                         >
                             {/* Code runs tab */}
                             {activeTab === "codeRuns" && (
-                                <div className="space-y-5">
+                                <div className="space-y-6 bg-[#1b1b27]">
                                     {codeRuns?.map((codeRun) => (
                                         /* Individual code run */
-                                        <div key={codeRun._id} className="group rounded-xl overflow-hidden border border-gray-700/50">
+                                        <div key={codeRun._id} className="group rounded-xl overflow-hidden border border-gray-700/50 hover:border-2 hover:border-gray-700/80">
                                             {/* Individual code run header */}
                                             <div className="flex items-center justify-between px-4 py-3 bg-[#1b1b27] rounded-t-xl">
                                                 <div className="flex items-center gap-4">
@@ -204,74 +220,221 @@ const ProfilePage = () => {
                             )}
                             {/* User snippets tab */}
                             {activeTab === "userSnippets" && (
-                                <div>User snippets</div>
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    {userSnippets?.map((snippet) => (
+                                        <motion.div
+                                            layout
+                                            className="group relative"
+                                            whileHover={{ y: -3 }}
+                                            transition={{ duration: 0.2 }}
+                                            key={snippet._id}
+                                        >
+                                            <Link href={`/snippets/${snippet._id}`}>
+                                                <div
+                                                    className="relative h-full bg-[#1b1b27] rounded-xl border border-gray-700/50 hover:border-gray-700 transition-all duration-300 overflow-hidden"
+                                                >
+                                                    <div className="px-5 py-4">
+                                                        {/* Card header */}
+                                                        <div className="flex items-start justify-between mb-4">
+                                                            <div className="flex items-center gap-3">
+                                                                <div className="relative">
+                                                                    <div
+                                                                        className="absolute -inset-1.5 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-lg blur-sm opacity-30 group-hover:opacity-50 transition-all duration-300"
+                                                                        area-hidden="true"
+                                                                    />
+                                                                    <div
+                                                                        className="relative p-1.5 rounded-lg outline outline-gray-700/50 hover:outline-gray-700 bg-gray-900 transition-all duration-300"
+                                                                    >
+                                                                        <Image
+                                                                            src={`/${snippet.language}.png`}
+                                                                            alt={`${snippet.language} logo`}
+                                                                            className="size-8 object-contain relative z-10"
+                                                                            width={20}
+                                                                            height={20}
+                                                                        />
+                                                                    </div>
+                                                                </div>
+                                                                <div className="flex flex-col gap-1.5">
+                                                                    <span className="px-2.5 py-0.5 bg-indigo-500/10 text-indigo-400 outline outline-gray-700/50 rounded-lg text-sm w-fit">
+                                                                        {snippet.language === "cpp" ? ("C++") : (snippet.language[0].toUpperCase() + snippet.language.slice(1,))}
+                                                                    </span>
+                                                                    <div className="flex items-center gap-1.5 text-xs text-gray-400">
+                                                                        <Calendar1 className="size-3" />
+                                                                        {new Date(snippet._creationTime).toLocaleDateString()}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div className="absolute top-4 right-4 z-10 flex gap-2 items-center" onClick={(e) => e.preventDefault()}>
+                                                                <StarSnippetButton snippetId={snippet._id} />
+                                                                {user?.id === snippet.userId && (
+                                                                    <div className="z-10" onClick={(e) => e.preventDefault()}>
+                                                                        <button
+                                                                            onClick={() => handleDeleteSnippet(snippet._id)}
+                                                                            disabled={isSnippetDeleting}
+                                                                            className={`group px-3 py-1.5 rounded-lg transition-all duration-200 ${isSnippetDeleting ? "bg-red-500/20 text-red-400 cursor-not-allowed" : "bg-gray-500/10 text-gray-400 hover:bg-red-500/10 hover:text-red-400 cursor-pointer"}`}
+                                                                        >
+                                                                            {isSnippetDeleting ? (
+                                                                                <div className="size-4 border-2 border-red-400/30 border-t-red-400 rounded-full animate-spin" />) : (<Trash2 className="size-4" />)
+                                                                            }
+                                                                        </button>
+                                                                    </div>
+                                                                )}
+                                                            </div>
+                                                        </div>
+                                                        {/* Card contents */}
+                                                        <div className="space-y-4">
+                                                            <div>
+                                                                {/* Snippet title */}
+                                                                <h2 className="text-2xl font-semibold font-roboto-condensed mb-1.5 line-clamp-1 group-hover:text-indigo-400 transition-colors duration-200">
+                                                                    {snippet.title}
+                                                                </h2>
+                                                                {/* Snippet user */}
+                                                                <div className="flex items-center gap-3 text-sm text-gray-400">
+                                                                    <div className="flex items-center gap-1.5">
+                                                                        <User2 className="size-4" />
+                                                                        <span className="truncate max-w-40">{snippet.username}</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            {/* Snippet code */}
+                                                            <div className="relative group/code">
+                                                                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-indigo-500/5 rounded-lg opacity-0 group-hover/code:opacity-100 transition-all" />
+                                                                <pre className="relative bg-black/30 rounded-lg px-3 py-2 overflow-hidden text-sm text-gray-300 font-mono line-clamp-7 outline outline-gray-700/50">
+                                                                    {snippet.code}
+                                                                </pre>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </Link>
+                                        </motion.div>
+                                    ))}
+                                    {userSnippets === undefined ? (
+                                        <div className="col-span-full text-center py-10">
+                                            <Loader2 className="size-12 text-gray-600 mx-auto mb-4 animate-spin" />
+                                            <h3 className="text-lg font-medium text-gray-400 mb-2">
+                                                Loading your snippets...
+                                            </h3>
+                                        </div>
+                                    ) : (
+                                        !userSnippets || userSnippets.length === 0 && (
+                                            <div className="col-span-full text-center py-10">
+                                                <Code className="w-12 h-12 text-gray-600 mx-auto mb-4" />
+                                                <h3 className="text-lg font-medium text-gray-400 mb-2">
+                                                    You haven't published any snippets yet
+                                                </h3>
+                                            </div>
+                                        )
+                                    )}
+                                </div>
                             )}
                             {/* Starred snippets tab */}
                             {activeTab === "starred" && (
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                     {starredSnippets?.map((snippet) => (
-                                        <div key={snippet._id} className="group relative">
+                                        <motion.div
+                                            layout
+                                            className="group relative"
+                                            whileHover={{ y: -3 }}
+                                            transition={{ duration: 0.2 }}
+                                            key={snippet._id}
+                                        >
                                             <Link href={`/snippets/${snippet._id}`}>
                                                 <div
-                                                    className="bg-black/20 rounded-xl border border-gray-800/50 hover:border-gray-700/50 transition-all duration-300 overflow-hidden h-full group-hover:transform group-hover:scale-[1.02]"
+                                                    className="relative h-full bg-[#1b1b27] rounded-xl border border-gray-700/50 hover:border-gray-700 transition-all duration-300 overflow-hidden"
                                                 >
-                                                    <div className="p-6">
-                                                        <div className="flex items-center justify-between mb-4">
+                                                    <div className="px-5 py-4">
+                                                        {/* Card header */}
+                                                        <div className="flex items-start justify-between mb-4">
                                                             <div className="flex items-center gap-3">
                                                                 <div className="relative">
-                                                                    <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg blur opacity-20 group-hover:opacity-30 transition-opacity" />
-                                                                    <Image
-                                                                        src={`/${snippet.language}.png`}
-                                                                        alt={`${snippet.language} logo`}
-                                                                        className="relative z-10"
-                                                                        width={40}
-                                                                        height={40}
+                                                                    <div
+                                                                        className="absolute -inset-1.5 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-lg blur-sm opacity-30 group-hover:opacity-50 transition-all duration-300"
+                                                                        area-hidden="true"
                                                                     />
+                                                                    <div
+                                                                        className="relative p-1.5 rounded-lg outline outline-gray-700/50 hover:outline-gray-700 bg-gray-900 transition-all duration-300"
+                                                                    >
+                                                                        <Image
+                                                                            src={`/${snippet.language}.png`}
+                                                                            alt={`${snippet.language} logo`}
+                                                                            className="size-8 object-contain relative z-10"
+                                                                            width={20}
+                                                                            height={20}
+                                                                        />
+                                                                    </div>
                                                                 </div>
-                                                                <span className="px-3 py-1 bg-blue-500/10 text-blue-400 rounded-lg text-sm">
-                                                                    {snippet.language}
-                                                                </span>
+                                                                <div className="flex flex-col gap-1.5">
+                                                                    <span className="px-2.5 py-0.5 bg-indigo-500/10 text-indigo-400 outline outline-gray-700/50 rounded-lg text-sm w-fit">
+                                                                        {snippet.language === "cpp" ? ("C++") : (snippet.language[0].toUpperCase() + snippet.language.slice(1,))}
+                                                                    </span>
+                                                                    <div className="flex items-center gap-1.5 text-xs text-gray-400">
+                                                                        <Calendar1 className="size-3" />
+                                                                        {new Date(snippet._creationTime).toLocaleDateString()}
+                                                                    </div>
+                                                                </div>
                                                             </div>
-                                                            <div
-                                                                className="absolute top-6 right-6 z-10"
-                                                                onClick={(e) => e.preventDefault()}
-                                                            >
+                                                            <div className="absolute top-4 right-4 z-10 flex gap-2 items-center" onClick={(e) => e.preventDefault()}>
                                                                 <StarSnippetButton snippetId={snippet._id} />
+                                                                {user?.id === snippet.userId && (
+                                                                    <div className="z-10" onClick={(e) => e.preventDefault()}>
+                                                                        <button
+                                                                            onClick={() => handleDeleteSnippet(snippet._id)}
+                                                                            disabled={isSnippetDeleting}
+                                                                            className={`group px-3 py-1.5 rounded-lg transition-all duration-200 ${isSnippetDeleting ? "bg-red-500/20 text-red-400 cursor-not-allowed" : "bg-gray-500/10 text-gray-400 hover:bg-red-500/10 hover:text-red-400 cursor-pointer"}`}
+                                                                        >
+                                                                            {isSnippetDeleting ? (
+                                                                                <div className="size-4 border-2 border-red-400/30 border-t-red-400 rounded-full animate-spin" />) : (<Trash2 className="size-4" />)
+                                                                            }
+                                                                        </button>
+                                                                    </div>
+                                                                )}
                                                             </div>
                                                         </div>
-                                                        <h2 className="text-xl font-semibold text-white mb-3 line-clamp-1 group-hover:text-blue-400 transition-colors">
-                                                            {snippet.title}
-                                                        </h2>
-                                                        <div className="flex items-center justify-between text-sm text-gray-400">
-                                                            <div className="flex items-center gap-2">
-                                                                <Clock className="w-4 h-4" />
-                                                                <span>{new Date(snippet._creationTime).toLocaleDateString()}</span>
+                                                        {/* Card contents */}
+                                                        <div className="space-y-4">
+                                                            <div>
+                                                                {/* Snippet title */}
+                                                                <h2 className="text-2xl font-semibold font-roboto-condensed mb-1.5 line-clamp-1 group-hover:text-indigo-400 transition-colors duration-200">
+                                                                    {snippet.title}
+                                                                </h2>
+                                                                {/* Snippet user */}
+                                                                <div className="flex items-center gap-3 text-sm text-gray-400">
+                                                                    <div className="flex items-center gap-1.5">
+                                                                        <User2 className="size-4" />
+                                                                        <span className="truncate max-w-40">{snippet.username}</span>
+                                                                    </div>
+                                                                </div>
                                                             </div>
-                                                            <ChevronRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
-                                                        </div>
-                                                    </div>
-                                                    <div className="px-6 pb-6">
-                                                        <div className="bg-black/30 rounded-lg p-4 overflow-hidden">
-                                                            <pre className="text-sm text-gray-300 font-mono line-clamp-3">
-                                                                {snippet.code}
-                                                            </pre>
+                                                            {/* Snippet code */}
+                                                            <div className="relative group/code">
+                                                                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-indigo-500/5 rounded-lg opacity-0 group-hover/code:opacity-100 transition-all" />
+                                                                <pre className="relative bg-black/30 rounded-lg px-3 py-2 overflow-hidden text-sm text-gray-300 font-mono line-clamp-7 outline outline-gray-700/50">
+                                                                    {snippet.code}
+                                                                </pre>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </Link>
-                                        </div>
+                                        </motion.div>
                                     ))}
-
-                                    {(!starredSnippets || starredSnippets.length === 0) && (
-                                        <div className="col-span-full text-center py-12">
-                                            <Star className="w-12 h-12 text-gray-600 mx-auto mb-4" />
+                                    {starredSnippets === undefined ? (
+                                        <div className="col-span-full text-center py-10">
+                                            <Loader2 className="size-12 text-gray-600 mx-auto mb-4 animate-spin" />
                                             <h3 className="text-lg font-medium text-gray-400 mb-2">
-                                                No starred snippets yet
+                                                Loading starred snippets...
                                             </h3>
-                                            <p className="text-gray-500">
-                                                Start exploring and star the snippets you find useful!
-                                            </p>
                                         </div>
+                                    ) : (
+                                        !starredSnippets || starredSnippets.length === 0 && (
+                                            <div className="col-span-full text-center py-10">
+                                                <Star className="w-12 h-12 text-gray-600 mx-auto mb-4" />
+                                                <h3 className="text-lg font-medium text-gray-400 mb-2">
+                                                    You haven't starred any snippet yet.
+                                                </h3>
+                                            </div>
+                                        )
                                     )}
                                 </div>
                             )}

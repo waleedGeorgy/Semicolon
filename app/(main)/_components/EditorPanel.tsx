@@ -1,11 +1,11 @@
 "use client"
-import { useCodeEditorStore } from "@/app/store/useCodeEditorStore"
 import { useEffect, useState } from "react";
-import { defineMonacoThemes, LANGUAGE_CONFIG } from "../_constants";
 import Image from "next/image";
-import { RotateCcwIcon, ShareIcon, TypeIcon } from "lucide-react";
 import { motion } from "framer-motion"
 import { Editor } from "@monaco-editor/react";
+import { RotateCcwIcon, ShareIcon, TypeIcon } from "lucide-react";
+import { useCodeEditorStore } from "@/app/store/useCodeEditorStore"
+import { defineMonacoThemes, LANGUAGE_CONFIG } from "../_constants";
 import useMounted from "@/app/hooks/useMounted";
 import ShareCodeSnippetDialog from "./ShareCodeSnippetDialog";
 

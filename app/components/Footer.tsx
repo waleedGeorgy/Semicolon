@@ -1,5 +1,5 @@
-import { CodeSquare } from "lucide-react"
 import Link from "next/link"
+import { CodeSquare } from "lucide-react"
 
 const Footer = () => {
     return (

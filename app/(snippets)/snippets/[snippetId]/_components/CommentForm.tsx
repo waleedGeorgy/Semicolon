@@ -1,5 +1,5 @@
-import { Code, Loader2, Send } from "lucide-react";
 import { useState } from "react";
+import { Loader2, Send } from "lucide-react";
 import CommentFormatter from "./CommentFormatter";
 
 const CommentForm = ({ addComment, isSubmitting }: { isSubmitting: boolean, addComment: (contents: string) => Promise<void> }) => {

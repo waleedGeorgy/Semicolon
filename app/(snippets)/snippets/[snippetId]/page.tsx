@@ -1,16 +1,16 @@
 "use client"
-import { api } from "@/convex/_generated/api";
-import { useQuery } from "convex/react";
+import Image from "next/image";
 import { useParams } from "next/navigation"
-import { Id } from "@/convex/_generated/dataModel";
-import SnippetDetailsPageSkeleton from "./_components/SnippetDetailsPageSkeleton";
-import Header from "@/app/components/Header";
 import { Calendar1, Code, MessageCircleCodeIcon, User2 } from "lucide-react";
 import { Editor } from "@monaco-editor/react";
+import { api } from "@/convex/_generated/api";
+import { Id } from "@/convex/_generated/dataModel";
+import { useQuery } from "convex/react";
 import { defineMonacoThemes, LANGUAGE_CONFIG } from "@/app/(main)/_constants";
+import Header from "@/app/components/Header";
+import SnippetDetailsPageSkeleton from "./_components/SnippetDetailsPageSkeleton";
 import CopyButton from "./_components/CopyButton";
 import SnippetComments from "./_components/SnippetComments";
-import Image from "next/image";
 
 const SnippetDetailsPage = () => {
     const { snippetId } = useParams();
@@ -21,13 +21,14 @@ const SnippetDetailsPage = () => {
     if (snippetDetails === undefined) {
         return <SnippetDetailsPageSkeleton />
     }
+
     return (
         <div className="min-h-screen bg-[#141414]">
             <Header />
-            <main className="p-4">
-                <div className="grid grid-col-1 lg:grid-cols-[0.9fr_1.1fr] gap-4">
-                    <section className="flex flex-col gap-4">
-                        {/* Header */}
+            <main className="p-5">
+                <div className="grid grid-col-1 lg:grid-cols-[0.9fr_1.1fr] gap-5">
+                    <section className="flex flex-col gap-3.5">
+                        {/* Snippet details header */}
                         <div className="bg-[#1b1b27] border border-gray-700/50 rounded-2xl px-4 py-5">
                             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
                                 <div className="flex items-center gap-4">

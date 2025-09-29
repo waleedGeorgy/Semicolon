@@ -7,7 +7,7 @@ function ProfileHeroSkeleton() {
         {/* User info skeleton */}
         <div className="space-y-3">
           <div className="flex flex-row items-center gap-3">
-            <div className="h-10 w-48 bg-gray-800 rounded animate-pulse" />
+            <div className="h-10 w-48 bg-gray-800 rounded-full animate-pulse" />
             <div className="h-7 w-24 bg-gray-800 rounded-full animate-pulse" />
           </div>
           <div className="flex flex-row items-center gap-3">
@@ -21,11 +21,7 @@ function ProfileHeroSkeleton() {
       {/* Stats cards skeleton */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mt-8">
         {[1, 2, 3].map((i) => (
-          <div
-            key={i}
-            className="group relative px-5 py-4 rounded-xl bg-gray-800 border border-gray-700/50 overflow-hidden"
-          >
-            <div className="absolute inset-0 bg-gradient-to-br opacity-5" />
+          <div key={i} className="group relative px-5 py-4 rounded-xl bg-gray-800 border border-gray-700/50 overflow-hidden">
             <div className="relative space-y-4">
               {/* Stat card header skeleton */}
               <div className="flex items-start justify-between">

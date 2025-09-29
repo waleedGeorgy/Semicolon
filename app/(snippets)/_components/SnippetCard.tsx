@@ -1,12 +1,12 @@
-import { Snippet } from "@/app/types"
-import { api } from "@/convex/_generated/api";
+import { useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { motion } from "framer-motion"
 import { useUser } from "@clerk/nextjs"
 import { useMutation } from "convex/react";
-import Image from "next/image";
-import { useState } from "react";
-import { motion } from "framer-motion"
-import Link from "next/link";
+import { api } from "@/convex/_generated/api";
 import { Calendar1, Trash2, User2 } from "lucide-react";
+import { Snippet } from "@/app/types"
 import { createToast } from "@/app/components/Toast";
 import StarSnippetButton from "@/app/components/StarSnippetButton";
 

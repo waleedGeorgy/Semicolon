@@ -1,10 +1,10 @@
-import { UserData, UserStats } from "@/app/types"
-import { api } from "@/convex/_generated/api";
+import Image from "next/image";
 import { UserResource } from "@clerk/types";
 import { useQuery } from "convex/react";
-import { Terminal, Timer, Star, Trophy, Code, TrendingUp, User2 } from "lucide-react";
 import { motion } from "framer-motion"
-import Image from "next/image";
+import { Terminal, Timer, Star, Trophy, Code, TrendingUp, User2 } from "lucide-react";
+import { api } from "@/convex/_generated/api";
+import { UserData, UserStats } from "@/app/types"
 
 const ProfileHero = ({ user, userStats, userData }: { userStats: UserStats, userData: UserData, user: UserResource }) => {
     const starredSnippets = useQuery(api.snippets.getStarredSnippets);
@@ -35,7 +35,7 @@ const ProfileHero = ({ user, userStats, userData }: { userStats: UserStats, user
             },
         },
         {
-            label: "Languages used",
+            label: "Total languages used",
             value: userStats?.languagesCount ?? 0,
             icon: Code,
             color: "from-purple-500 to-indigo-500",
@@ -108,7 +108,7 @@ const ProfileHero = ({ user, userStats, userData }: { userStats: UserStats, user
                                 </div>
                             </div>
                             <div className="flex items-center gap-1.5 pt-3 border-t border-gray-700/50">
-                                <stat.metric.icon className="w-4 h-4 text-gray-400" />
+                                <stat.metric.icon className="size-4 text-gray-400" />
                                 <span className="text-sm text-gray-400">{stat.metric.label}:</span>
                                 <span className="text-sm font-medium">
                                     {typeof stat.metric.value === "string" && stat.metric.value === "C++" && ("C++")}
