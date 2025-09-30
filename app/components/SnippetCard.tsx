@@ -40,7 +40,7 @@ const SnippetCard = ({ snippet }: { snippet: Snippet }) => {
         >
             <Link href={`/snippets/${snippet._id}`}>
                 <div
-                    className="relative h-full bg-[#1b1b27] rounded-xl border border-gray-700/50 hover:border-gray-700 transition-all duration-300 overflow-hidden"
+                    className="relative h-full bg-[#1b1b27] rounded-xl outline outline-gray-700/50 hover:outline-2 hover:outline-gray-700/80 transition-colors duration-300 overflow-hidden"
                 >
                     <div className="px-5 py-4">
                         {/* Card header */}

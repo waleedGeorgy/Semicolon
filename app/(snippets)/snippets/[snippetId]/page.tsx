@@ -50,7 +50,7 @@ const SnippetDetailsPage = () => {
                                     </div>
                                     {/* Snippet details */}
                                     <div>
-                                        <h1 className="text-xl sm:text-2xl font-roboto-condensed mb-2">
+                                        <h1 className="text-xl sm:text-2xl font-roboto-condensed mb-2 truncate">
                                             {snippetDetails.title}
                                         </h1>
                                         <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm">

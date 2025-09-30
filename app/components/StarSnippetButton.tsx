@@ -26,7 +26,12 @@ const StarSnippetButton = ({ snippetId }: { snippetId: Id<"snippets"> }) => {
             onClick={handleStarSnippet}
         >
             {snippetStarCount === undefined && isSnippetStarred === undefined ?
-                (<Loader className="size-4 animate-spin" />)
+
+                (<>
+                    <Star className={`size-4 ${isSnippetStarred ? "fill-yellow-500" : "fill-none"}`} />
+                    <Loader className="size-3.5 animate-spin" />
+                </>
+                )
                 :
                 (<>
                     <Star className={`size-4 ${isSnippetStarred ? "fill-yellow-500" : "fill-none"}`} />

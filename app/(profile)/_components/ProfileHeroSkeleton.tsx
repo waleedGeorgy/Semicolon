@@ -12,12 +12,11 @@ function ProfileHeroSkeleton() {
           </div>
           <div className="flex flex-row items-center gap-3">
             <div className="h-5 w-40 bg-gray-800 rounded-full animate-pulse" />
-            <span className="text-lg text-gray-400">|</span>
+            <span className="text-xl font-bold text-gray-300">•</span>
             <div className="h-5 w-40 bg-gray-800 rounded-full animate-pulse" />
           </div>
         </div>
       </div>
-
       {/* Stats cards skeleton */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mt-8">
         {[1, 2, 3].map((i) => (

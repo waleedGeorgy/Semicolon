@@ -7,8 +7,8 @@ import { useQuery } from "convex/react"
 import { api } from "@/convex/_generated/api"
 import SnippetsNavigation from "@/app/components/Header";
 import Header from "@/app/components/Header";
+import SnippetCard from "@/app/components/SnippetCard";
 import SnippetsSkeleton from "../_components/SnippetsSkeleton";
-import SnippetCard from "../_components/SnippetCard";
 
 const SnippetsPage = () => {
     const snippets = useQuery(api.snippets.getAllSnippets);

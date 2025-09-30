@@ -75,7 +75,7 @@ const ProfileHero = ({ user, userStats, userData }: { userStats: UserStats, user
                             <User2 className="size-4 text-indigo-400" />
                             {userData.email}
                         </p>
-                        <span className="text-lg">•</span>
+                        <span className="text-xl font-bold text-gray-300">•</span>
                         <p>
                             <span className="text-indigo-400">Member since:</span> {new Date(userData._creationTime).toLocaleString("en-GB", { day: "numeric", month: "long", year: "numeric" })}
                         </p>
