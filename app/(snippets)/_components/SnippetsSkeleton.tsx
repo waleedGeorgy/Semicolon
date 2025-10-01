@@ -34,7 +34,7 @@ const CardSkeleton = () => (
 
 const SnippetsSkeleton = () => {
     return (
-        <div className="min-h-screen bg-[#141414]">
+        <div className="min-h-screen bg-[#0e0e13]">
             {/* Pulsating colored circles on screen sides */}
             <div className="fixed inset-0 flex items-center justify-center pointer-events-none overflow-hidden">
                 <div className="absolute top-[20%] -left-1/4 sm:w-44 md:w-64 lg:w-96 h-96 bg-blue-500/50 rounded-full blur-3xl animate-pulse" />

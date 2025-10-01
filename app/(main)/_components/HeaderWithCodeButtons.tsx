@@ -22,9 +22,9 @@ async function HeaderWithCodeButtons() {
             <div className="flex flex-wrap items-center lg:justify-between justify-center bg-[#1b1b27] px-5 py-3.5 rounded-lg gap-6">
                 <div className="flex items-center gap-4 lg:gap-8">
                     <Link href="/" className="flex items-center gap-2 group relative">
-                        <div className="absolute -inset-2 bg-gradient-to-r from-blue-400/25 via-sky-400/25 to-cyan-400/25 opacity-0 group-hover:opacity-100 transition-all duration-300 blur-xl" />
+                        <div className="absolute -inset-2 bg-gradient-to-r from-blue-400/25 to-indigo-400/25 opacity-0 group-hover:opacity-100 transition-all duration-300 blur-xl" />
                         <CodeSquare className="size-7 text-blue-400 transform -rotate-190 group-hover:rotate-0 transition-transform duration-500" />
-                        <span className="text-3xl bg-gradient-to-r from-blue-400 via-sky-400 to-cyan-400 text-transparent bg-clip-text font-roboto-condensed hidden lg:inline-block">
+                        <span className="text-3xl bg-gradient-to-r from-blue-400 to-indigo-400 text-transparent bg-clip-text font-roboto-condensed hidden lg:inline-block">
                             Semicolon
                         </span>
                     </Link>

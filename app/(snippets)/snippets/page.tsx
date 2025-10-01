@@ -41,7 +41,7 @@ const SnippetsPage = () => {
     })
 
     return (
-        <div className="min-h-screen bg-[#141414] font-sans">
+        <div className="min-h-screen bg-[#0e0e13] font-sans">
             <Header />
             <div className="relative max-w-7xl mx-auto px-4 py-12">
                 {/* Hero */}

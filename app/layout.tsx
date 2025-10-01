@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Roboto_Condensed } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
 import { dark } from "@clerk/themes"
-import Footer from "./components/Footer";
 import { Toaster } from 'react-hot-toast';
+import Footer from "./components/Footer";
 import ConvexClientProvider from "./components/ConvexClientProvider";
 import "./globals.css";
 
@@ -34,7 +34,7 @@ export default function RootLayout({ children }: { children: React.ReactNode; })
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${roboto.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${roboto.variable} antialiased font-sans`}
       >
         <ClerkProvider appearance={{ theme: [dark] }}>
           <ConvexClientProvider>{children}</ConvexClientProvider>

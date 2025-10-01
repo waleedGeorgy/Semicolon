@@ -23,7 +23,7 @@ const SnippetDetailsPage = () => {
     }
 
     return (
-        <div className="min-h-screen bg-[#141414]">
+        <div className="min-h-screen bg-[#0e0e13]">
             <Header />
             <main className="p-5">
                 <div className="grid grid-col-1 lg:grid-cols-[0.9fr_1.1fr] gap-5">

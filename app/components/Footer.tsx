@@ -3,14 +3,14 @@ import { CodeSquare } from "lucide-react"
 
 const Footer = () => {
     return (
-        <footer className="relative border-t border-slate-800 mt-auto">
-            <div className="max-w-7xl mx-auto px-4 py-6">
+        <footer className="relative border-t border-gray-700/50 mt-auto">
+            <div className="max-w-7xl mx-auto px-4 py-7">
                 <div className="flex flex-col md:flex-row items-center justify-between gap-4">
                     <div className="flex items-center gap-2 text-gray-400">
-                        <CodeSquare className="size-6" />
-                        <span>Developed for developers, by developers</span>
+                        <CodeSquare className="size-5" />
+                        <span className="text-sm">Semicolon. All rights reserved @{new Date().getFullYear()}</span>
                     </div>
-                    <div className="flex items-center gap-6">
+                    <div className="flex items-center gap-6 text-sm">
                         <Link href="/support" className="text-gray-400 hover:text-gray-300 transition-colors">
                             Support
                         </Link>
@@ -20,7 +20,7 @@ const Footer = () => {
                         <Link href="/terms" className="text-gray-400 hover:text-gray-300 transition-colors">
                             Terms
                         </Link>
-                        <Link href="/terms" className="text-gray-400 hover:text-gray-300 transition-colors">
+                        <Link href="/" className="text-gray-400 hover:text-gray-300 transition-colors">
                             GitHub
                         </Link>
                     </div>

@@ -1,6 +1,7 @@
 "use client";
-import { SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
+import { SignedOut, UserButton } from "@clerk/nextjs";
 import { User2 } from "lucide-react";
+import LoginButton from "./LoginButton";
 
 const ProfileButton = () => {
   return (
@@ -22,7 +23,7 @@ const ProfileButton = () => {
         </UserButton.MenuItems>
       </UserButton>
       <SignedOut>
-        <SignInButton />
+        <LoginButton />
       </SignedOut>
     </>
   );
