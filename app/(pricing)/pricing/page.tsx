@@ -24,7 +24,6 @@ const PricingPage = async () => {
         ]
     };
 
-
     if (convexUser?.isPro) return <ProPlanActivatedPage />
 
     return (
@@ -74,7 +73,7 @@ const PricingPage = async () => {
                                 {/* CTA */}
                                 <div className="flex justify-center">
                                     <SignedIn>
-                                        <UpgradeButton />
+                                        <UpgradeButton userId={user!.id} />
                                     </SignedIn>
                                     <SignedOut>
                                         <LoginButton />

@@ -1,3 +1,4 @@
+"use client"
 import Link from "next/link"
 import { Code2, CodeSquare, Terminal } from "lucide-react"
 import ProfileButton from "./ProfileButton"

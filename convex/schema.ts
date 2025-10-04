@@ -8,8 +8,8 @@ export default defineSchema({
     email: v.string(),
     isPro: v.boolean(),
     proSince: v.optional(v.string()),
-    lsCustomerId: v.optional(v.string()),
-    lsOrderId: v.optional(v.string()),
+    StripeCustomerId: v.optional(v.string()),
+    StripeOrderId: v.optional(v.string()),
   }).index("by_user_id", ["userId"]),
 
   codeRuns: defineTable({

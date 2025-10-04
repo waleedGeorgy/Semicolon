@@ -29,7 +29,6 @@ const ProPlanActivatedPage = () => {
                   <ArrowRight className="size-4 group-hover:translate-x-1.5 transition-transform duration-300" />
                 </Link>
               </div>
-
             </div>
           </div>
         </div>

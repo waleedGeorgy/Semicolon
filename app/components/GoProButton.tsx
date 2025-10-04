@@ -1,3 +1,4 @@
+"use client"
 import { api } from "@/convex/_generated/api";
 import { useUser } from "@clerk/nextjs";
 import { useQuery } from "convex/react";
@@ -6,6 +7,7 @@ import Link from "next/link";
 
 const GoProButton = () => {
     const { user } = useUser();
+    
     const convexUser = useQuery(api.users.getUser, {
         userId: user?.id || ""
     });
