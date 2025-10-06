@@ -50,7 +50,7 @@ const EditorPanel = () => {
       {/* Code editor header */}
       <div className="flex items-center gap-3 mb-4">
         <Image src={"/" + language + ".png"} alt={`Logo of ${language}`} width={32} height={32} />
-        {/* Font Size Slider */}
+        {/* Font size slider */}
         <div className="flex items-center gap-3 px-3 py-1.5 bg-[#1e1e2e] rounded-lg outline outline-gray-700">
           <TypeIcon className="size-4 text-gray-400" />
           <div className="flex items-center gap-3">

@@ -1,3 +1,4 @@
+import stripe from "../app/lib/stripe";
 import { httpRouter } from "convex/server";
 import { httpAction } from "./_generated/server";
 import { api } from "./_generated/api";
@@ -89,5 +90,83 @@ http.route({
     });
   }),
 });
+
+http.route({
+  path: "/stripe-webhook",
+  method: "POST",
+  handler: httpAction(async (ctx, request) => {
+    const body = await request.text();
+    const signature = request.headers.get("stripe-signature") as string;
+
+    let event;
+
+    try {
+      event = stripe.webhooks.constructEvent(
+        body,
+        signature,
+        process.env.STRIPE_WEBHOOK_SECRET!
+      );
+    } catch (error: any) {
+      console.error(`Webhook signature verification failed:`, error.message);
+      return new Response(
+        JSON.stringify({ error: `Webhook Error: ${error.message}` }),
+        {
+          status: 400,
+          headers: { "Content-Type": "application/json" },
+        }
+      );
+    }
+
+    try {
+      switch (event.type) {
+        case "checkout.session.completed":
+          await handleCheckoutSessionCompleted(ctx, event.data.object);
+          break;
+
+        default:
+          console.log(`Unhandled event type: ${event.type}`);
+      }
+
+      return new Response(JSON.stringify({ received: true }), {
+        status: 200,
+        headers: { "Content-Type": "application/json" },
+      });
+    } catch (error) {
+      console.error("Error processing webhook:", error);
+      return new Response(
+        JSON.stringify({ error: "Webhook processing failed" }),
+        {
+          status: 500,
+          headers: { "Content-Type": "application/json" },
+        }
+      );
+    }
+  }),
+});
+
+async function handleCheckoutSessionCompleted(ctx: any, session: any) {
+  const { userId } = session.metadata;
+
+  if (!userId || typeof userId !== "string" || userId.trim() === "") {
+    console.log("Error in handle checkout session");
+    throw new Error("User not found in session metadata");
+  }
+
+  if (session.payment_status !== "paid") {
+    console.log(
+      `Payment status is ${session.payment_status}, not updating user`
+    );
+    return;
+  }
+
+  // Use Convex mutation to update the user
+  await ctx.runMutation(api.users.updateToPro, {
+    userId,
+    stripeCustomerId: session.customer as string,
+    stripeOrderId: session.id,
+  });
+
+  console.log(`Successfully upgraded user ${userId} to Pro`);
+}
 
 export default http;

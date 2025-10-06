@@ -3,7 +3,7 @@ import { createToast } from "@/app/components/Toast";
 import { ArrowBigUp } from "lucide-react";
 import { useState } from "react";
 
-export default function UpgradeButton({ userId }: { userId: string }) {
+export default function UpgradeButton({ userId, userEmail }: { userId: string, userEmail: string }) {
     const [isLoading, setIsLoading] = useState(false);
 
     const handleUpgrade = async () => {
@@ -12,7 +12,7 @@ export default function UpgradeButton({ userId }: { userId: string }) {
         try {
             const res = await fetch("/api/create-checkout-session", {
                 method: "POST",
-                body: JSON.stringify({ userId }),
+                body: JSON.stringify({ userId, userEmail }),
                 headers: { "Content-Type": "application/json" },
             });
             const data = await res.json();
@@ -33,7 +33,7 @@ export default function UpgradeButton({ userId }: { userId: string }) {
         <button
             onClick={handleUpgrade}
             disabled={isLoading}
-            className="cursor-pointer group inline-flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-indigo-500 to-indigo-600 rounded-lg hover:from-indigo-400 hover:to-indigo-700 transition-all duration-300 disabled:opacity-50"
+            className="cursor-pointer group inline-flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-indigo-500/75 to-indigo-600/75 hover:from-indigo-400/75 hover:to-indigo-700/75 transition-colors duration-300 disabled:opacity-50 rounded-lg"
         >
             <ArrowBigUp className="size-5 group-hover:-translate-y-0.5 transition-all duration-300" />
             {isLoading ? 'Processing...' : 'Upgrade to Pro'}
