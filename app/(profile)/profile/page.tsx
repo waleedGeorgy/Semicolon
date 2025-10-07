@@ -236,7 +236,7 @@ const ProfilePage = () => {
                                             <div className="col-span-full text-center py-10">
                                                 <Code className="w-12 h-12 text-gray-600 mx-auto mb-4" />
                                                 <h3 className="text-lg font-medium text-gray-400 mb-2">
-                                                    You haven't published any snippets yet
+                                                    You haven&apos;t published any snippets yet
                                                 </h3>
                                             </div>
                                         )
@@ -261,7 +261,7 @@ const ProfilePage = () => {
                                             <div className="col-span-full text-center py-10">
                                                 <Star className="w-12 h-12 text-gray-600 mx-auto mb-4" />
                                                 <h3 className="text-lg font-medium text-gray-400 mb-2">
-                                                    You haven't starred any snippet yet.
+                                                    You haven&apos;t starred any snippet yet.
                                                 </h3>
                                             </div>
                                         )
