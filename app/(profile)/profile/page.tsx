@@ -5,14 +5,12 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion"
 import { Calendar1, Code, Loader2, MoreHorizontal, Star, TerminalSquare, UserPlus2 } from "lucide-react";
-import { useMutation, usePaginatedQuery, useQuery } from "convex/react";
+import { usePaginatedQuery, useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
-import { Id } from "@/convex/_generated/dataModel";
 import ProfileHeroSkeleton from "../_components/ProfileHeroSkeleton";
 import ProfileHero from "../_components/ProfileHero";
 import ExpandableCodeBlock from "../_components/ExpandableCodeBlock";
 import Header from "@/app/components/Header";
-import { createToast } from "@/app/components/Toast";
 import SnippetCard from "@/app/components/SnippetCard";
 
 const ProfilePage = () => {
@@ -21,18 +19,13 @@ const ProfilePage = () => {
     const router = useRouter();
 
     const [activeTab, setActiveTab] = useState<"codeRuns" | "userSnippets" | "starred">("codeRuns");
-    // TODO: use 'isSnippetDeleting' to improve UX
-    const [isSnippetDeleting, setIsSnippetDeleting] = useState(false);
-
-    const deleteCodeSnippet = useMutation(api.snippets.deleteCodeSnippet);
 
     const userStats = useQuery(api.users.getUserStats, {
         userId: user?.id ?? ""
     });
-
     const starredSnippets = useQuery(api.snippets.getStarredSnippets);
-
     const userSnippets = useQuery(api.snippets.getUserSnippets);
+    const userData = useQuery(api.users.getUser, { userId: user?.id ?? "" });
 
     const { results: codeRuns, status: codeRunsStatus, loadMore, isLoading: isLoadingCodeRuns } = usePaginatedQuery(api.codeRuns.getUserCodeRuns, {
         userId: user?.id ?? ""
@@ -40,25 +33,9 @@ const ProfilePage = () => {
         initialNumItems: 4
     });
 
-    const userData = useQuery(api.users.getUser, { userId: user?.id ?? "" });
-
     const handleLoadMore = async () => {
         if (codeRunsStatus === "CanLoadMore") loadMore(4);
     };
-
-    const handleDeleteSnippet = async (snippetId: Id<"snippets">) => {
-        setIsSnippetDeleting(true);
-
-        try {
-            await deleteCodeSnippet({ snippetId: snippetId });
-            createToast("success", "Snippet deleted successfully");
-        } catch (error) {
-            console.log(error);
-            createToast("error", "Failed to delete the snippet")
-        } finally {
-            setIsSnippetDeleting(false);
-        }
-    }
 
     const TABS = [
         {
