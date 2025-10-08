@@ -2,10 +2,9 @@
 import { useState } from "react";
 import { useUser } from "@clerk/nextjs"
 import Image from "next/image";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion"
-import { Calendar1, Code, Loader2, MoreHorizontal, Star, TerminalSquare, Trash2, User2, UserPlus2 } from "lucide-react";
+import { Calendar1, Code, Loader2, MoreHorizontal, Star, TerminalSquare, UserPlus2 } from "lucide-react";
 import { useMutation, usePaginatedQuery, useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import { Id } from "@/convex/_generated/dataModel";
@@ -22,6 +21,7 @@ const ProfilePage = () => {
     const router = useRouter();
 
     const [activeTab, setActiveTab] = useState<"codeRuns" | "userSnippets" | "starred">("codeRuns");
+    // TODO: use 'isSnippetDeleting' to improve UX
     const [isSnippetDeleting, setIsSnippetDeleting] = useState(false);
 
     const deleteCodeSnippet = useMutation(api.snippets.deleteCodeSnippet);

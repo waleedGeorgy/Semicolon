@@ -2,6 +2,7 @@ import Link from "next/link"
 import { CodeSquare } from "lucide-react"
 
 const Footer = () => {
+    // TODO: Finish working on the footer and add the actual links
     return (
         <footer className="relative border-t border-gray-700/50 mt-auto">
             <div className="max-w-7xl mx-auto px-4 py-7">

@@ -27,7 +27,7 @@ const roboto = Roboto_Condensed({
 
 export const metadata: Metadata = {
   title: "Semicolon",
-  description: "A web-based code editor",
+  description: "A web application to run and share you code snippets.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode; }) {
