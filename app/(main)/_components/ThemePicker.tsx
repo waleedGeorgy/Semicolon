@@ -38,7 +38,7 @@ const ThemePicker = () => {
                 onClick={() => setIsOpen(!isOpen)}
                 className="group cursor-pointer relative flex items-center gap-2 px-3 py-1.5 bg-[#1e1e2e]/80 rounded-lg border border-gray-700 min-w-44 hover:bg-gradient-to-r hover:from-blue-500/10 hover:to-purple-500/10 transition-colors duration-300"
             >
-                {/* hover state bg decorator */}
+                {/* Hover state bg decorator */}
                 <div className="relative size-3.5 rounded-full border border-gray-600 group-hover:border-gray-500 transition-colors" style={{ background: currentTheme?.color }} />
                 <span className="text-gray-300 text-left group-hover:text-white transition-colors text-sm font-medium">
                     {currentTheme?.label}
@@ -62,8 +62,9 @@ const ThemePicker = () => {
                         <div className="px-3 py-2">
                             <p className="text-xs font-medium text-gray-400">Select a theme</p>
                         </div>
-
+                        {/* Themes list */}
                         {THEMES.map((t, index) => (
+                            
                             <motion.button
                                 key={t.id}
                                 initial={{ opacity: 0 }}

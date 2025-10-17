@@ -10,6 +10,7 @@ import LanguagePicker from "./LanguagePicker";
 import ProfileButton from "../../components/ProfileButton";
 
 async function HeaderWithCodeButtons() {
+    // TODO: Change the logo
     const convex = new ConvexHttpClient(process.env.NEXT_PUBLIC_CONVEX_URL!);
     const user = await currentUser();
 

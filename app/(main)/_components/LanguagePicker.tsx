@@ -76,7 +76,7 @@ const LanguagePicker = ({ hasAccess }: { hasAccess: boolean }) => {
                         </div>
                         <div className="overflow-y-auto overflow-x-hidden">
                             {Object.values(LANGUAGE_CONFIG).map((lang, index) => {
-                                const isLocked = !hasAccess && lang.id !== "javascript";
+                                const isLocked = !hasAccess && (lang.id !== "javascript" && lang.id !== "typescript");
 
                                 return (
                                     <motion.div
@@ -101,7 +101,6 @@ const LanguagePicker = ({ hasAccess }: { hasAccess: boolean }) => {
                                             <span className="flex-1 text-left group-hover:text-white transition-colors font-light">
                                                 {lang.label}
                                             </span>
-
                                             {/* selected language border */}
                                             {language === lang.id && (
                                                 <motion.div
