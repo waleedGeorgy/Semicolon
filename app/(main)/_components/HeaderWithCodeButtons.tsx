@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { SignedIn, SignedOut, SignInButton } from "@clerk/nextjs";
 import { currentUser } from "@clerk/nextjs/server";
-import { Code2, CodeSquare, Star, LogIn } from "lucide-react";
+import { Code2, Star, LogIn } from "lucide-react";
 import { ConvexHttpClient } from "convex/browser";
 import { api } from "@/convex/_generated/api";
 import RunButton from "./RunButton";
@@ -25,8 +25,8 @@ async function HeaderWithCodeButtons() {
             <div className="flex flex-wrap items-center lg:justify-between justify-center bg-[#1b1b27] px-5 py-3.5 rounded-lg gap-6">
                 <div className="flex items-center gap-4 lg:gap-8">
                     <Link href="/" className="flex items-center gap-1.5 group relative">
-                        <div className="absolute -inset-2 bg-gradient-to-r from-blue-400/25 to-indigo-400/25 opacity-0 group-hover:opacity-100 transition-all duration-300 blur-xl" />
-                        <Image src={SemicolonLogo} alt="Semicolon Logo" width={28} height={28} />
+                        <div className="absolute -inset-1 bg-gradient-to-r from-blue-400/30 to-indigo-400/30 opacity-0 group-hover:opacity-100 transition-all duration-300 blur-xl" />
+                        <Image src={SemicolonLogo} alt="Semicolon Logo" width={28} height={28} className="group-hover:rotate-y-180 transition-transform duration-500" />
                         <span className="text-3xl bg-gradient-to-r from-blue-400 to-indigo-400 text-transparent bg-clip-text font-roboto-condensed hidden lg:inline-block">
                             Semicolon
                         </span>
