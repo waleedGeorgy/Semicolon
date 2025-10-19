@@ -1,8 +1,10 @@
 "use client"
 import Link from "next/link"
-import { Code2, CodeSquare, Terminal } from "lucide-react"
+import { Code2, Terminal } from "lucide-react"
 import ProfileButton from "./ProfileButton"
 import GoProButton from "./GoProButton"
+import Image from "next/image"
+import SemicolonLogo from "@/public/semicolon.png"
 
 const Header = () => {
   return (
@@ -14,7 +16,7 @@ const Header = () => {
               <div
                 className="absolute -inset-2 bg-gradient-to-r from-blue-400/25 to-indigo-400/25 opacity-0 group-hover:opacity-100 transition-all duration-300 blur-xl"
               />
-              <CodeSquare className="size-7 text-blue-400 transform -rotate-190 group-hover:rotate-0 transition-transform duration-500" />
+              <Image src={SemicolonLogo} alt="Semicolon Logo" width={28} height={28} className="group-hover:rotate-y-180 transition-transform duration-500" />
               <span className="text-3xl bg-gradient-to-r from-blue-400 to-indigo-400 text-transparent bg-clip-text font-roboto-condensed">
                 Semicolon
               </span>
