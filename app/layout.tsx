@@ -33,9 +33,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode; }) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} ${roboto.variable} antialiased font-sans`}
-      >
+      <body className={`${geistSans.variable} ${geistMono.variable} ${roboto.variable} antialiased`}>
         <ClerkProvider appearance={{ theme: [dark] }}>
           <ConvexClientProvider>{children}</ConvexClientProvider>
           <Footer />
