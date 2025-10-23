@@ -17,8 +17,6 @@ const RunButton = () => {
 
     const runResult = getCodeRunResults();
 
-    console.log(language, runResult)
-
     if (user && runResult) {
       await saveCodeRun({
         language,

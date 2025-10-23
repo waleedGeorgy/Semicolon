@@ -12,7 +12,6 @@ import Image from "next/image";
 import SemicolonLogo from "@/public/semicolon.png";
 
 async function HeaderWithCodeButtons() {
-    // TODO: Change the logo
     const convex = new ConvexHttpClient(process.env.NEXT_PUBLIC_CONVEX_URL!);
     const user = await currentUser();
 

@@ -122,7 +122,6 @@ http.route({
         case "checkout.session.completed":
           await handleCheckoutSessionCompleted(ctx, event.data.object);
           break;
-
         default:
           console.log(`Unhandled event type: ${event.type}`);
       }
