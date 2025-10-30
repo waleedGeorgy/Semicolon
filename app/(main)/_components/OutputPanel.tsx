@@ -24,8 +24,8 @@ const OutputPanel = () => {
       {/* Output header */}
       <div className="flex items-center justify-between mb-3">
         <div className="flex items-center gap-1.5">
-          <TerminalSquare className="size-5 text-indigo-400" />
-          <span className="font-light font-roboto-condensed text-lg text-gray-300">Output</span>
+          <TerminalSquare className="size-4 text-indigo-400" />
+          <span className="font-light font-roboto-condensed text-gray-300">Output</span>
         </div>
         {/* Copy button */}
         {outputHasContent && (
@@ -42,16 +42,14 @@ const OutputPanel = () => {
             ) : (
               <>
                 <Copy className="size-3.5 text-gray-300 group-hover:text-gray-200" />
-                Copy
+                <span>Copy</span>
               </>
             )}
           </button>
         )}
       </div>
       {/* Output Area */}
-      <div
-        className="relative bg-[#1e1e2e] backdrop-blur-sm outline outline-slate-700 rounded-sm p-4 h-[600px] overflow-auto font-mono"
-      >
+      <div className="relative bg-[#1e1e2e] backdrop-blur-sm outline outline-slate-700 rounded-sm p-4 h-[600px] overflow-auto font-mono">
         {isRunning ? (
           <h2 className="font-mono font-light animate-pulse">Running...</h2>
         ) : error ? (
@@ -71,8 +69,8 @@ const OutputPanel = () => {
             <pre className="whitespace-pre-wrap text-gray-300">{output}</pre>
           </div>
         ) : (
-          <div className="h-full flex flex-col items-center justify-center text-gray-500 gap-4">
-            <Hourglass className="size-7 animate-spin-with-delay" />
+          <div className="h-full flex flex-col items-center justify-center text-gray-400 gap-4">
+            <Hourglass className="size-8 animate-spin-with-delay" />
             <p className="text-center text-sm">Waiting for your code...</p>
           </div>
         )}

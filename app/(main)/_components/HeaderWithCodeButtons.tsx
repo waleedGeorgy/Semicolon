@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { SignedIn, SignedOut, SignInButton } from "@clerk/nextjs";
 import { currentUser } from "@clerk/nextjs/server";
 import { Code2, Star, LogIn } from "lucide-react";
@@ -8,7 +9,6 @@ import RunButton from "./RunButton";
 import ThemePicker from "./ThemePicker";
 import LanguagePicker from "./LanguagePicker";
 import ProfileButton from "../../components/ProfileButton";
-import Image from "next/image";
 import SemicolonLogo from "@/public/semicolon.png";
 
 async function HeaderWithCodeButtons() {

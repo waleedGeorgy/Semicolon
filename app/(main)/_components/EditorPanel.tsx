@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion"
 import { Editor } from "@monaco-editor/react";
-import { RotateCcwIcon, ShareIcon, TypeIcon } from "lucide-react";
+import { RotateCcw, Share, Type } from "lucide-react";
 import { useCodeEditorStore } from "@/app/store/useCodeEditorStore"
 import { defineMonacoThemes, LANGUAGE_CONFIG } from "../_constants";
 import useMounted from "@/app/hooks/useMounted";
@@ -49,10 +49,10 @@ const EditorPanel = () => {
     <div className="bg-[#1b1b27] rounded-xl px-5 py-4 relative">
       {/* Code editor header */}
       <div className="flex items-center gap-3 mb-4">
-        <Image src={"/" + language + ".png"} alt={`Logo of ${language}`} width={38} height={38} />
+        <Image src={"/" + language + ".png"} alt={`Logo of ${language}`} width={34} height={34} />
         {/* Font size slider */}
         <div className="flex items-center gap-3 px-3 py-1.5 bg-[#1e1e2e] rounded-lg outline outline-gray-700">
-          <TypeIcon className="size-4 text-gray-400" />
+          <Type className="size-4 text-gray-400" />
           <div className="flex items-center gap-3">
             <input
               type="range"
@@ -75,15 +75,15 @@ const EditorPanel = () => {
           className="py-2 px-4 bg-[#1e1e2e] hover:bg-[#2a2a3a] rounded-lg outline outline-gray-700 transition-colors cursor-pointer"
           aria-label="Reset to default code button"
         >
-          <RotateCcwIcon className="size-4" />
+          <RotateCcw className="size-4" />
         </motion.button>
         {/* Share code snippet button */}
         <motion.button
           whileTap={{ scale: 0.98 }}
           onClick={() => setIsShareDialogOpen(true)}
-          className="inline-flex ml-auto items-center gap-1.5 px-3.5 py-1.5 rounded-lg overflow-hidden bg-gradient-to-r from-indigo-500/75 to-indigo-600/75 hover:from-indigo-400/75 hover:to-indigo-700/75 transition-colors duration-300 cursor-pointer"
+          className="inline-flex ml-auto items-center gap-1.5 px-3.5 py-1.5 rounded-lg overflow-hidden text-gray-300 border border-indigo-500/60 hover:border-indigo-400/60 hover:bg-gradient-to-r hover:from-blue-500/10 hover:to-purple-500/10 transition-colors duration-300 cursor-pointer"
         >
-          <ShareIcon className="size-4" />
+          <Share className="size-3.5" />
           <span className="text-sm">Share snippet</span>
         </motion.button>
       </div>
