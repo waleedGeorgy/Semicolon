@@ -49,7 +49,7 @@ const EditorPanel = () => {
     <div className="bg-[#1b1b27] rounded-xl px-5 py-4 relative">
       {/* Code editor header */}
       <div className="flex items-center gap-3 mb-4">
-        <Image src={"/" + language + ".png"} alt={`Logo of ${language}`} width={32} height={32} />
+        <Image src={"/" + language + ".png"} alt={`Logo of ${language}`} width={38} height={38} />
         {/* Font size slider */}
         <div className="flex items-center gap-3 px-3 py-1.5 bg-[#1e1e2e] rounded-lg outline outline-gray-700">
           <TypeIcon className="size-4 text-gray-400" />
@@ -97,10 +97,10 @@ const EditorPanel = () => {
           beforeMount={defineMonacoThemes}
           onMount={(editor) => setEditor(editor)}
           options={{
-            minimap: { enabled: false },
+            minimap: { enabled: true },
             fontSize,
             automaticLayout: true,
-            scrollBeyondLastLine: false,
+            scrollBeyondLastLine: true,
             padding: { top: 12, bottom: 12 },
             fontFamily: '"Fira Code", "Cascadia Code", Consolas, monospace',
             fontLigatures: true,
@@ -108,7 +108,7 @@ const EditorPanel = () => {
             smoothScrolling: true,
             contextmenu: true,
             renderLineHighlight: "all",
-            lineHeight: 1.7,
+            lineHeight: 1.6,
             roundedSelection: false,
             scrollbar: {
               verticalScrollbarSize: 8,

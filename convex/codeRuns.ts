@@ -19,7 +19,7 @@ export const saveCodeRun = mutation({
       .filter((q) => q.eq(q.field("userId"), userIdentity.subject))
       .first();
 
-    if (!currentUser?.isPro && args.language !== "javascript")
+    if (!currentUser?.isPro && (args.language !== "javascript" && args.language !== "typescript"))
       throw new ConvexError("Only pro users are allowed to use this language");
 
     await ctx.db.insert("codeRuns", {

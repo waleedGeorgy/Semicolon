@@ -10,6 +10,8 @@ import RubyLogo from "@/public/ruby.png";
 import CppLogo from "@/public/cpp.png";
 import CSharpLogo from "@/public/csharp.png";
 import SwiftLogo from "@/public/swift.png";
+import DartLogo from "@/public/dart.png";
+import PHPLogo from "@/public/php.png";
 
 type LanguageConfig = Record<
   string,
@@ -343,6 +345,58 @@ print("Even numbers: \\(evenNumbers)")
 // Calculate sum
 let sum = numbers.reduce(0, +)
 print("Sum of numbers: \\(sum)")`,
+  },
+  dart: {
+    id: "dart",
+    label: "Dart",
+    logoPath: DartLogo.src,
+    pistonRuntime: { language: "dart", version: "2.19.6" },
+    monacoLanguage: "dart",
+    defaultCode: `// Dart Playground
+void main() {
+  List<int> numbers = [1, 2, 3, 4, 5];
+
+  // Map numbers to their squares
+  List<int> squares = numbers.map((n) => n * n).toList();
+  print("Original numbers: $numbers");
+  print("Squared numbers: $squares");
+
+  // Filter for even numbers
+  List<int> evenNumbers = numbers.where((n) => n % 2 == 0).toList();
+  print("Even numbers: $evenNumbers");
+
+  // Calculate sum
+  int numbersSum = numbers.reduce((a, b) => a + b);
+  print("Sum of numbers: $numbersSum");
+}`,
+  },
+  php: {
+    id: "php",
+    label: "PHP",
+    logoPath: PHPLogo.src,
+    pistonRuntime: { language: "php", version: "8.2.3" },
+    monacoLanguage: "php",
+    defaultCode: `<?php
+// PHP Playground
+
+function main() {
+    $numbers = [1, 2, 3, 4, 5];
+
+    // Map numbers to their squares
+    $squares = array_map(fn($n) => $n * $n, $numbers);
+    echo "Original numbers: " . json_encode($numbers) . "\n";
+    echo "Squared numbers: " . json_encode($squares) . "\n";
+
+    // Filter for even numbers
+    $evenNumbers = array_filter($numbers, fn($n) => $n % 2 == 0);
+    echo "Even numbers: " . json_encode(array_values($evenNumbers)) . "\n";
+
+    // Calculate sum
+    $numbersSum = array_reduce($numbers, fn($a, $b) => $a + $b, 0);
+    echo "Sum of numbers: $numbersSum\n";
+}
+
+main();`,
   },
 };
 

@@ -1,6 +1,6 @@
 import { create } from "zustand";
-import { CodeEditorState } from "../types";
 import type { editor } from "monaco-editor";
+import { CodeEditorState } from "../types";
 import { LANGUAGE_CONFIG } from "../(main)/_constants";
 
 const getInitialState = () => {

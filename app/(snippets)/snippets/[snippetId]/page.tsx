@@ -26,7 +26,7 @@ const SnippetDetailsPage = () => {
         <div className="min-h-screen bg-[#0e0e13]">
             <Header />
             <main className="p-5">
-                <div className="grid grid-col-1 lg:grid-cols-[0.9fr_1.1fr] gap-5">
+                <div className="grid grid-col-1 lg:grid-cols-2 gap-5">
                     <section className="flex flex-col gap-3.5">
                         {/* Snippet details header */}
                         <div className="bg-[#1b1b27] border border-gray-700/50 rounded-2xl px-4 py-5">
@@ -90,14 +90,20 @@ const SnippetDetailsPage = () => {
                             beforeMount={defineMonacoThemes}
                             options={{
                                 minimap: { enabled: true },
-                                fontSize: 16,
+                                fontSize: 14,
                                 readOnly: true,
                                 automaticLayout: true,
                                 scrollBeyondLastLine: true,
-                                padding: { top: 16 },
+                                padding: { top: 12, bottom: 12 },
                                 renderWhitespace: "selection",
                                 fontFamily: '"Fira Code", "Cascadia Code", Consolas, monospace',
                                 fontLigatures: true,
+                                scrollbar: {
+                                    verticalScrollbarSize: 8,
+                                    horizontalScrollbarSize: 8,
+                                },
+                                smoothScrolling: true,
+                                lineHeight: 1.6
                             }}
                         />
                     </section>

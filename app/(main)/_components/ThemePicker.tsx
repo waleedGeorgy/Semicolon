@@ -64,7 +64,6 @@ const ThemePicker = () => {
                         </div>
                         {/* Themes list */}
                         {THEMES.map((t, index) => (
-                            
                             <motion.button
                                 key={t.id}
                                 initial={{ opacity: 0 }}
