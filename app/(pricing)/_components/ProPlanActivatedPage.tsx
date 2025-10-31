@@ -1,6 +1,6 @@
-import Header from "@/app/components/Header"
-import { ArrowRight, Star } from "lucide-react"
 import Link from "next/link"
+import { ArrowRight, Star } from "lucide-react"
+import Header from "@/app/components/Header"
 
 const ProPlanActivatedPage = () => {
   return (

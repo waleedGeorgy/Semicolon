@@ -1,10 +1,10 @@
 "use client"
 import { useState } from "react";
-import { useUser } from "@clerk/nextjs"
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { AnimatePresence, motion } from "framer-motion"
 import { Calendar1, Code, Loader2, MoreHorizontal, Star, TerminalSquare, UserPlus2 } from "lucide-react";
+import { useUser } from "@clerk/nextjs"
+import { AnimatePresence, motion } from "framer-motion"
 import { usePaginatedQuery, useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import ProfileHeroSkeleton from "../_components/ProfileHeroSkeleton";

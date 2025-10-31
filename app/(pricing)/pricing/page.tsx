@@ -1,13 +1,13 @@
-import { api } from "@/convex/_generated/api";
+import { SignedIn, SignedOut } from "@clerk/nextjs";
 import { currentUser } from "@clerk/nextjs/server"
+import { Star } from "lucide-react";
+import { api } from "@/convex/_generated/api";
 import { ConvexHttpClient } from "convex/browser";
 import ProPlanActivatedPage from "../_components/ProPlanActivatedPage";
-import Header from "@/app/components/Header";
-import { Star } from "lucide-react";
 import FeatureCategory from "../_components/FeatureCategory";
 import FeatureItem from "../_components/FeatureItem";
-import { SignedIn, SignedOut } from "@clerk/nextjs";
 import UpgradeButton from "../_components/UpgradeButton";
+import Header from "@/app/components/Header";
 import LoginButton from "@/app/components/LoginButton";
 
 const PricingPage = async () => {

@@ -3,9 +3,9 @@ import Image from "next/image";
 import { useParams } from "next/navigation"
 import { Calendar1, Code, MessageCircleCodeIcon, User2 } from "lucide-react";
 import { Editor } from "@monaco-editor/react";
+import { useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import { Id } from "@/convex/_generated/dataModel";
-import { useQuery } from "convex/react";
 import { defineMonacoThemes, LANGUAGE_CONFIG } from "@/app/(main)/_constants";
 import Header from "@/app/components/Header";
 import SnippetDetailsPageSkeleton from "./_components/SnippetDetailsPageSkeleton";

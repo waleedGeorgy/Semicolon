@@ -1,5 +1,5 @@
-import { Id } from "@/convex/_generated/dataModel"
 import { Calendar1, Loader, Trash2, User2 } from "lucide-react"
+import { Id } from "@/convex/_generated/dataModel"
 import { Comment } from "@/app/types"
 import CommentFormatter from "./CommentFormatter"
 

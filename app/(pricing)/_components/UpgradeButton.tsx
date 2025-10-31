@@ -1,7 +1,7 @@
 "use client";
-import { createToast } from "@/app/components/Toast";
-import { ArrowBigUp } from "lucide-react";
 import { useState } from "react";
+import { ArrowBigUp } from "lucide-react";
+import { createToast } from "@/app/components/Toast";
 
 export default function UpgradeButton({ userId, userEmail }: { userId: string, userEmail: string }) {
     const [isLoading, setIsLoading] = useState(false);

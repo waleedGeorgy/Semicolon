@@ -5,9 +5,9 @@ import { motion } from "framer-motion"
 import { Editor } from "@monaco-editor/react";
 import { RotateCcw, Share, Type } from "lucide-react";
 import { useCodeEditorStore } from "@/app/store/useCodeEditorStore"
-import { defineMonacoThemes, LANGUAGE_CONFIG } from "../_constants";
 import useMounted from "@/app/hooks/useMounted";
 import ShareCodeSnippetDialog from "./ShareCodeSnippetDialog";
+import { defineMonacoThemes, LANGUAGE_CONFIG } from "../_constants";
 
 const EditorPanel = () => {
   const { editor, fontSize, theme, language, setFontSize, setEditor } = useCodeEditorStore();

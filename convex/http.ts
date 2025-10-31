@@ -1,9 +1,9 @@
-import stripe from "../app/lib/stripe";
 import { httpRouter } from "convex/server";
 import { httpAction } from "./_generated/server";
 import { api } from "./_generated/api";
 import { Webhook } from "svix";
 import { WebhookEvent } from "@clerk/nextjs/server";
+import stripe from "../app/lib/stripe";
 
 const http = httpRouter();
 

@@ -1,9 +1,9 @@
 "use client"
+import { Loader, Star } from "lucide-react"
+import { useAuth } from "@clerk/nextjs"
+import { useMutation, useQuery } from "convex/react"
 import { api } from "@/convex/_generated/api"
 import { Id } from "@/convex/_generated/dataModel"
-import { useMutation, useQuery } from "convex/react"
-import { useAuth } from "@clerk/nextjs"
-import { Loader, Star } from "lucide-react"
 
 const StarSnippetButton = ({ snippetId }: { snippetId: Id<"snippets"> }) => {
     const { isSignedIn } = useAuth();
