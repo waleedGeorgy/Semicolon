@@ -1,7 +1,7 @@
 import Image from "next/image";
-import { UserResource } from "@clerk/types";
 import { motion } from "framer-motion"
 import { Terminal, Timer, Star, Trophy, Code, TrendingUp, User2 } from "lucide-react";
+import { UserResource } from "@clerk/types";
 import { useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import { UserData, UserStats } from "@/app/types"
@@ -50,6 +50,7 @@ const ProfileHero = ({ user, userStats, userData }: { userStats: UserStats, user
 
     return (
         <div className="relative mb-8 bg-[#1b1b27] font-sans rounded-2xl p-7 border border-gray-700/50 overflow-hidden">
+            {/* User profile info */}
             <div className="relative flex items-center gap-5">
                 <div className="relative group">
                     <div className="absolute -inset-1 bg-gradient-to-br from-blue-500 to-indigo-500 rounded-full blur-lg opacity-60" />

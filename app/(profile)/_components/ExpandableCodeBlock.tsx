@@ -1,8 +1,8 @@
 "use client";
 import { useState } from "react";
+import { ChevronDown, ChevronUp } from "lucide-react";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { atomOneDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
-import { ChevronDown, ChevronUp } from "lucide-react";
 
 interface ExpandableCodeBlockProps {
     code: string;
@@ -29,21 +29,16 @@ const ExpandableCodeBlock = ({ code, language }: ExpandableCodeBlockProps) => {
             >
                 {displayCode}
             </SyntaxHighlighter>
-
             {lines.length > 6 && (
                 <button
                     onClick={() => setIsExpanded(!isExpanded)}
                     className="absolute bottom-2 right-2 px-2 py-1 bg-indigo-500/20 text-indigo-400 rounded text-xs flex items-center gap-1 hover:bg-indigo-500/30 transition-colors cursor-pointer"
                 >
-                    {isExpanded ? (
-                        <>
-                            Show Less <ChevronUp className="size-3" />
-                        </>
-                    ) : (
-                        <>
-                            Show Full Code <ChevronDown className="size-3" />
-                        </>
-                    )}
+                    {isExpanded ?
+                        (<span>Show Less <ChevronUp className="size-3" /></span>)
+                        :
+                        (<span>Show Full Code <ChevronDown className="size-3" /></span>)
+                    }
                 </button>
             )}
         </div>

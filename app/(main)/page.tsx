@@ -8,6 +8,7 @@ export default function Home() {
       <div className="w-full p-4">
         <HeaderWithCodeButtons />
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+          {/* TODO: Add resize */}
           <EditorPanel />
           <OutputPanel />
         </div>

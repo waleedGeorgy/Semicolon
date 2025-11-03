@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   description: "Run and share your code snippets with the community.",
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode; }) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} ${roboto.variable} antialiased`}>

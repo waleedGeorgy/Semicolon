@@ -27,6 +27,7 @@ const SnippetDetailsPage = () => {
             <Header />
             <main className="p-5">
                 <div className="grid grid-col-1 lg:grid-cols-2 gap-5">
+                    {/* TODO: Add resize */}
                     <section className="flex flex-col gap-3.5">
                         {/* Snippet details header */}
                         <div className="bg-[#1b1b27] border border-gray-700/50 rounded-2xl px-4 py-5">
@@ -74,6 +75,7 @@ const SnippetDetailsPage = () => {
                         <SnippetComments snippetId={snippetDetails._id} />
                     </section>
                     {/* Code editor */}
+                    {/* TODO: Add font size slider */}
                     <section className="rounded-2xl overflow-hidden border border-gray-700/50 bg-[#1b1b27] h-fit">
                         <div className="flex items-center justify-between px-4 py-3 border-b border-gray-700/50">
                             <div className="flex items-center gap-1.5 text-gray-400">
