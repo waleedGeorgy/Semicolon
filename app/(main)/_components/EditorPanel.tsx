@@ -1,9 +1,10 @@
 "use client"
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import { RotateCcw, Share, Type } from "lucide-react";
 import { motion } from "framer-motion"
 import { Editor } from "@monaco-editor/react";
-import { RotateCcw, Share, Type } from "lucide-react";
+import { SignedIn, SignedOut } from "@clerk/nextjs";
 import { useCodeEditorStore } from "@/app/store/useCodeEditorStore"
 import useMounted from "@/app/hooks/useMounted";
 import ShareCodeSnippetDialog from "./ShareCodeSnippetDialog";
@@ -78,14 +79,19 @@ const EditorPanel = () => {
           <RotateCcw className="size-4" />
         </motion.button>
         {/* Share code snippet button */}
-        <motion.button
-          whileTap={{ scale: 0.98 }}
-          onClick={() => setIsShareDialogOpen(true)}
-          className="inline-flex ml-auto items-center gap-1.5 px-3.5 py-1.5 rounded-lg overflow-hidden text-gray-300 border border-indigo-500/60 hover:border-indigo-400/60 hover:bg-gradient-to-r hover:from-blue-500/10 hover:to-purple-500/10 transition-colors duration-300 cursor-pointer"
-        >
-          <Share className="size-3.5" />
-          <span className="text-sm">Share snippet</span>
-        </motion.button>
+        <SignedIn>
+          <motion.button
+            whileTap={{ scale: 0.98 }}
+            onClick={() => setIsShareDialogOpen(true)}
+            className="inline-flex ml-auto items-center gap-1.5 px-3.5 py-1.5 rounded-lg overflow-hidden text-gray-300 border border-indigo-500/60 hover:border-indigo-400/60 hover:bg-gradient-to-r hover:from-blue-500/10 hover:to-purple-500/10 transition-colors duration-300 cursor-pointer"
+          >
+            <Share className="size-3.5" />
+            <span className="text-sm">Share snippet</span>
+          </motion.button>
+        </SignedIn>
+        <SignedOut>
+          <p className="text-xs font-light opacity-50 ml-auto">Sign in to share your snippets</p>
+        </SignedOut>
       </div>
       {/* Code editor body  */}
       <div className="group rounded-sm overflow-hidden outline outline-slate-700">

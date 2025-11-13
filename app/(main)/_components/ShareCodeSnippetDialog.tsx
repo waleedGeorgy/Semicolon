@@ -60,14 +60,14 @@ const ShareCodeSnippetDialog = ({ closeDialog }: { closeDialog: () => void }) =>
                         <button
                             type="button"
                             onClick={closeDialog}
-                            className="px-4 py-1.5 text-gray-300 hover:text-gray-200 outline outline-indigo-500 hover:outline-indigo-400 rounded-lg cursor-pointer transition-colors duration-300"
+                            className="px-4 py-1.5 text-gray-300 hover:text-gray-200 rounded-lg cursor-pointer transition-colors duration-300"
                         >
                             Cancel
                         </button>
                         <button
                             type="submit"
                             disabled={isSnippetSharing}
-                            className="px-4 py-1.5 rounded-lg bg-gradient-to-r from-indigo-500/75 to-indigo-600/75 hover:from-indigo-400/75 hover:to-indigo-700/75 transition-colors duration-300 cursor-pointer disabled:opacity-50"
+                            className="px-4 py-1.5 rounded-lg text-gray-300 hover:text-gray-200 border border-indigo-500/60 hover:border-indigo-400/60 hover:bg-gradient-to-r hover:from-blue-500/10 hover:to-purple-500/10 transition-colors duration-300 cursor-pointer disabled:opacity-50"
                         >
                             {isSnippetSharing ? <span className="flex flex-row items-center gap-2"><Loader2 className="size-4 animate-spin" />Sharing</span> : <span>Share</span>}
                         </button>
