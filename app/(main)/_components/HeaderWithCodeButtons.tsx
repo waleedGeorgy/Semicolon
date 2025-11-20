@@ -5,7 +5,6 @@ import { currentUser } from "@clerk/nextjs/server";
 import { Code2, Star, LogIn } from "lucide-react";
 import { ConvexHttpClient } from "convex/browser";
 import { api } from "@/convex/_generated/api";
-import RunButton from "./RunButton";
 import ThemePicker from "./ThemePicker";
 import LanguagePicker from "./LanguagePicker";
 import ProfileButton from "../../components/ProfileButton";
@@ -35,15 +34,12 @@ async function HeaderWithCodeButtons() {
                         className="group flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-gray-300 border border-indigo-500/60 hover:border-indigo-400/60 hover:bg-gradient-to-r hover:from-blue-500/10 hover:to-purple-500/10 transition-colors duration-300 shadow-lg overflow-hidden"
                     >
                         <Code2 className="size-4 z-10 group-hover:rotate-z-180 transition-all duration-300 group-hover:text-white" />
-                        <span className="text-sm z-10 group-hover:text-white transition-colors hidden lg:inline-block">
+                        <span className="text-sm z-10 group-hover:text-white transition-colors">
                             Snippets
                         </span>
                     </Link>
                     <ThemePicker />
                     <LanguagePicker hasAccess={Boolean(convexUser?.isPro)} />
-                    <SignedIn>
-                        <RunButton />
-                    </SignedIn>
                     {!convexUser?.isPro && (
                         <Link
                             href="/pricing"
@@ -59,8 +55,8 @@ async function HeaderWithCodeButtons() {
                         <ProfileButton />
                     </SignedIn>
                     <SignedOut>
-                        <SignInButton>
-                            <button className="px-3 py-1.5 rounded-lg flex flex-row items-center gap-2 text-gray-300 border border-indigo-500/60 hover:border-indigo-400/60 hover:bg-indigo-500/50 transition-colors duration-300 shadow-lg overflow-hidden cursor-pointer group">
+                        <SignInButton mode="modal">
+                            <button className="px-1 rounded-lg flex flex-row items-center gap-2 text-gray-300 transition-colors duration-300 overflow-hidden cursor-pointer group">
                                 <LogIn className="size-4 group-hover:text-white transition-colors duration-300" />
                                 <span className="text-sm group-hover:text-white transition-colors duration-300">Sign In</span>
                             </button>

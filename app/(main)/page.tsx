@@ -7,7 +7,7 @@ export default function Home() {
     <main className="flex flex-col min-h-screen bg-[#0e0e13] font-sans">
       <div className="w-full p-4">
         <HeaderWithCodeButtons />
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
           {/* TODO: Add resize */}
           <EditorPanel />
           <OutputPanel />

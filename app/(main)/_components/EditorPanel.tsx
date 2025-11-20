@@ -9,6 +9,7 @@ import { useCodeEditorStore } from "@/app/store/useCodeEditorStore"
 import useMounted from "@/app/hooks/useMounted";
 import ShareCodeSnippetDialog from "./ShareCodeSnippetDialog";
 import { defineMonacoThemes, LANGUAGE_CONFIG } from "../_constants";
+import RunButton from "./RunButton";
 
 const EditorPanel = () => {
   const { editor, fontSize, theme, language, setFontSize, setEditor } = useCodeEditorStore();
@@ -61,7 +62,7 @@ const EditorPanel = () => {
               max="24"
               value={fontSize}
               onChange={(e) => handleFontSizeChange(parseInt(e.target.value))}
-              className="w-20 h-1 cursor-grab"
+              className="w-24 h-1 cursor-grab"
             />
             <span className="text-sm">
               {fontSize}
@@ -78,6 +79,8 @@ const EditorPanel = () => {
         >
           <RotateCcw className="size-4" />
         </motion.button>
+        {/* Run button */}
+        <RunButton />
         {/* Share code snippet button */}
         <SignedIn>
           <motion.button
