@@ -48,9 +48,9 @@ const EditorPanel = () => {
   if (!mounted) return null;
 
   return (
-    <section className="bg-[#1b1b27] rounded-xl px-5 py-4 relative">
+    <section className="bg-[#1b1b27] rounded-xl px-4 py-3 relative">
       {/* Code editor header */}
-      <div className="flex items-center gap-3 mb-4">
+      <div className="flex items-center gap-3 mb-3">
         <Image src={"/" + language + ".png"} alt={`Logo of ${language}`} width={34} height={34} />
         {/* Font size slider */}
         <div className="flex items-center gap-3 px-3 py-1.5 bg-[#1e1e2e] rounded-lg outline outline-gray-700">
@@ -80,7 +80,9 @@ const EditorPanel = () => {
           <RotateCcw className="size-4" />
         </motion.button>
         {/* Run button */}
-        <RunButton />
+        <SignedIn>
+          <RunButton />
+        </SignedIn>
         {/* Share code snippet button */}
         <SignedIn>
           <motion.button
@@ -93,13 +95,13 @@ const EditorPanel = () => {
           </motion.button>
         </SignedIn>
         <SignedOut>
-          <p className="text-xs font-light opacity-50 ml-auto">Sign in to share your snippets</p>
+          <p className="text-xs font-light opacity-50 ml-auto">Sign in to run and share your snippets</p>
         </SignedOut>
       </div>
       {/* Code editor body  */}
       <div className="group rounded-sm overflow-hidden outline outline-slate-700">
         <Editor
-          height="588px"
+          height="574px"
           language={LANGUAGE_CONFIG[language].monacoLanguage}
           onChange={handleEditorChange}
           theme={theme}
