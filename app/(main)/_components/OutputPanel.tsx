@@ -20,7 +20,7 @@ const OutputPanel = () => {
   }
 
   return (
-    <div className="bg-[#1b1b27] rounded-xl px-4 py-3">
+    <section className="bg-[#1b1b27] rounded-xl px-4 py-3">
       {/* Output header */}
       <div className="flex items-center justify-between mb-3">
         <div className="flex items-center gap-1.5">
@@ -75,7 +75,7 @@ const OutputPanel = () => {
           </div>
         )}
       </div>
-    </div>
+    </section>
   )
 }
 

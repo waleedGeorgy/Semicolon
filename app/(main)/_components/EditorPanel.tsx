@@ -48,7 +48,7 @@ const EditorPanel = () => {
   if (!mounted) return null;
 
   return (
-    <div className="bg-[#1b1b27] rounded-xl px-5 py-4 relative">
+    <section className="bg-[#1b1b27] rounded-xl px-5 py-4 relative">
       {/* Code editor header */}
       <div className="flex items-center gap-3 mb-4">
         <Image src={"/" + language + ".png"} alt={`Logo of ${language}`} width={34} height={34} />
@@ -127,7 +127,7 @@ const EditorPanel = () => {
         />
       </div>
       {isShareDialogOpen && <ShareCodeSnippetDialog closeDialog={() => setIsShareDialogOpen(false)} />}
-    </div>
+    </section>
   )
 }
 

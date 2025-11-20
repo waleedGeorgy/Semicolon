@@ -44,7 +44,7 @@ const LanguagePicker = ({ hasAccess }: { hasAccess: boolean }) => {
         <div className="relative" ref={dropdownRef}>
             <motion.button
                 onClick={() => setIsOpen(!isOpen)}
-                className={`group cursor-pointer flex items-center gap-1.5 px-3 py-1.5 min-w-44 bg-[#1e1e2e]/80 rounded-lg transition-colors duration-300 border border-gray-700 hover:bg-gradient-to-r hover:from-blue-500/10 hover:to-purple-500/10 ${!hasAccess && (language !== "javascript" && language !== "typescript") ? "opacity-50 cursor-not-allowed" : ""}`}
+                className={`group cursor-pointer flex items-center gap-1.5 px-3 py-1 min-w-44 bg-[#1e1e2e]/80 rounded-lg transition-colors duration-300 border border-gray-700 hover:bg-gradient-to-r hover:from-blue-500/10 hover:to-purple-500/10 ${!hasAccess && (language !== "javascript" && language !== "typescript") ? "opacity-50 cursor-not-allowed" : ""}`}
             >
                 <div className="size-5">
                     <Image
