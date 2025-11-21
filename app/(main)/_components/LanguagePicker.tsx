@@ -44,7 +44,7 @@ const LanguagePicker = ({ hasAccess }: { hasAccess: boolean }) => {
         <div className="relative" ref={dropdownRef}>
             <motion.button
                 onClick={() => setIsOpen(!isOpen)}
-                className={`group cursor-pointer flex items-center gap-1.5 px-3 py-1 min-w-44 bg-[#1e1e2e]/80 rounded-lg transition-colors duration-300 border border-gray-700 hover:bg-gradient-to-r hover:from-blue-500/10 hover:to-purple-500/10 ${!hasAccess && (language !== "javascript" && language !== "typescript") ? "opacity-50 cursor-not-allowed" : ""}`}
+                className={`group cursor-pointer flex items-center gap-1.5 px-3 py-1 min-w-40 bg-[#1e1e2e]/80 rounded-lg transition-colors duration-300 border border-gray-700 hover:bg-gradient-to-r hover:from-blue-500/10 hover:to-purple-500/10 ${!hasAccess && (language !== "javascript" && language !== "typescript") ? "opacity-50 cursor-not-allowed" : ""}`}
             >
                 <div className="size-5">
                     <Image
@@ -55,7 +55,7 @@ const LanguagePicker = ({ hasAccess }: { hasAccess: boolean }) => {
                         className="w-full h-full object-contain relative z-10"
                     />
                 </div>
-                <span className="text-gray-200 group-hover:text-white transition-colors text-sm">
+                <span className="text-gray-200 group-hover:text-white transition-colors text-sm font-roboto-condensed">
                     {languageData.label}
                 </span>
                 <ChevronDownIcon
@@ -98,7 +98,7 @@ const LanguagePicker = ({ hasAccess }: { hasAccess: boolean }) => {
                                                 alt={`${lang.label} logo`}
                                                 className="object-contain relative z-10 w-auto h-auto"
                                             />
-                                            <span className="flex-1 text-left group-hover:text-white transition-colors font-light">
+                                            <span className="flex-1 text-left group-hover:text-white transition-colors  font-roboto-condensed">
                                                 {lang.label}
                                             </span>
                                             {/* selected language border */}

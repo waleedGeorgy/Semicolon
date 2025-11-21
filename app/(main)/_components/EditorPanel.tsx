@@ -48,12 +48,12 @@ const EditorPanel = () => {
   if (!mounted) return null;
 
   return (
-    <section className="bg-[#1b1b27] rounded-xl px-4 py-3 relative">
+    <section className="bg-[#1b1b27] rounded-xl p-2.5 relative">
       {/* Code editor header */}
-      <div className="flex items-center gap-3 mb-3">
-        <Image src={"/" + language + ".png"} alt={`Logo of ${language}`} width={34} height={34} />
+      <div className="flex items-center gap-2.5 mb-2">
+        <Image src={"/" + language + ".png"} alt={`Logo of ${language}`} width={32} height={32} />
         {/* Font size slider */}
-        <div className="flex items-center gap-3 px-3 py-1.5 bg-[#1e1e2e] rounded-lg outline outline-gray-700">
+        <div className="flex items-center gap-3 px-3 py-1 bg-[#1e1e2e] rounded-lg outline outline-gray-700">
           <Type className="size-4 text-gray-400" />
           <div className="flex items-center gap-3">
             <input
@@ -74,7 +74,7 @@ const EditorPanel = () => {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           onClick={handleResetEditor}
-          className="py-2 px-4 bg-[#1e1e2e] hover:bg-[#2a2a3a] rounded-lg outline outline-gray-700 transition-colors cursor-pointer"
+          className="py-1.5 px-4 bg-[#1e1e2e] hover:bg-[#2a2a3a] rounded-lg outline outline-gray-700 transition-colors cursor-pointer"
           aria-label="Reset to default code button"
         >
           <RotateCcw className="size-4" />
@@ -88,7 +88,7 @@ const EditorPanel = () => {
           <motion.button
             whileTap={{ scale: 0.98 }}
             onClick={() => setIsShareDialogOpen(true)}
-            className="inline-flex ml-auto items-center gap-1.5 px-3.5 py-1.5 rounded-lg overflow-hidden text-gray-300 border border-indigo-500/60 hover:border-indigo-400/60 hover:bg-gradient-to-r hover:from-blue-500/10 hover:to-purple-500/10 transition-colors duration-300 cursor-pointer"
+            className="inline-flex ml-auto items-center gap-1.5 px-3.5 py-1 rounded-lg overflow-hidden text-gray-300 border border-indigo-500/60 hover:border-indigo-400/60 hover:bg-gradient-to-r hover:from-blue-500/10 hover:to-purple-500/10 transition-colors duration-300 cursor-pointer"
           >
             <Share className="size-3.5" />
             <span className="text-sm">Share snippet</span>

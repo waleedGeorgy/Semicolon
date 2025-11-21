@@ -20,9 +20,9 @@ const OutputPanel = () => {
   }
 
   return (
-    <section className="bg-[#1b1b27] rounded-xl px-4 py-3">
+    <section className="bg-[#1b1b27] rounded-xl p-2.5">
       {/* Output header */}
-      <div className="flex items-center justify-between mb-3">
+      <div className="flex items-center justify-between mb-2">
         <div className="flex items-center gap-1.5">
           <TerminalSquare className="size-5 text-indigo-400" />
           <span className="font-light text-lg text-gray-300">Output</span>

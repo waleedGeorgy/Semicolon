@@ -20,28 +20,28 @@ async function HeaderWithCodeButtons() {
 
     return (
         <header className="mb-3">
-            <div className="flex flex-wrap items-center lg:justify-between justify-center bg-[#1b1b27] px-6 py-2 rounded-lg gap-6">
+            <div className="flex flex-wrap items-center lg:justify-between justify-center bg-[#1b1b27] px-4 py-2 rounded-lg gap-6">
                 <Link href="/" className="flex items-center gap-1.5 group relative">
                     <div className="absolute -inset-1 bg-gradient-to-r from-blue-400/30 to-indigo-400/30 opacity-0 group-hover:opacity-100 transition-all duration-300 blur-xl" />
                     <Image src={SemicolonLogo} alt="Semicolon Logo" width={22} height={22} className="group-hover:rotate-y-180 transition-transform duration-500" />
-                    <span className="text-2xl bg-gradient-to-r from-blue-400 to-indigo-400 text-transparent bg-clip-text font-roboto-condensed hidden lg:inline-block">
+                    <span className="text-2xl bg-gradient-to-r from-blue-400 to-indigo-400 text-transparent bg-clip-text font-roboto-condensed">
                         Semicolon
                     </span>
                 </Link>
                 <nav className="flex items-center gap-3">
-                    <Link href="/snippets" className="group flex items-center gap-2 px-3.5 py-1 rounded-lg text-gray-300 border border-indigo-500/60 hover:border-indigo-400/60 hover:bg-gradient-to-r hover:from-blue-500/10 hover:to-purple-500/10 transition-colors duration-300 shadow-lg overflow-hidden">
-                        <Code2 className="size-4 z-10 group-hover:rotate-z-180 transition-all duration-300 group-hover:text-white" />
-                        <span className="text-sm z-10 group-hover:text-white transition-colors">Snippets</span>
+                    <Link href="/snippets" className="group flex items-center gap-2 px-3.5 md:py-1 py-1.5 rounded-lg text-gray-300 border border-indigo-500/60 hover:border-indigo-400/60 hover:bg-gradient-to-r hover:from-blue-500/10 hover:to-purple-500/10 transition-colors duration-300 shadow-lg overflow-hidden">
+                        <Code2 className="size-4 z-10 group-hover:rotate-z-180 transition-all duration-300 group-hover:text-white shrink-0" />
+                        <span className="text-sm z-10 group-hover:text-white transition-colors font-roboto-condensed tracking-wide hidden md:inline-block">Snippets</span>
                     </Link>
                     <ThemePicker />
                     <LanguagePicker hasAccess={Boolean(convexUser?.isPro)} />
                     {!convexUser?.isPro && (
                         <Link
                             href="/pricing"
-                            className="flex group items-center gap-2 px-3.5 py-1 rounded-lg border border-amber-400/20 hover:border-amber-400/60 bg-gradient-to-r from-amber-400/10 to-orange-400/10 hover:from-amber-400/20 hover:to-orange-400/20 transition-colors duration-300"
+                            className="flex group items-center gap-2 px-3.5 md:py-1 py-1.5 rounded-lg border border-amber-400/20 hover:border-amber-400/60 bg-gradient-to-r from-amber-400/10 to-orange-400/10 hover:from-amber-400/20 hover:to-orange-400/20 transition-colors duration-300"
                         >
                             <Star className="size-4 text-amber-400 group-hover:text-amber-300" />
-                            <span className="text-sm font-medium text-amber-400/90 group-hover:text-amber-300 hidden lg:inline-block">
+                            <span className="text-sm text-amber-400/90 group-hover:text-amber-300 hidden md:inline-block tracking-wide font-roboto-condensed">
                                 Go Pro
                             </span>
                         </Link>
