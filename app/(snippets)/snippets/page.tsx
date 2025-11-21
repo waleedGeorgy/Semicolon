@@ -5,7 +5,6 @@ import { AnimatePresence, motion } from "framer-motion"
 import { Code2, Grid, Layers, Search, Tag, X } from "lucide-react";
 import { useQuery } from "convex/react"
 import { api } from "@/convex/_generated/api"
-import SnippetsNavigation from "@/app/components/Header";
 import Header from "@/app/components/Header";
 import SnippetCard from "@/app/components/SnippetCard";
 import SnippetsSkeleton from "../_components/SnippetsSkeleton";
@@ -20,7 +19,7 @@ const SnippetsPage = () => {
     if (snippets === undefined) {
         return (
             <div className="min-h-screen font-sans">
-                <SnippetsNavigation />
+                <Header />
                 <SnippetsSkeleton />
             </div>
         )
@@ -51,15 +50,15 @@ const SnippetsPage = () => {
                         animate={{ opacity: 1, y: 0 }}
                         className="relative inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gradient-to-r from-blue-500/35 to-indigo-500/35 text-sm"
                     >
-                        <Code2 className="size-4 animate-wiggle" />
-                        Code Snippets Library
+                        <Code2 className="size-4 animate-wiggle text-gray-300" />
+                        <span className="text-gray-300">Code Snippets Library</span>
                         <div className="absolute -inset-1 bg-gradient-to-r from-blue-400/50 to-indigo-400/50 opacity-50 blur-lg" />
                     </motion.div>
                     <motion.h1
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.1 }}
-                        className="text-3xl md:text-4xl font-roboto-condensed"
+                        className="text-3xl md:text-4xl font-roboto-condensed text-gray-300"
                     >
                         Discover Code Snippets Shared By The Community
                     </motion.h1>

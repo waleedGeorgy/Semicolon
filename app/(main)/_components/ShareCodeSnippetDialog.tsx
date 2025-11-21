@@ -36,7 +36,7 @@ const ShareCodeSnippetDialog = ({ closeDialog }: { closeDialog: () => void }) =>
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
             <div className="bg-[#1b1b27] outline outline-gray-700 shadow-xl rounded-lg px-5 py-4 w-full max-w-md">
                 <div className="flex items-center justify-between mb-4">
-                    <h2 className="text-2xl font-roboto-condensed">Share Snippet</h2>
+                    <h2 className="text-2xl font-roboto-condensed text-gray-300">Share Snippet</h2>
                     <button onClick={closeDialog} className="text-gray-300 hover:text-red-400 cursor-pointer transition-colors duration-200">
                         <X className="size-5" />
                     </button>

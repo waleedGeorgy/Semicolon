@@ -48,6 +48,7 @@ const CommentForm = ({ addComment, isSubmitting }: { isSubmitting: boolean, addC
                     </div>
                 ) : (
                     <textarea
+                        id="snippet-comment"
                         value={comment}
                         autoFocus
                         onChange={(e) => setComment(e.target.value)}
@@ -73,13 +74,13 @@ const CommentForm = ({ addComment, isSubmitting }: { isSubmitting: boolean, addC
                     >
                         {isSubmitting ? (
                             <>
-                                <Loader2 className="size-3.5 animate-spin" />
-                                <span className="text-sm">Commenting</span>
+                                <Loader2 className="size-3.5 animate-spin text-gray-300" />
+                                <span className="text-sm text-gray-300">Commenting</span>
                             </>
                         ) : (
                             <>
-                                <Send className="size-3.5" />
-                                <span className="text-sm">Comment</span>
+                                <Send className="size-3.5 text-gray-300" />
+                                <span className="text-sm text-gray-300">Comment</span>
                             </>
                         )}
                     </button>

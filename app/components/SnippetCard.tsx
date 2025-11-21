@@ -94,7 +94,7 @@ const SnippetCard = ({ snippet }: { snippet: Snippet }) => {
                         <div className="space-y-4">
                             <div>
                                 {/* Snippet title */}
-                                <h2 className="text-2xl font-semibold font-roboto-condensed mb-1.5 line-clamp-1 group-hover:text-indigo-400 transition-colors duration-200">
+                                <h2 className="text-2xl font-semibold font-roboto-condensed mb-1.5 line-clamp-1 group-hover:text-indigo-400 transition-colors duration-200 text-gray-300">
                                     {snippet.title}
                                 </h2>
                                 {/* Snippet user */}

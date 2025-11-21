@@ -20,7 +20,7 @@ async function HeaderWithCodeButtons() {
 
     return (
         <header className="mb-3">
-            <div className="flex flex-wrap items-center lg:justify-between justify-center bg-[#1b1b27] px-4 py-2 rounded-lg gap-6">
+            <div className="flex flex-wrap items-center lg:justify-between justify-center bg-[#1b1b27] px-4 py-2 rounded-md gap-6">
                 <Link href="/" className="flex items-center gap-1.5 group relative">
                     <div className="absolute -inset-1 bg-gradient-to-r from-blue-400/30 to-indigo-400/30 opacity-0 group-hover:opacity-100 transition-all duration-300 blur-xl" />
                     <Image src={SemicolonLogo} alt="Semicolon Logo" width={22} height={22} className="group-hover:rotate-y-180 transition-transform duration-500" />

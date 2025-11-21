@@ -51,9 +51,9 @@ const SnippetComments = ({ snippetId }: { snippetId: Id<"snippets"> }) => {
         <div className="bg-[#1b1b27] border border-gray-700/50 rounded-2xl overflow-hidden">
             {/* Comments header */}
             <div className="px-5 py-4 border-b border-gray-700/50">
-                <h2 className="text-xl font-roboto-condensed flex items-center gap-2">
+                <h2 className="text-xl font-roboto-condensed flex items-center gap-2 text-gray-300">
                     <MessageCircleCode className="size-5" />
-                    Discussion ({comments?.length})
+                    <span>Discussion ({comments?.length})</span>
                 </h2>
             </div>
             {/* Sign in button in case user is not authenticated */}

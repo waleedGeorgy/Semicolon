@@ -1,14 +1,14 @@
 "use client"
 import Link from "next/link"
+import Image from "next/image"
 import { Code2, Terminal } from "lucide-react"
 import ProfileButton from "./ProfileButton"
 import GoProButton from "./GoProButton"
-import Image from "next/image"
 import SemicolonLogo from "@/public/semicolon.png"
 
 const Header = () => {
   return (
-    <header className="sticky top-0 z-50 w-full bg-[#1b1b27]/80 backdrop-blur border-b border-gray-700/50">
+    <header className="sticky top-0 z-50 w-full bg-[#1b1b27] border-b border-gray-700/50">
       <div className="max-w-7xl mx-auto px-4 py-3">
         <div className="relative flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2 group relative">

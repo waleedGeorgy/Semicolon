@@ -32,7 +32,7 @@ const SnippetDetailsPage = () => {
                         {/* Snippet details header */}
                         <div className="bg-[#1b1b27] border border-gray-700/50 rounded-2xl px-4 py-5">
                             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
-                                <div className="flex items-center gap-4">
+                                <div className="flex items-center gap-3.5">
                                     {/* Snippet language icon */}
                                     <div className="relative">
                                         <div
@@ -43,15 +43,15 @@ const SnippetDetailsPage = () => {
                                             <Image
                                                 src={`/${snippetDetails.language}.png`}
                                                 alt={`${snippetDetails.language} logo`}
-                                                className="size-11 object-contain relative z-10"
-                                                width={30}
-                                                height={30}
+                                                className="size-10 object-contain relative z-10"
+                                                width={100}
+                                                height={100}
                                             />
                                         </div>
                                     </div>
                                     {/* Snippet details */}
                                     <div>
-                                        <h1 className="text-xl sm:text-2xl font-roboto-condensed mb-2 truncate">
+                                        <h1 className="text-xl sm:text-2xl font-roboto-condensed mb-1 text-gray-300 truncate">
                                             {snippetDetails.title}
                                         </h1>
                                         <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm">
