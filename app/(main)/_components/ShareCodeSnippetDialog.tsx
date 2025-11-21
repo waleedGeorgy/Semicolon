@@ -51,25 +51,31 @@ const ShareCodeSnippetDialog = ({ closeDialog }: { closeDialog: () => void }) =>
                             id="title"
                             value={snippetTitle}
                             onChange={(e) => setSnippetTitle(e.target.value)}
-                            className="w-full px-3 py-2 bg-[#181825] border border-gray-700 rounded-md focus:outline-none focus:ring-1 focus:ring-indigo-500"
+                            className="w-full px-3 py-2 bg-[#181825] border border-gray-700 rounded focus:outline-none focus:ring-1 focus:ring-indigo-500"
                             required
                             autoFocus
                         />
                     </div>
-                    <div className="flex justify-end gap-2.5">
+                    <div className="flex justify-end gap-2">
                         <button
                             type="button"
                             onClick={closeDialog}
-                            className="px-4 py-1.5 text-gray-300 hover:text-gray-200 rounded-lg cursor-pointer transition-colors duration-300"
+                            className="px-4 py-1 text-gray-300 hover:text-gray-200 rounded-lg cursor-pointer transition-colors duration-300"
                         >
                             Cancel
                         </button>
                         <button
                             type="submit"
                             disabled={isSnippetSharing}
-                            className="px-4 py-1.5 rounded-lg text-gray-300 hover:text-gray-200 border border-indigo-500/60 hover:border-indigo-400/60 hover:bg-gradient-to-r hover:from-blue-500/10 hover:to-purple-500/10 transition-colors duration-300 cursor-pointer disabled:opacity-50"
+                            className="px-4 py-1 rounded-lg text-gray-300 hover:text-gray-200 border border-indigo-500/60 hover:border-indigo-400/60 hover:bg-gradient-to-r hover:from-blue-500/10 hover:to-purple-500/10 transition-colors duration-300 cursor-pointer disabled:opacity-50"
                         >
-                            {isSnippetSharing ? <span className="flex flex-row items-center gap-2"><Loader2 className="size-4 animate-spin" />Sharing</span> : <span>Share</span>}
+                            {isSnippetSharing ?
+                                <span className="flex flex-row items-center gap-2">
+                                    <Loader2 className="size-4 animate-spin" />Sharing
+                                </span>
+                                :
+                                <span>Share</span>
+                            }
                         </button>
                     </div>
                 </form>

@@ -8,18 +8,18 @@ export default function Home() {
     <main className="flex flex-col min-h-screen bg-[#0e0e13] font-sans">
       <div className="w-full p-3">
         <HeaderWithCodeButtons />
-        <div className="lg:block hidden">
+        <div className="xl:block hidden">
           <ResizablePanelGroup direction="horizontal">
             <ResizablePanel defaultSize={60}>
               <EditorPanel />
             </ResizablePanel>
-            <ResizableHandle className="bg-gray-700 mx-1.5 w-1.5 rounded-full h-[calc(100vh-102px)] my-auto hidden lg:inline-block" />
+            <ResizableHandle className="bg-gray-700 hover:bg-gray-600 transition-colors duration-200 mx-2 w-1.5 rounded-full" />
             <ResizablePanel defaultSize={40}>
               <OutputPanel />
             </ResizablePanel>
           </ResizablePanelGroup>
         </div>
-        <div className="grid grid-cols-1 gap-3 lg:hidden">
+        <div className="grid grid-cols-1 gap-3 xl:hidden">
           <EditorPanel />
           <OutputPanel />
         </div>

@@ -44,7 +44,7 @@ const LanguagePicker = ({ hasAccess }: { hasAccess: boolean }) => {
         <div className="relative" ref={dropdownRef}>
             <motion.button
                 onClick={() => setIsOpen(!isOpen)}
-                className={`group cursor-pointer flex items-center gap-1.5 px-3 py-1 min-w-40 bg-[#1e1e2e]/80 rounded-lg transition-colors duration-300 border border-gray-700 hover:bg-gradient-to-r hover:from-blue-500/10 hover:to-purple-500/10 ${!hasAccess && (language !== "javascript" && language !== "typescript") ? "opacity-50 cursor-not-allowed" : ""}`}
+                className={`group cursor-pointer truncate flex items-center gap-1.5 px-3 py-1 min-w-40 bg-[#1e1e2e]/80 rounded-lg transition-colors duration-300 border border-gray-700 hover:bg-gradient-to-r hover:from-blue-500/10 hover:to-purple-500/10 ${!hasAccess && (language !== "javascript" && language !== "typescript") ? "opacity-50 cursor-not-allowed" : ""}`}
             >
                 <div className="size-5">
                     <Image
@@ -69,7 +69,7 @@ const LanguagePicker = ({ hasAccess }: { hasAccess: boolean }) => {
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: -12, scale: 1 }}
                         transition={{ duration: 0.25 }}
-                        className="absolute top-full left-0 mt-1.5 min-w-56 bg-[#1e1e2e]/95 backdrop-blur-xl rounded-lg outline outline-gray-700 shadow-xl z-50"
+                        className="absolute top-full left-0 mt-1.5 min-w-48 bg-[#1e1e2e]/95 backdrop-blur-xl rounded-lg outline outline-gray-700 shadow-xl z-50"
                     >
                         <div className="px-3 py-2">
                             <p className="text-xs font-medium text-gray-400">Select a language</p>

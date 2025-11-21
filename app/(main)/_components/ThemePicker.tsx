@@ -36,7 +36,7 @@ const ThemePicker = () => {
             {/* Dropdown activator */}
             <motion.button
                 onClick={() => setIsOpen(!isOpen)}
-                className="group cursor-pointer relative flex items-center gap-2 px-3 py-1 bg-[#1e1e2e]/80 rounded-lg border border-gray-700 min-w-40 hover:bg-gradient-to-r hover:from-blue-500/10 hover:to-purple-500/10 transition-colors duration-300"
+                className="group cursor-pointer truncate relative flex items-center gap-2 px-3 py-1 bg-[#1e1e2e]/80 rounded-lg border border-gray-700 min-w-40 hover:bg-gradient-to-r hover:from-blue-500/10 hover:to-purple-500/10 transition-colors duration-300"
             >
                 {/* Hover state bg decorator */}
                 <div className="relative size-3.5 rounded-full border border-gray-600 group-hover:border-gray-500 transition-colors" style={{ background: currentTheme?.color }} />
@@ -57,7 +57,7 @@ const ThemePicker = () => {
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: -12, scale: 1 }}
                         transition={{ duration: 0.3 }}
-                        className="absolute top-full left-0 mt-1.5 w-full min-w-52 bg-[#1e1e2e]/95 backdrop-blur-xl rounded-lg outline outline-gray-700 shadow-xl z-50"
+                        className="absolute top-full left-0 mt-1.5 w-full min-w-48 bg-[#1e1e2e]/95 backdrop-blur-xl rounded-lg outline outline-gray-700 shadow-xl z-50"
                     >
                         <div className="px-3 py-2">
                             <p className="text-xs font-medium text-gray-400">Select a theme</p>

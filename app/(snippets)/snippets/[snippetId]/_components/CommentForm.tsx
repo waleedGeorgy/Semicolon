@@ -60,17 +60,17 @@ const CommentForm = ({ addComment, isSubmitting }: { isSubmitting: boolean, addC
                 {/* Comment form footer */}
                 <div className="flex items-center justify-between gap-4 px-4 py-3 bg-neutral-950 border-t border-gray-700/50">
                     <div className="hidden sm:block text-xs text-gray-400 space-y-0.5">
-                        <div className="space-y-0.5">
+                        <div className="space-y-0.5 truncate">
                             <p>Format code with <span className="italic text-indigo-400">```language</span>.</p>
-                            <p>Click on <span className="italic text-indigo-400">Preview</span> to check comment formatting.</p>
-                            <p>Press <span className="italic text-indigo-400">Tab</span> to insert spaces or indentation.</p>
+                            <p>Click on <span className="italic text-indigo-400">Preview</span> to check formatting.</p>
+                            <p>Press <span className="italic text-indigo-400">Tab</span> to insert spaces/indentation.</p>
                         </div>
                     </div>
                     {/* Add comment button */}
                     <button
                         type="submit"
                         disabled={isSubmitting || !comment.trim()}
-                        className="flex items-center gap-2 px-4 py-1.5 bg-indigo-800 rounded-lg hover:bg-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all ml-auto cursor-pointer"
+                        className="flex items-center gap-2 px-4 py-1.5 rounded-md border border-indigo-500/60 hover:border-indigo-400/60 hover:bg-gradient-to-r hover:from-blue-500/10 hover:to-purple-500/10 disabled:opacity-50 disabled:cursor-not-allowed transition-all ml-auto cursor-pointer"
                     >
                         {isSubmitting ? (
                             <>

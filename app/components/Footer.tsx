@@ -7,8 +7,8 @@ import GitHubLogo from "@/public/github.svg"
 const Footer = () => {
     return (
         <footer className="relative border-t border-gray-700/50 bg-neutral-950 font-roboto-condensed">
-            <div className="px-5 py-7">
-                <div className="flex items-center justify-end gap-8">
+            <div className="px-14 py-7">
+                <div className="flex flex-wrap items-center justify-center md:justify-end gap-x-8 gap-y-3">
                     <div className="flex flex-row items-center gap-2">
                         <Image src={SemicolonLogo} alt="Logo of Semicolon" width={16} height={16} />
                         <span className="text-gray-400">Semicolon. All rights reserved @{new Date().getFullYear()}</span>

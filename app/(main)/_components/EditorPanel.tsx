@@ -51,7 +51,7 @@ const EditorPanel = () => {
     <section className="bg-[#1b1b27] rounded-md p-2.5 relative overflow-hidden">
       {/* Code editor header */}
       <div className="flex items-center gap-2 pb-2.5 truncate">
-        <Image src={"/" + language + ".png"} alt={`Logo of ${language}`} width={30} height={30} />
+        <Image src={"/" + language + ".png"} alt={`Logo of ${language}`} width={30} height={30} className="flex-shrink-0" />
         {/* Font size slider */}
         <div className="flex items-center gap-3 px-3 py-1 bg-[#1e1e2e] rounded-md outline outline-gray-700">
           <Type className="size-4 text-gray-400" />
@@ -71,7 +71,7 @@ const EditorPanel = () => {
         </div>
         {/* Code reset button */}
         <motion.button
-          whileHover={{ scale: 1.05 }}
+          whileHover={{ scale: 1.0 }}
           whileTap={{ scale: 0.95 }}
           onClick={handleResetEditor}
           className="py-1.5 px-3 bg-[#1e1e2e] hover:bg-[#2a2a3a] rounded-md outline outline-gray-700 transition-colors cursor-pointer"
@@ -90,7 +90,7 @@ const EditorPanel = () => {
             onClick={() => setIsShareDialogOpen(true)}
             className="inline-flex ml-auto items-center gap-1.5 px-3 py-1 rounded-md overflow-hidden text-gray-300 border border-indigo-500/60 hover:border-indigo-400/60 hover:bg-gradient-to-r hover:from-blue-500/10 hover:to-purple-500/10 transition-colors duration-300 cursor-pointer"
           >
-            <Share className="size-3.5" />
+            <Share className="size-3.5 flex-shrink-0" />
             <span className="text-sm hidden md:inline-block">Share</span>
           </motion.button>
         </SignedIn>

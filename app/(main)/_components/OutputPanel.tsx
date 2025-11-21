@@ -22,33 +22,33 @@ const OutputPanel = () => {
   return (
     <section className="bg-[#1b1b27] rounded-md p-2.5 overflow-hidden">
       {/* Output header */}
-      <div className="flex items-center justify-between gap-2 pb-3">
+      <div className="flex items-center justify-between gap-2.5 pb-3">
         <div className="flex items-center gap-1.5">
-          <TerminalSquare className="size-4 text-indigo-400" />
-          <span className="font-light text-base text-gray-300">Output</span>
+          <TerminalSquare className="size-4 text-indigo-400 flex-shrink-0" />
+          <span className="font-light text-base text-gray-300 truncate">Output</span>
         </div>
         {/* Copy button */}
         <button
           onClick={handleOutputCopy}
           disabled={outputHasContent === null}
-          className={`group flex items-center gap-1.5 px-3.5 py-1.5 text-xs text-gray-300 hover:text-gray-200 
+          className={`group flex items-center gap-1.5 px-3.5 py-1.5 text-xs truncate text-gray-300 hover:text-gray-200 
             rounded-md outline transition-all cursor-pointer disabled:border-gray-500/20 disabled:bg-[#272727] disabled:cursor-not-allowed disabled:text-[#a0a0a0] disabled:opacity-70 ${isOutputCopied ? ("outline-emerald-500 hover:outline-emerald-500") : ("outline-gray-600 hover:outline-gray-500")}}`}
         >
           {isOutputCopied ? (
             <>
-              <CopyCheck className="size-3 text-emerald-400" />
+              <CopyCheck className="size-3 text-emerald-400 flex-shrink-0" />
               <span className="text-emerald-400 text-xs">Copied</span>
             </>
           ) : (
             <>
-              <Copy className="size-3 text-gray-300 group-hover:text-gray-200" />
+              <Copy className="size-3 text-gray-300 group-hover:text-gray-200 flex-shrink-0" />
               <span className="text-xs">Copy</span>
             </>
           )}
         </button>
       </div>
       {/* Output Area */}
-      <div className="relative bg-[#1e1e2e] outline outline-slate-700 rounded px-4 py-3 h-[586px] overflow-auto font-mono">
+      <div className="relative bg-[#1e1e2e] outline outline-slate-700 rounded px-4 py-3 h-[586px] font-mono overflow-hidden">
         {isRunning ? (
           <h2 className="font-mono animate-pulse text-gray-400">Working...</h2>
         ) : error ? (
@@ -69,8 +69,8 @@ const OutputPanel = () => {
           </>
         ) : (
           <div className="h-full flex flex-col items-center justify-center text-gray-400 gap-4">
-            <Hourglass className="size-7 animate-spin-with-delay" />
-            <p className="text-center text-sm">Awaiting your code...</p>
+            <Hourglass className="size-7 animate-spin-with-delay flex-shrink-0" />
+            <p className="text-center text-sm truncate">Awaiting your code...</p>
           </div>
         )}
       </div>

@@ -80,7 +80,7 @@ const SnippetsPage = () => {
                         </div>
                     </div>
                     {/* Filters bar */}
-                    <div className="flex flex-wrap items-center gap-3.5">
+                    <div className="flex flex-wrap items-center gap-2.5">
                         <div className="flex items-center gap-2">
                             <Tag className="size-3.5 text-gray-400" />
                             <span className="text-sm text-gray-400">Filter by language:</span>
