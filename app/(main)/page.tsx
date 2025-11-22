@@ -1,4 +1,3 @@
-import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from "@/components/ui/resizable";
 import EditorPanel from "./_components/EditorPanel";
 import HeaderWithCodeButtons from "./_components/HeaderWithCodeButtons";
 import OutputPanel from "./_components/OutputPanel";
