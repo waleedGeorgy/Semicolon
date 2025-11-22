@@ -89,7 +89,7 @@ const SnippetsPage = () => {
                             <button
                                 key={language}
                                 onClick={() => setSelectedLanguage(language === selectedLanguage ? null : language)}
-                                className={`group relative hover:scale-105 px-3 py-1.5 rounded-lg transition-all duration-200 ${selectedLanguage === language ? "text-indigo-400 bg-indigo-500/10 ring-2 ring-indigo-500/50" : "text-gray-400 hover:text-gray-300 bg-[#1b1b27] hover:bg-[#262637] cursor-pointer outline outline-gray-700"}`}
+                                className={`group relative hover:scale-105 px-2.5 py-1 rounded-md transition-all duration-200 ${selectedLanguage === language ? "text-indigo-400 bg-indigo-500/10 ring-2 ring-indigo-500/50" : "text-gray-400 hover:text-gray-300 bg-[#1b1b27] hover:bg-[#262637] cursor-pointer outline outline-gray-700"}`}
                             >
                                 <div className="flex items-center gap-2">
                                     <Image src={`/${language}.png`} alt={language} width={16} height={16} className="size-5 object-contain" />

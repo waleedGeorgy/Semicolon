@@ -35,7 +35,7 @@ const PricingPage = async () => {
                     <div className="text-center mb-8">
                         <div className="relative inline-block">
                             <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 to-indigo-500 blur-2xl opacity-20 rounded-xl" />
-                            <h1 className="text-5xl md:text-6xl lg:text-7xl font-roboto-condensed mb-4">
+                            <h1 className="text-5xl md:text-6xl lg:text-7xl font-roboto-condensed mb-4 text-gray-300">
                                 Become A Pro Member
                             </h1>
                         </div>
@@ -55,7 +55,7 @@ const PricingPage = async () => {
                                     <div className="inline-flex p-3.5 rounded-xl bg-yellow-500/10">
                                         <Star className="size-7 text-yellow-500 animate-wiggle" />
                                     </div>
-                                    <h2 className="text-4xl font-light font-roboto-condensed">Lifetime Pro Access</h2>
+                                    <h2 className="text-4xl font-light font-roboto-condensed text-gray-300">Lifetime Pro Access</h2>
                                     <div className="flex items-baseline justify-center gap-2">
                                         <span className="text-lg text-gray-400 font-semibold">A one-time</span>
                                         <span className="text-5xl font-semibold text-indigo-500">$14.99</span>

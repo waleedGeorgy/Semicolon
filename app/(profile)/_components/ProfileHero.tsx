@@ -62,7 +62,7 @@ const ProfileHero = ({ user, userStats, userData }: { userStats: UserStats, user
                         height={120}
                     />
                 </div>
-                <div>
+                <div className="flex flex-col justify-center gap-1">
                     <div className="flex items-center gap-3 mb-2">
                         <h1 className="text-5xl font-roboto-condensed text-gray-300">{userData.name}</h1>
                         {userData.isPro && (
@@ -71,16 +71,14 @@ const ProfileHero = ({ user, userStats, userData }: { userStats: UserStats, user
                             </span>
                         )}
                     </div>
-                    <div className="flex flex-row items-center gap-3 text-base font-light text-gray-300">
-                        <p className="flex items-center gap-1.5">
-                            <Mail className="size-4 text-indigo-400" />
-                            {userData.email}
-                        </p>
-                        <span className="text-xl font-bold text-gray-300">•</span>
-                        <p>
-                            <span className="text-indigo-400">Member since:</span> {new Date(userData._creationTime).toLocaleString("en-GB", { day: "numeric", month: "long", year: "numeric" })}
-                        </p>
-                    </div>
+                    <p className="flex items-center gap-1.5">
+                        <Mail className="size-4 text-indigo-400" />
+                        <span className="text-gray-300 font-roboto-condensed tracking-wide">{userData.email}</span>
+                    </p>
+                    <p className="flex items-center gap-1.5">
+                        <span className="text-indigo-400">Member since:</span>
+                        <span className="text-gray-300 font-roboto-condensed tracking-wide"> {new Date(userData._creationTime).toLocaleString("en-GB", { day: "numeric", month: "long", year: "numeric" })}</span>
+                    </p>
                 </div>
             </div>
             {/* Stats cards */}

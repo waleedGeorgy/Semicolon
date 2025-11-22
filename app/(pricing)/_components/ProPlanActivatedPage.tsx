@@ -4,7 +4,7 @@ import Header from "@/app/components/Header"
 
 const ProPlanActivatedPage = () => {
   return (
-    <div className="bg-[#0e0e13] font-sans">
+    <div className="bg-[#0e0e13] h-screen font-sans">
       <Header />
       <div className="px-4 h-[80vh] flex items-center justify-center">
         <div className="min-w-xl mx-auto text-center">
@@ -14,19 +14,19 @@ const ProPlanActivatedPage = () => {
                 <Star className="size-7 text-yellow-400" />
               </div>
               <div className="flex flex-col gap-2 items-center justify-center">
-                <h1 className="text-4xl font-roboto-condensed">Pro Plan Is Active</h1>
-                <h2 className="text-gray-400">Enjoy the full capabilities of <span className="font-semibold">Semicolon</span>!</h2>
+                <h1 className="text-4xl font-roboto-condensed text-gray-300">Pro Plan Is Active</h1>
+                <h2 className="text-gray-400">Enjoy the full capability of <span className="font-semibold">Semicolon</span>!</h2>
               </div>
-              <hr className="text-gray-700/80" />
+              <div className="h-1 w-1/2 bg-gray-700/50 mx-auto" />
               <div className="flex flex-row flex-wrap gap-2.5 items-center justify-center">
                 <Link href="/" className="inline-flex items-center text-sm justify-center gap-1.5 px-6 py-2.5 bg-gradient-to-r from-blue-500/20 to-indigo-500/20 hover:from-blue-500/30 hover:to-indigo-500/30 rounded-lg transition-all duration-300 group">
-                  <span>Open Editor</span>
-                  <ArrowRight className="size-4 group-hover:translate-x-1.5 transition-transform duration-300" />
+                  <span className="text-gray-300">Open Editor</span>
+                  <ArrowRight className="size-4 group-hover:translate-x-1.5 transition-transform duration-300 text-gray-300" />
                 </Link>
-                <h3>Or</h3>
-                <Link href="/snippets" className="inline-flex items-center text-sm justify-center gap-1.5 px-6 py-2.5 bg-gradient-to-r from-blue-500/20 to-indigo-500/20 hover:from-blue-500/30 hover:to-indigo-500/30 rounded-lg transition-all duration-300 group">
-                  <span>View Snippets</span>
-                  <ArrowRight className="size-4 group-hover:translate-x-1.5 transition-transform duration-300" />
+                <h3 className="text-gray-400">Or</h3>
+                <Link href="/snippets" className="inline-flex items-center text-sm justify-center gap-1.5 px-6 py-2.5 bg-gradient-to-r from-blue-500/20 to-indigo-500/20 hover:bg-gradient-to-r hover:from-blue-500/30 hover:to-indigo-500/30 rounded-lg transition-all duration-300 group">
+                  <span className="text-gray-300">View Snippets</span>
+                  <ArrowRight className="size-4 group-hover:translate-x-1.5 transition-transform duration-300 text-gray-300" />
                 </Link>
               </div>
             </div>

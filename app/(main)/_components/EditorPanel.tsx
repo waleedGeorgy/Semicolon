@@ -95,7 +95,7 @@ const EditorPanel = () => {
           </motion.button>
         </SignedIn>
         <SignedOut>
-          <p className="text-xs font-light opacity-50 ml-auto">Sign in to run and share your snippets</p>
+          <p className="text-xs font-light opacity-50 ml-auto text-gray-200">Sign in to run and share your snippets</p>
         </SignedOut>
       </div>
       {/* Code editor body  */}

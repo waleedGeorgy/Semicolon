@@ -33,10 +33,10 @@ export default function UpgradeButton({ userId, userEmail }: { userId: string, u
         <button
             onClick={handleUpgrade}
             disabled={isLoading}
-            className="cursor-pointer group inline-flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-indigo-500/75 to-indigo-600/75 hover:from-indigo-400/75 hover:to-indigo-700/75 transition-colors duration-300 disabled:opacity-50 rounded-lg"
+            className="flex group items-center gap-2 px-4 py-2 rounded-md border border-amber-400/20 hover:border-amber-400/60 bg-gradient-to-r from-amber-400/10 to-orange-400/10 hover:from-amber-400/20 hover:to-orange-400/20 transition-colors duration-300 font-roboto-condensed text-gray-300"
         >
-            <ArrowBigUp className="size-5 group-hover:-translate-y-0.5 transition-all duration-300" />
-            {isLoading ? 'Processing...' : 'Upgrade to Pro'}
+            <ArrowBigUp className="size-5 group-hover:-translate-y-0.5 transition-all duration-300 text-amber-400 group-hover:text-amber-300" />
+            <span className="font-medium text-amber-400/90 group-hover:text-amber-300">{isLoading ? 'Processing...' : 'Upgrade to Pro'}</span>
         </button>
     );
 }

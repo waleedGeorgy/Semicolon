@@ -35,17 +35,19 @@ async function HeaderWithCodeButtons() {
                         <Code2 className="size-4 z-10 group-hover:rotate-z-180 transition-all duration-300 group-hover:text-white shrink-0" />
                         <span className="text-sm z-10 group-hover:text-white transition-colors font-roboto-condensed tracking-wide hidden md:inline-block">Snippets</span>
                     </Link>
-                    {!convexUser?.isPro && (
-                        <Link
-                            href="/pricing"
-                            className="flex group items-center gap-2 px-3.5 md:py-1 py-1.5 rounded-lg border border-amber-400/20 hover:border-amber-400/60 bg-gradient-to-r from-amber-400/10 to-orange-400/10 hover:from-amber-400/20 hover:to-orange-400/20 transition-colors duration-300"
-                        >
-                            <Star className="size-4 text-amber-400 group-hover:text-amber-300" />
-                            <span className="text-sm text-amber-400/90 group-hover:text-amber-300 hidden md:inline-block tracking-wide font-roboto-condensed">
-                                Go Pro
-                            </span>
-                        </Link>
-                    )}
+                    <SignedIn>
+                        {!convexUser?.isPro && (
+                            <Link
+                                href="/pricing"
+                                className="flex group items-center gap-2 px-3.5 md:py-1 py-1.5 rounded-lg border border-amber-400/20 hover:border-amber-400/60 bg-gradient-to-r from-amber-400/10 to-orange-400/10 hover:from-amber-400/20 hover:to-orange-400/20 transition-colors duration-300"
+                            >
+                                <Star className="size-4 text-amber-400 group-hover:text-amber-300" />
+                                <span className="text-sm text-amber-400/90 group-hover:text-amber-300 hidden md:inline-block tracking-wide font-roboto-condensed">
+                                    Go Pro
+                                </span>
+                            </Link>
+                        )}
+                    </SignedIn>
                     <SignedIn>
                         <ProfileButton />
                     </SignedIn>

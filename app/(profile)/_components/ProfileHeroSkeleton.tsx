@@ -10,11 +10,8 @@ function ProfileHeroSkeleton() {
             <div className="h-10 w-48 bg-gray-800 rounded-full animate-pulse" />
             <div className="h-7 w-24 bg-gray-800 rounded-full animate-pulse" />
           </div>
-          <div className="flex flex-row items-center gap-3">
-            <div className="h-5 w-44 bg-gray-800 rounded-full animate-pulse" />
-            <span className="text-xl font-bold text-gray-800">•</span>
-            <div className="h-5 w-44 bg-gray-800 rounded-full animate-pulse" />
-          </div>
+          <div className="h-5 w-44 bg-gray-800 rounded-full animate-pulse" />
+          <div className="h-5 w-44 bg-gray-800 rounded-full animate-pulse" />
         </div>
       </div>
       {/* Stats cards skeleton */}
