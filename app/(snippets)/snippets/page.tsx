@@ -159,7 +159,7 @@ const SnippetsPage = () => {
                     >
                         <div className="text-center">
                             <div
-                                className="inline-flex items-center justify-center size-14 rounded-2xl bg-gradient-to-br from-blue-500/20 to-indigo-500/20 outline outline-gray-700/50 mb-4"
+                                className="inline-flex items-center justify-center size-14 rounded-2xl bg-gradient-to-br from-blue-500/20 to-indigo-500/20 outline outline-gray-700/50"
                             >
                                 <Code2 className="size-8 text-gray-400" />
                             </div>
@@ -167,7 +167,7 @@ const SnippetsPage = () => {
                             <p className="text-gray-400 mb-4">
                                 {searchQuery || selectedLanguage
                                     ? "Try searching for something else"
-                                    : "No snippets have been shared yet. It seems you will be the first!"}
+                                    : "No snippets shared yet. It seems you will be the first!"}
                             </p>
                             {(searchQuery || selectedLanguage) && (
                                 <button

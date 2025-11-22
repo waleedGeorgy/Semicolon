@@ -104,35 +104,3 @@ export const getUserStats = query({
     };
   },
 });
-
-export const updateToPro = mutation({
-  args: {
-    userId: v.string(),
-    stripeCustomerId: v.string(),
-    stripeOrderId: v.string(),
-  },
-  handler: async (ctx, args) => {
-    const user = await ctx.db
-      .query("users")
-      .withIndex("by_user_id", (q) => q.eq("userId", args.userId))
-      .first();
-
-    if (!user) {
-      throw new Error(`User with ID ${args.userId} not found`);
-    }
-
-    if (user.isPro) {
-      console.log(`User ${args.userId} is already Pro`);
-      throw new Error(`User ${args.userId} is already Pro`);
-    }
-
-    await ctx.db.patch(user._id, {
-      isPro: true,
-      proSince: new Date().toISOString(),
-      StripeCustomerId: args.stripeCustomerId,
-      StripeOrderId: args.stripeOrderId,
-    });
-
-    return { success: true };
-  },
-});

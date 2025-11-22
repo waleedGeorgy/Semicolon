@@ -51,7 +51,7 @@ const ShareCodeSnippetDialog = ({ closeDialog }: { closeDialog: () => void }) =>
                             id="title"
                             value={snippetTitle}
                             onChange={(e) => setSnippetTitle(e.target.value)}
-                            className="w-full px-3 py-2 bg-[#181825] border border-gray-700 rounded focus:outline-none focus:ring-1 focus:ring-indigo-500"
+                            className="w-full px-3 py-2 bg-[#181825] border border-gray-700 rounded focus:outline-none focus:ring-1 focus:ring-indigo-500 text-gray-300"
                             required
                             autoFocus
                         />
