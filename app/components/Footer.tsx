@@ -6,18 +6,18 @@ import GitHubLogo from "@/public/github.svg"
 
 const Footer = () => {
     return (
-        <footer className="relative border-t border-gray-700/50 bg-neutral-950 font-roboto-condensed">
+        <footer className="relative border-t border-gray-700/50 bg-neutral-950">
             <div className="px-14 py-7">
                 <div className="flex flex-wrap items-center justify-center md:justify-end gap-x-8 gap-y-3">
                     <div className="flex flex-row items-center gap-2">
                         <Image src={SemicolonLogo} alt="Logo of Semicolon" width={16} height={16} />
-                        <span className="text-gray-400">Semicolon. All rights reserved @{new Date().getFullYear()}</span>
+                        <span className="text-gray-400 text-sm">Semicolon. All rights reserved @{new Date().getFullYear()}</span>
                     </div>
                     <Link href="https://github.com/waleedGeorgy/Semicolon" target="_blank" className="text-gray-400 hover:text-gray-300 transition-colors flex flex-row items-center gap-2">
                         <Image src={GitHubLogo} alt="GitHub Logo" width={16} height={16} />
                         <p className="flex flex-row items-center gap-1">
-                            <span>GitHub</span>
-                            <ExternalLink className="inline size-3.5" />
+                            <span className="text-sm">GitHub</span>
+                            <ExternalLink className="inline size-3" />
                         </p>
                     </Link>
                 </div>

@@ -129,7 +129,7 @@ const ProfilePage = () => {
                                                     </div>
                                                     <div>
                                                         <div className="flex items-center gap-2">
-                                                            <span className="font-roboto-condensed text-lg font-light">
+                                                            <span className="font-roboto-condensed text-lg font-light text-gray-300">
                                                                 {codeRun.language[0].toUpperCase() + codeRun.language.slice(1,)}
                                                             </span>
                                                             <span className="text-gray-400">•</span>

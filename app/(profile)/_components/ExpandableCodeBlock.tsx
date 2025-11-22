@@ -32,12 +32,12 @@ const ExpandableCodeBlock = ({ code, language }: ExpandableCodeBlockProps) => {
             {lines.length > 6 && (
                 <button
                     onClick={() => setIsExpanded(!isExpanded)}
-                    className="absolute bottom-2 right-2 px-2 py-1 bg-indigo-500/20 text-indigo-400 rounded text-xs flex items-center gap-1 hover:bg-indigo-500/30 transition-colors cursor-pointer"
+                    className="absolute bottom-2 right-2 px-2 py-1 bg-indigo-500/20 text-indigo-400 rounded text-xs hover:bg-indigo-500/30 transition-colors cursor-pointer"
                 >
                     {isExpanded ?
-                        (<span>Show Less <ChevronUp className="size-3" /></span>)
+                        (<span className="flex flex-row items-center gap-1">Show Less <ChevronUp className="size-3" /></span>)
                         :
-                        (<span>Show Full Code <ChevronDown className="size-3" /></span>)
+                        (<span className="flex flex-row items-center gap-1">Show More <ChevronDown className="size-3" /></span>)
                     }
                 </button>
             )}

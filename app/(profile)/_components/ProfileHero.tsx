@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { motion } from "framer-motion"
-import { Terminal, Timer, Star, Trophy, Code, TrendingUp, User2 } from "lucide-react";
+import { Terminal, Timer, Star, Trophy, Code, TrendingUp, Mail } from "lucide-react";
 import { UserResource } from "@clerk/types";
 import { useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
@@ -57,14 +57,14 @@ const ProfileHero = ({ user, userStats, userData }: { userStats: UserStats, user
                     <Image
                         src={user.imageUrl}
                         alt="Profile"
-                        className="size-28 rounded-full border border-gray-700/50 relative z-10"
-                        width={100}
-                        height={100}
+                        className="size-32 rounded-full border border-gray-700/50 relative z-10"
+                        width={120}
+                        height={120}
                     />
                 </div>
                 <div>
                     <div className="flex items-center gap-3 mb-2">
-                        <h1 className="text-5xl font-roboto-condensed font-medium">{userData.name}</h1>
+                        <h1 className="text-5xl font-roboto-condensed text-gray-300">{userData.name}</h1>
                         {userData.isPro && (
                             <span className="px-3 py-1 bg-yellow-500/10 text-yellow-400 rounded-full text-sm">
                                 Pro Member
@@ -73,7 +73,7 @@ const ProfileHero = ({ user, userStats, userData }: { userStats: UserStats, user
                     </div>
                     <div className="flex flex-row items-center gap-3 text-base font-light text-gray-300">
                         <p className="flex items-center gap-1.5">
-                            <User2 className="size-4 text-indigo-400" />
+                            <Mail className="size-4 text-indigo-400" />
                             {userData.email}
                         </p>
                         <span className="text-xl font-bold text-gray-300">•</span>
@@ -87,7 +87,7 @@ const ProfileHero = ({ user, userStats, userData }: { userStats: UserStats, user
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
                 {STATS.map((stat, index) => (
                     <motion.div
-                        initial={{ opacity: 0, y: 20 }}
+                        initial={{ opacity: 0, y: 16 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: index * 0.1 }}
                         key={index}
@@ -99,7 +99,7 @@ const ProfileHero = ({ user, userStats, userData }: { userStats: UserStats, user
                         <div className="relative px-5 py-4">
                             <div className="flex items-start justify-between mb-4">
                                 <div>
-                                    <h3 className="text-2xl font-bold tracking-tight">
+                                    <h3 className="text-2xl font-bold text-gray-300">
                                         {typeof stat.value === "number" ? stat.value.toLocaleString() : stat.value}
                                     </h3>
                                     <p className="text-sm text-gray-400 mt-1">{stat.label}</p>
@@ -111,7 +111,7 @@ const ProfileHero = ({ user, userStats, userData }: { userStats: UserStats, user
                             <div className="flex items-center gap-1.5 pt-3 border-t border-gray-700/50">
                                 <stat.metric.icon className="size-4 text-gray-400" />
                                 <span className="text-sm text-gray-400">{stat.metric.label}:</span>
-                                <span className="text-sm font-medium">
+                                <span className="text-sm font-medium text-gray-300">
                                     {typeof stat.metric.value === "string" && stat.metric.value === "C++" && ("C++")}
                                     {typeof stat.metric.value === "string" && stat.metric.value !== "C++" && (stat.metric.value[0].toUpperCase() + stat.metric.value.slice(1,))}
                                     {typeof stat.metric.value === "number" && (stat.metric.value)}

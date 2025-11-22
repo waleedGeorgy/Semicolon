@@ -3,7 +3,7 @@ function ProfileHeroSkeleton() {
     <div className="relative mb-8 bg-[#1b1b27] rounded-2xl p-8 border border-gray-700/50 overflow-hidden">
       <div className="relative flex items-center gap-6">
         {/* Avatar skeleton */}
-        <div className="size-24 rounded-full bg-gray-800 animate-pulse" />
+        <div className="size-32 rounded-full bg-gray-800 animate-pulse" />
         {/* User info skeleton */}
         <div className="space-y-3">
           <div className="flex flex-row items-center gap-3">
@@ -11,9 +11,9 @@ function ProfileHeroSkeleton() {
             <div className="h-7 w-24 bg-gray-800 rounded-full animate-pulse" />
           </div>
           <div className="flex flex-row items-center gap-3">
-            <div className="h-5 w-40 bg-gray-800 rounded-full animate-pulse" />
-            <span className="text-xl font-bold text-gray-300">•</span>
-            <div className="h-5 w-40 bg-gray-800 rounded-full animate-pulse" />
+            <div className="h-5 w-44 bg-gray-800 rounded-full animate-pulse" />
+            <span className="text-xl font-bold text-gray-800">•</span>
+            <div className="h-5 w-44 bg-gray-800 rounded-full animate-pulse" />
           </div>
         </div>
       </div>
