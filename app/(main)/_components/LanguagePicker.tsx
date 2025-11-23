@@ -34,8 +34,6 @@ const LanguagePicker = ({ hasAccess }: { hasAccess: boolean }) => {
         if (!hasAccess && (languageId !== "javascript" && languageId !== "typescript")) return null
 
         setLanguage(languageId);
-
-        setIsOpen(false)
     }
 
     if (!mounted) return null;

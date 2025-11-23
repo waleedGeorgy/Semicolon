@@ -38,7 +38,7 @@ const EditorPanel = () => {
     const newCode = savedCode || LANGUAGE_CONFIG[language].defaultCode;
 
     if (editor) editor.setValue(newCode)
-  }, [language, editor]);
+  }, [language]);
 
   useEffect(() => {
     const savedFontSize = localStorage.getItem("editor-font-size");
