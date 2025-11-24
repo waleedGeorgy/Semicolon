@@ -1,11 +1,11 @@
 "use client"
 import Link from "next/link"
 import Image from "next/image"
-import { Code2, Terminal } from "lucide-react"
+import { Code2, LogIn, Terminal } from "lucide-react"
 import ProfileButton from "./ProfileButton"
 import GoProButton from "./GoProButton"
 import SemicolonLogo from "@/public/semicolon.png"
-import { SignedIn } from "@clerk/nextjs"
+import { SignedIn, SignedOut, SignInButton } from "@clerk/nextjs"
 
 const Header = () => {
   return (
@@ -24,7 +24,7 @@ const Header = () => {
           <div className="flex items-center gap-3">
             <Link
               href="/snippets"
-              className="group flex items-center gap-2 px-3.5 sm:py-1 py-1.5 rounded-lg text-gray-300 border border-indigo-500/60 hover:border-indigo-400/60 hover:bg-gradient-to-r hover:from-blue-500/10 hover:to-purple-500/10 transition-colors duration-300 shadow-lg overflow-hidden"
+              className="group flex items-center gap-2 px-3.5 sm:py-1 py-1.5 rounded-lg text-gray-300 border border-indigo-500/60 hover:border-indigo-400/60 hover:bg-gradient-to-r hover:from-blue-500/10 hover:to-purple-500/10 transition-colors duration-300 overflow-hidden"
             >
               <Code2 className="size-4 z-10 group-hover:rotate-z-180 transition-transform duration-300 group-hover:text-white" />
               <span className="text-sm z-10 group-hover:text-white transition-colors font-roboto-condensed tracking-wide hidden sm:inline">
@@ -33,7 +33,7 @@ const Header = () => {
             </Link>
             <Link
               href="/"
-              className="group flex items-center gap-2 px-3.5 sm:py-1 py-1.5 rounded-lg text-gray-300 border border-blue-500/60 hover:border-blue-400/60 hover:bg-gradient-to-r hover:from-blue-500/10 hover:to-purple-500/10 transition-colors duration-300 shadow-lg overflow-hidden"
+              className="group flex items-center gap-2 px-3.5 sm:py-1 py-1.5 rounded-lg text-gray-300 border border-blue-500/60 hover:border-blue-400/60 hover:bg-gradient-to-r hover:from-blue-500/10 hover:to-purple-500/10 transition-colors duration-300 overflow-hidden"
             >
               <Terminal className="size-4 group-hover:text-white" />
               <span className="text-sm group-hover:text-white transition-colors font-roboto-condensed tracking-wide hidden sm:inline">
@@ -43,7 +43,17 @@ const Header = () => {
             <SignedIn>
               <GoProButton />
             </SignedIn>
-            <ProfileButton />
+            <SignedIn>
+              <ProfileButton />
+            </SignedIn>
+            <SignedOut>
+              <SignInButton mode="modal">
+                <button className="px-1 rounded-lg flex flex-row items-center gap-2 text-gray-300 transition-colors duration-300 overflow-hidden cursor-pointer group">
+                  <LogIn className="size-4 group-hover:text-white transition-colors duration-300" />
+                  <span className="text-sm group-hover:text-white transition-colors duration-300">Sign In</span>
+                </button>
+              </SignInButton>
+            </SignedOut>
           </div>
         </div>
       </div>

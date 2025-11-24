@@ -27,9 +27,9 @@ const PricingPage = async () => {
     if (convexUser?.isPro) return <ProPlanActivatedPage />
 
     return (
-        <div className="relative min-h-screen bg-[#0e0e13] font-sans">
+        <main className="relative min-h-screen bg-[#0e0e13] font-sans">
             <Header />
-            <main className="relative py-14 px-4">
+            <div className="relative py-14 px-4">
                 <div className="max-w-5xl mx-auto">
                     {/* Hero */}
                     <div className="text-center mb-8">
@@ -83,8 +83,8 @@ const PricingPage = async () => {
                         </div>
                     </div>
                 </div>
-            </main>
-        </div>
+            </div>
+        </main>
     )
 }
 

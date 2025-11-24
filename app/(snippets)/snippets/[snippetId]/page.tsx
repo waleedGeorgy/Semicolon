@@ -17,6 +17,7 @@ const SnippetDetailsPage = () => {
     const { snippetId } = useParams();
 
     const snippetDetails = useQuery(api.snippets.getSnippetById, { snippetId: snippetId as Id<"snippets"> });
+    console.log(snippetDetails);
     const snippetComments = useQuery(api.snippets.getSnippetComments, { snippetId: snippetId as Id<"snippets"> });
 
     if (snippetDetails === undefined) {
@@ -47,8 +48,8 @@ const SnippetDetailsPage = () => {
                                                         src={`/${snippetDetails.language}.png`}
                                                         alt={`${snippetDetails.language} logo`}
                                                         className="size-10 object-contain relative z-10 flex-shrink-0"
-                                                        width={100}
-                                                        height={100}
+                                                        width={120}
+                                                        height={120}
                                                     />
                                                 </div>
                                             </div>

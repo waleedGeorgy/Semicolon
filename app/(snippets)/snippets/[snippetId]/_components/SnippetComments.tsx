@@ -62,9 +62,9 @@ const SnippetComments = ({ snippetId }: { snippetId: Id<"snippets"> }) => {
                     <CommentForm addComment={handleAddingComment} isSubmitting={isCommenting} />
                 ) : (
                     <div className="bg-gray-950 rounded-xl p-6 text-center mb-4">
-                        <p className="text-gray-400 mb-4">Sign in to join the discussion</p>
+                        <p className="text-gray-400 mb-5">Sign in to join the discussion</p>
                         <SignInButton mode="modal">
-                            <button className="px-4 py-2 bg-indigo-500/20 hover:bg-indigo-500/50 text-gray-300 hover:text-gray-200 outline outline-indigo-500/50 hover:outline-indigo-500/80 rounded-lg transition-colors duration-300 cursor-pointer">
+                            <button className="px-4 py-1.5 rounded-lg text-gray-300 border border-indigo-500/60 hover:border-indigo-400/60 hover:bg-gradient-to-r hover:from-blue-500/10 hover:to-purple-500/10 transition-colors duration-300 cursor-pointer">
                                 Sign In
                             </button>
                         </SignInButton>
