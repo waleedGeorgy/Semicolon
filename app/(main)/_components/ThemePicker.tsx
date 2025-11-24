@@ -57,7 +57,7 @@ const ThemePicker = () => {
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: -12, scale: 1 }}
                         transition={{ duration: 0.3 }}
-                        className="absolute top-full left-0 mt-1.5 w-full min-w-48 bg-[#1e1e2e]/95 backdrop-blur-xl rounded-lg outline outline-gray-700 shadow-xl z-50"
+                        className="absolute top-full left-0 mt-1.5 w-full min-w-48 bg-[#1e1e2e]/95 backdrop-blur-xl outline outline-gray-700 shadow-xl z-50 rounded-lg"
                     >
                         <div className="px-3 py-2">
                             <p className="text-xs font-medium text-gray-400">Select a theme</p>
@@ -69,7 +69,7 @@ const ThemePicker = () => {
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 transition={{ delay: index * 0.1 }}
-                                className={`relative group w-full flex items-center gap-2 px-3 py-2 cursor-pointer hover:bg-gradient-to-r hover:from-blue-500/10 hover:to-purple-500/10 rounded-lg ${theme === t.id ? "bg-blue-500/10 hover:bg-[#262637] text-blue-400" : "text-gray-300"}`}
+                                className={`relative group w-full flex items-center gap-2 px-3 py-2 cursor-pointer hover:bg-gradient-to-r hover:from-blue-500/10 hover:to-purple-500/10 ${theme === t.id ? "bg-blue-500/10 hover:bg-[#262637] text-blue-400" : "text-gray-300"}`}
                                 onClick={() => setTheme(t.id)}
                             >
                                 {/* label */}
@@ -78,13 +78,13 @@ const ThemePicker = () => {
                                 </span>
                                 {/* color indicator */}
                                 <div
-                                    className="relative size-4 rounded-full border border-gray-600 group-hover:border-gray-500 group-hover:scale-110 transition-colors"
+                                    className="relative size-4 rounded-full border border-gray-600 group-hover:border-gray-500 group-hover:scale-125 transition-all duration-200"
                                     style={{ background: t.color }}
                                 />
                                 {/* active theme border */}
                                 {theme === t.id && (
                                     <motion.div
-                                        className="absolute inset-0 border border-blue-500/30 rounded-lg"
+                                        className="absolute inset-0 border border-blue-500/30"
                                         transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                                     />
                                 )}

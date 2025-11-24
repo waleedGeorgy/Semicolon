@@ -48,10 +48,10 @@ const SnippetsPage = () => {
                     <motion.div
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="relative inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gradient-to-r from-blue-500/35 to-indigo-500/35 text-sm"
+                        className="relative inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gradient-to-r from-blue-500/40 to-indigo-500/40 text-sm"
                     >
                         <Code2 className="size-4 animate-wiggle text-gray-300" />
-                        <span className="text-gray-300">Code Snippets Library</span>
+                        <span className="text-gray-200">Code Snippets Library</span>
                         <div className="absolute -inset-1 bg-gradient-to-r from-blue-400/50 to-indigo-400/50 opacity-50 blur-lg" />
                     </motion.div>
                     <motion.h1
@@ -67,7 +67,7 @@ const SnippetsPage = () => {
                 <div className="relative max-w-5xl mx-auto mb-12 space-y-6">
                     {/* Search bar */}
                     <div className="relative group mb-3">
-                        <div className="absolute inset-0 bg-gradient-to-r from-blue-500/25 to-indigo-500/25 rounded-xl blur-xl opacity-0 group-hover:opacity-100 transition-all duration-300" />
+                        <div className="absolute inset-0 bg-gradient-to-r from-blue-400/40 to-indigo-500/40 rounded-xl blur-xl opacity-0 group-hover:opacity-100 transition-all duration-300" />
                         <div className="relative flex items-center">
                             <Search className="absolute left-4 size-5 text-gray-500" />
                             <input
@@ -75,7 +75,7 @@ const SnippetsPage = () => {
                                 value={searchQuery}
                                 onChange={(e) => setSearchQuery(e.target.value)}
                                 placeholder="Search by title, language, or author..."
-                                className="w-full pl-12 pr-4 py-3.5 bg-[#1b1b27]/70 hover:bg-[#1b1b27] rounded-xl border border-gray-700/60 hover:border-gray-700 transition-all duration-200 placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/70"
+                                className="w-full pl-12 pr-4 py-3.5 text-gray-300 bg-[#1b1b27]/70 hover:bg-[#1b1b27] rounded-xl border border-gray-700/60 hover:border-gray-700 transition-all duration-200 placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/70"
                             />
                         </div>
                     </div>
@@ -93,7 +93,11 @@ const SnippetsPage = () => {
                             >
                                 <div className="flex items-center gap-2">
                                     <Image src={`/${language}.png`} alt={language} width={16} height={16} className="size-5 object-contain" />
-                                    <span className="text-sm font-light">{language === "cpp" ? ("C++") : (language[0].toUpperCase() + language.slice(1,))}</span>
+                                    <span className="text-sm font-light">
+                                        {language === "php" || language === "cpp" ? (
+                                            language === "php" ? ("PHP") : ("C++")
+                                        ) : (language[0].toUpperCase() + language.slice(1,))}
+                                    </span>
                                 </div>
                             </button>
                         ))}

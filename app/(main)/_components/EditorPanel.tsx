@@ -51,7 +51,7 @@ const EditorPanel = () => {
     <section className="bg-[#1b1b27] rounded-md p-2.5 relative overflow-hidden">
       {/* Code editor header */}
       <div className="flex items-center gap-2 pb-2.5 truncate">
-        <Image src={"/" + language + ".png"} alt={`Logo of ${language}`} width={30} height={30} className="flex-shrink-0" />
+        <Image src={"/" + language + ".png"} alt={`Logo of ${language}`} width={30} height={30} />
         {/* Font size slider */}
         <div className="flex items-center gap-3 px-3 py-1 bg-[#1e1e2e] rounded-md outline outline-gray-700">
           <Type className="size-4 text-gray-400" />
@@ -101,7 +101,7 @@ const EditorPanel = () => {
       {/* Code editor body  */}
       <div className="group rounded overflow-hidden outline outline-slate-700">
         <Editor
-          height="586px"
+          height="600px"
           language={LANGUAGE_CONFIG[language].monacoLanguage}
           onChange={handleEditorChange}
           theme={theme}

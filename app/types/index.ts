@@ -82,6 +82,7 @@ export interface UserStats {
   codeRunsLast24Hours: number;
   favoriteLanguage: string;
   mostStarredLanguage: string;
+  mostCreatedSnippetLanguage: string;
 }
 
 export interface UserData {

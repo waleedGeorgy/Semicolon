@@ -8,13 +8,14 @@ import { UserData, UserStats } from "@/app/types"
 
 const ProfileHero = ({ user, userStats, userData }: { userStats: UserStats, userData: UserData, user: UserResource }) => {
     const starredSnippets = useQuery(api.snippets.getStarredSnippets);
+    const userSnippets = useQuery(api.snippets.getUserSnippets);
 
     const STATS = [
         {
             label: "Total code runs",
             value: userStats?.totalCodeRuns ?? 0,
             icon: Terminal,
-            color: "from-emerald-500 to-green-500",
+            color: "from-emerald-600 to-green-600",
             gradient: "group-hover:via-emerald-400",
             metric: {
                 label: "Last 24h",
@@ -23,10 +24,22 @@ const ProfileHero = ({ user, userStats, userData }: { userStats: UserStats, user
             },
         },
         {
+            label: "Total snippets created",
+            value: userSnippets?.length ?? 0,
+            icon: Star,
+            color: "from-blue-600 to-cyan-600",
+            gradient: "group-hover:via-blue-400",
+            metric: {
+                label: "Most created",
+                value: userStats?.mostCreatedSnippetLanguage ?? "N/A",
+                icon: Trophy,
+            },
+        },
+        {
             label: "Total snippets starred",
             value: starredSnippets?.length ?? 0,
             icon: Star,
-            color: "from-yellow-500 to-orange-500",
+            color: "from-yellow-600 to-orange-600",
             gradient: "group-hover:via-yellow-400",
             metric: {
                 label: "Most starred",
@@ -38,7 +51,7 @@ const ProfileHero = ({ user, userStats, userData }: { userStats: UserStats, user
             label: "Total languages used",
             value: userStats?.languagesCount ?? 0,
             icon: Code,
-            color: "from-purple-500 to-indigo-500",
+            color: "from-purple-600 to-indigo-600",
             gradient: "group-hover:via-purple-400",
             metric: {
                 label: "Most used",
@@ -82,7 +95,7 @@ const ProfileHero = ({ user, userStats, userData }: { userStats: UserStats, user
                 </div>
             </div>
             {/* Stats cards */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5 mt-8">
                 {STATS.map((stat, index) => (
                     <motion.div
                         initial={{ opacity: 0, y: 16 }}

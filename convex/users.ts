@@ -77,6 +77,26 @@ export const getUserStats = query({
         ([, a], [, b]) => b - a
       )[0]?.[0] ?? "N/A";
 
+    const userCreatedSnippets = await ctx.db
+      .query("snippets")
+      .withIndex("by_user_id")
+      .filter((q) => q.eq(q.field("userId"), args.userId))
+      .collect();
+
+    const userCreatedSnippetsLanguages = userCreatedSnippets
+      .filter(Boolean)
+      .reduce((acc, curr) => {
+        if (curr?.language) {
+          acc[curr.language] = (acc[curr.language] || 0) + 1;
+        }
+        return acc;
+      }, {} as Record<string, number>);
+
+    const mostCreatedSnippetLanguage =
+      Object.entries(userCreatedSnippetsLanguages).sort(
+        ([, a], [, b]) => b - a
+      )[0]?.[0] ?? "N/A";
+
     const codeRunsLast24Hours = userCodeRuns.filter(
       (codeRun) => codeRun._creationTime > Date.now() - 24 * 60 * 60 * 1000
     ).length;
@@ -101,6 +121,7 @@ export const getUserStats = query({
       codeRunsLast24Hours,
       favoriteLanguage,
       mostStarredLanguage,
+      mostCreatedSnippetLanguage,
     };
   },
 });

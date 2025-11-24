@@ -51,9 +51,7 @@ const SnippetCard = ({ snippet }: { snippet: Snippet }) => {
                                         className="absolute -inset-1.5 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-lg blur-sm opacity-30 group-hover:opacity-50 transition-all duration-300"
                                         area-hidden="true"
                                     />
-                                    <div
-                                        className="relative p-1.5 rounded-lg outline outline-gray-700/50 hover:outline-gray-700 bg-gray-900 transition-all duration-300"
-                                    >
+                                    <div className="relative p-1.5 rounded-lg outline outline-gray-700/50 hover:outline-gray-700 bg-gray-900 transition-all duration-300">
                                         <Image
                                             src={`/${snippet.language}.png`}
                                             alt={`${snippet.language} logo`}
@@ -65,7 +63,11 @@ const SnippetCard = ({ snippet }: { snippet: Snippet }) => {
                                 </div>
                                 <div className="flex flex-col gap-1.5">
                                     <span className="px-2.5 py-0.5 bg-indigo-500/10 text-indigo-400 outline outline-gray-700/50 rounded-lg text-sm w-fit">
-                                        {snippet.language === "cpp" ? ("C++") : (snippet.language[0].toUpperCase() + snippet.language.slice(1,))}
+                                        {snippet.language === "cpp" || snippet.language === "php" ?
+                                            (snippet.language === "cpp" ? ("C++") : ("PHP"))
+                                            :
+                                            (snippet.language[0].toUpperCase() + snippet.language.slice(1,))
+                                        }
                                     </span>
                                     <div className="flex items-center gap-1.5 text-xs text-gray-400">
                                         <Calendar1 className="size-3" />

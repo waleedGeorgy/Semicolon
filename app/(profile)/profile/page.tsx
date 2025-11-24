@@ -40,18 +40,21 @@ const ProfilePage = () => {
     const TABS = [
         {
             id: "codeRuns",
-            label: "Code Runs",
+            label: `Code Runs`,
             icon: <TerminalSquare className="size-4" />,
+            length: codeRuns?.length
         },
         {
             id: "userSnippets",
-            label: "User Snippets",
+            label: `User Snippets`,
             icon: <UserPlus2 className="size-4" />,
+            length: userSnippets?.length
         },
         {
             id: "starred",
-            label: "Starred Snippets",
+            label: `Starred Snippets`,
             icon: <Star className="size-4" />,
+            length: starredSnippets?.length
         },
     ];
 
@@ -88,7 +91,10 @@ const ProfilePage = () => {
                                         />
                                     )}
                                     {tab.icon}
-                                    <span className="text-sm font-semibold relative z-10">{tab.label}</span>
+                                    <p className="text-sm font-semibold relative z-10 flex flex-row items-center">
+                                        <span className="mr-1.5">{tab.label}</span>
+                                        {tab.length === 0 || tab.length === undefined ? (<Loader2 className="size-4 animate-spin" />) : (`(${tab.length})`)}
+                                    </p>
                                 </button>
                             ))}
                         </div>
@@ -105,7 +111,7 @@ const ProfilePage = () => {
                         >
                             {/* Code runs tab */}
                             {activeTab === "codeRuns" && (
-                                <div className="space-y-6 bg-[#1b1b27] px-7 py-6 rounded-xl">
+                                <div className="space-y-6 px-7">
                                     {codeRuns?.map((codeRun) => (
                                         /* Individual code run */
                                         <div key={codeRun._id} className="group rounded-xl overflow-hidden outline outline-gray-700/50 hover:outline-2 hover:outline-indigo-400/50">

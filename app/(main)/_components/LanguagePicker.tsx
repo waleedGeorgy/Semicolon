@@ -30,8 +30,13 @@ const LanguagePicker = ({ hasAccess }: { hasAccess: boolean }) => {
         return () => document.removeEventListener("mousedown", handleClickOutside);
     }, []);
 
+    useEffect(() => {
+        if (!hasAccess) setLanguage('javascript')
+    }, [hasAccess]);
+
+
     const handleLanguageSelection = (languageId: string) => {
-        if (!hasAccess && (languageId !== "javascript" && languageId !== "typescript")) return null
+        if (!hasAccess && (languageId !== "javascript" && languageId !== "typescript")) return null;
 
         setLanguage(languageId);
     }
@@ -85,7 +90,7 @@ const LanguagePicker = ({ hasAccess }: { hasAccess: boolean }) => {
                                         className="relative group"
                                     >
                                         <button
-                                            className={`relative cursor-pointer w-full flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gradient-to-r hover:from-blue-500/10 hover:to-purple-500/10 transition-all duration-200 ${language === lang.id ? "bg-blue-500/10 text-blue-400" : "text-gray-300"} ${isLocked ? "opacity-50" : "hover:bg-[#262637]"}`}
+                                            className={`relative cursor-pointer w-full flex items-center gap-2.5 px-3 py-2 hover:bg-gradient-to-r hover:from-blue-500/10 hover:to-purple-500/10 transition-all duration-200 ${language === lang.id ? "bg-blue-500/10 text-blue-400" : "text-gray-300"} ${isLocked ? "opacity-50" : "hover:bg-[#262637]"}`}
                                             onClick={() => handleLanguageSelection(lang.id)}
                                             disabled={isLocked}
                                         >
@@ -94,7 +99,7 @@ const LanguagePicker = ({ hasAccess }: { hasAccess: boolean }) => {
                                                 height={20}
                                                 src={lang.logoPath}
                                                 alt={`${lang.label} logo`}
-                                                className="object-contain relative z-10 w-auto h-auto"
+                                                className="object-contain relative z-10 w-auto h-auto group-hover:scale-[115%] transition-all duration-200"
                                             />
                                             <span className="flex-1 text-left group-hover:text-white transition-colors  font-roboto-condensed">
                                                 {lang.label}
@@ -102,7 +107,7 @@ const LanguagePicker = ({ hasAccess }: { hasAccess: boolean }) => {
                                             {/* selected language border */}
                                             {language === lang.id && (
                                                 <motion.div
-                                                    className="absolute inset-0 border-2 border-blue-500/30 rounded-lg"
+                                                    className="absolute inset-0 border-2 border-blue-500/30"
                                                     transition={{
                                                         type: "spring",
                                                         bounce: 0.2,

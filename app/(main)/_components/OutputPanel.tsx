@@ -48,7 +48,7 @@ const OutputPanel = () => {
         </button>
       </div>
       {/* Output Area */}
-      <div className="relative bg-[#1e1e2e] outline outline-slate-700 rounded px-4 py-3 h-[586px] font-mono overflow-hidden">
+      <div className="relative bg-[#1e1e2e] outline outline-slate-700 rounded px-4 py-3 h-[600px] font-mono overflow-hidden">
         {isRunning ? (
           <h2 className="font-mono animate-pulse text-gray-400">Working...</h2>
         ) : error ? (
