@@ -114,9 +114,9 @@ const ProfilePage = () => {
                                 <div className="space-y-6 px-7">
                                     {codeRuns?.map((codeRun) => (
                                         /* Individual code run */
-                                        <div key={codeRun._id} className="group rounded-xl overflow-hidden outline outline-gray-700/50 hover:outline-2 hover:outline-indigo-400/50">
+                                        <div key={codeRun._id} className="group rounded-xl overflow-hidden outline outline-gray-700/50 hover:outline-1 hover:outline-indigo-400/50 transition-all ease-in-out duration-300">
                                             {/* Individual code run header */}
-                                            <div className="flex items-center justify-between px-4 py-3.5 bg-gradient-to-r from-neutral-900 to-indigo-950 group-hover:from-neutral-900 group-hover:to-indigo-900 transition-colors duration-300 rounded-t-xl">
+                                            <div className="flex items-center justify-between px-4 py-3.5 bg-neutral-900 group-hover:bg-indigo-950 transition-colors duration-300 rounded-t-xl">
                                                 <div className="flex items-center gap-4">
                                                     <div className="relative">
                                                         <div
@@ -136,7 +136,11 @@ const ProfilePage = () => {
                                                     <div>
                                                         <div className="flex items-center gap-2">
                                                             <span className="font-roboto-condensed text-lg font-light text-gray-300">
-                                                                {codeRun.language[0].toUpperCase() + codeRun.language.slice(1,)}
+                                                                {codeRun.language === 'php' || codeRun.language === 'cpp' ?
+                                                                    (codeRun.language === 'php' ? ("PHP") : ("C++"))
+                                                                    :
+                                                                    (codeRun.language[0].toUpperCase() + codeRun.language.slice(1,))
+                                                                }
                                                             </span>
                                                             <span className="text-gray-400">•</span>
                                                             <span className="text-xs text-gray-400 flex flex-row items-center gap-1.5">

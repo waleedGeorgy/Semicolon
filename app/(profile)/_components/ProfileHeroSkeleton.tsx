@@ -1,6 +1,6 @@
 function ProfileHeroSkeleton() {
   return (
-    <div className="relative mb-8 bg-[#1b1b27] rounded-2xl p-8 border border-gray-700/50 overflow-hidden">
+    <div className="relative mb-8 bg-[#1b1b27] rounded-2xl p-7 border border-gray-700/50 overflow-hidden">
       <div className="relative flex items-center gap-6">
         {/* Avatar skeleton */}
         <div className="size-32 rounded-full bg-gray-800 animate-pulse" />
@@ -15,8 +15,8 @@ function ProfileHeroSkeleton() {
         </div>
       </div>
       {/* Stats cards skeleton */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mt-8">
-        {[1, 2, 3].map((i) => (
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5 mt-8">
+        {[1, 2, 3, 4].map((i) => (
           <div key={i} className="group relative px-5 py-4 rounded-xl bg-gray-800 border border-gray-700/50 overflow-hidden">
             <div className="relative space-y-4">
               {/* Stat card header skeleton */}

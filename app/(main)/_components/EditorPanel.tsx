@@ -23,7 +23,6 @@ const EditorPanel = () => {
   const handleFontSizeChange = (newFontSize: number) => {
     const currentFontSize = Math.min(Math.max(newFontSize, 12), 24);
     setFontSize(currentFontSize);
-    localStorage.setItem("editor-font-size", currentFontSize.toString());
   }
 
   const handleResetEditor = () => {
@@ -107,6 +106,7 @@ const EditorPanel = () => {
           theme={theme}
           beforeMount={defineMonacoThemes}
           onMount={(editor) => setEditor(editor)}
+          loading={<p className="text-gray-300 text-lg font-mono">Getting ready...</p>}
           options={{
             minimap: { enabled: true },
             fontSize,

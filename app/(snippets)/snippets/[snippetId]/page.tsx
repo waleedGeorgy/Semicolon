@@ -81,7 +81,6 @@ const SnippetDetailsPage = () => {
                         <ResizableHandle className="bg-gray-600 hover:bg-indigo-400 duration-150 transition-all ease-in-out rounded-full mx-1.5 w-1.5 h-auto" />
                         <ResizablePanel defaultSize={50} minSize={30}>
                             {/* Code editor */}
-                            {/* TODO: Add font size slider */}
                             <section className="rounded-lg overflow-hidden border border-gray-700/50 bg-[#1b1b27] h-fit">
                                 <div className="flex items-center justify-between px-4 py-2.5 border-b border-gray-700/50">
                                     <div className="flex items-center gap-1.5 text-gray-300">
@@ -101,7 +100,7 @@ const SnippetDetailsPage = () => {
                                         fontSize: 14,
                                         readOnly: true,
                                         automaticLayout: true,
-                                        scrollBeyondLastLine: true,
+                                        scrollBeyondLastLine: false,
                                         padding: { top: 12, bottom: 12 },
                                         renderWhitespace: "selection",
                                         fontFamily: '"Fira Code", "Cascadia Code", Consolas, monospace',
@@ -174,8 +173,9 @@ const SnippetDetailsPage = () => {
                             height="580px"
                             language={LANGUAGE_CONFIG[snippetDetails.language].monacoLanguage}
                             value={snippetDetails.code}
-                            theme="vs-dark"
+                            theme="github-dark"
                             beforeMount={defineMonacoThemes}
+                            loading={<p className="text-gray-300 text-lg font-mono">Getting ready...</p>}
                             options={{
                                 minimap: { enabled: true },
                                 fontSize: 14,

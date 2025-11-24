@@ -70,7 +70,7 @@ const OutputPanel = () => {
         ) : (
           <div className="h-full flex flex-col items-center justify-center text-gray-400 gap-4">
             <Hourglass className="size-7 animate-spin-with-delay flex-shrink-0" />
-            <p className="text-center text-sm truncate">Awaiting your code...</p>
+            <p className="text-center text-sm truncate">Waiting for your code...</p>
           </div>
         )}
       </div>
