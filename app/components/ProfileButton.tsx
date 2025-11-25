@@ -13,6 +13,9 @@ const ProfileButton = () => {
             height: "1.75rem",
           },
         },
+        variables: {
+          colorBackground: "#1b1b27"
+        }
       }}>
         <UserButton.MenuItems>
           <UserButton.Link
