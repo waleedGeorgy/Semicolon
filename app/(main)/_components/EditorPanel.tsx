@@ -8,8 +8,8 @@ import { SignedIn, SignedOut } from "@clerk/nextjs";
 import { useCodeEditorStore } from "@/app/store/useCodeEditorStore"
 import useMounted from "@/app/hooks/useMounted";
 import ShareCodeSnippetDialog from "./ShareCodeSnippetDialog";
-import { defineMonacoThemes, LANGUAGE_CONFIG } from "../_constants";
 import RunButton from "./RunButton";
+import { defineMonacoThemes, LANGUAGE_CONFIG } from "../_constants";
 
 const EditorPanel = () => {
   const { editor, fontSize, theme, language, setFontSize, setEditor } = useCodeEditorStore();
