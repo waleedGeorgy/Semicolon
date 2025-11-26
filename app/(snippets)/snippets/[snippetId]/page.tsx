@@ -79,7 +79,7 @@ const SnippetDetailsPage = () => {
                                 <SnippetComments snippetId={snippetDetails._id} />
                             </section>
                         </ResizablePanel>
-                        <ResizableHandle className="bg-gray-600 hover:bg-indigo-400 duration-150 transition-all ease-in-out rounded-full mx-1.5 w-1.5 h-auto" />
+                        <ResizableHandle className="bg-gray-600 hover:bg-indigo-400 duration-75 transition-all ease-in-out rounded-full mx-1 w-1 h-auto" />
                         <ResizablePanel defaultSize={50} minSize={30}>
                             {/* Code editor */}
                             <section className="rounded-lg overflow-hidden border border-gray-700/50 bg-[#1b1b27] h-fit">

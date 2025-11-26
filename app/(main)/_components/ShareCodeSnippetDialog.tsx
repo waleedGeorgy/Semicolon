@@ -23,10 +23,10 @@ const ShareCodeSnippetDialog = ({ closeDialog }: { closeDialog: () => void }) =>
             await createCodeSnippet({ title: snippetTitle, code, language });
             closeDialog();
             setSnippetTitle("");
-            createToast("success", "Snippet created successfully!")
+            createToast("success", "Snippet shared successfully!")
         } catch (error) {
             console.log(error);
-            createToast("error", "Failed to create snippet")
+            createToast("error", "Failed to share snippet")
         } finally {
             setIsSnippetSharing(false)
         }
