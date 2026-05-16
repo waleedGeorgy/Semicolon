@@ -27,15 +27,8 @@ const ProfilePage = () => {
     const userSnippets = useQuery(api.snippets.getUserSnippets);
     const userData = useQuery(api.users.getUser, { userId: user?.id ?? "" });
 
-    const { results: codeRuns, status: codeRunsStatus, loadMore, isLoading: isLoadingCodeRuns } = usePaginatedQuery(api.codeRuns.getUserCodeRuns, {
-        userId: user?.id ?? ""
-    }, {
-        initialNumItems: 4
-    });
-
-    const handleLoadMore = async () => {
-        if (codeRunsStatus === "CanLoadMore") loadMore(4);
-    };
+    const { results: codeRuns, status: codeRunsStatus, loadMore, isLoading: isLoadingCodeRuns } =
+        usePaginatedQuery(api.codeRuns.getUserCodeRuns, { userId: user?.id ?? "" }, { initialNumItems: 4 });
 
     const TABS = [
         {
@@ -65,7 +58,7 @@ const ProfilePage = () => {
             <Header />
             <div className="max-w-7xl mx-auto px-4 py-8">
                 {/* Profile hero */}
-                {userStats && userData && (<ProfileHero userStats={userStats} userData={userData} user={user!} />)}
+                {userStats && userData && <ProfileHero userStats={userStats} userData={userData} user={user!} />}
                 {(userStats === undefined || !isLoaded) && <ProfileHeroSkeleton />}
                 {/* Code related section */}
                 <div className="overflow-hidden">
@@ -174,28 +167,29 @@ const ProfilePage = () => {
                                         </div>
                                     ))}
                                     {/* Loading code runs fallback */}
-                                    {isLoadingCodeRuns ? (
+                                    {isLoadingCodeRuns ?
                                         <div className="text-center py-10">
                                             <Loader2 className="size-12 text-gray-600 mx-auto mb-4 animate-spin" />
                                             <h3 className="text-lg font-medium text-gray-400 mb-2">
                                                 Loading code runs...
                                             </h3>
                                         </div>
-                                    ) : (
-                                        codeRuns.length === 0 && (
-                                            <div className="text-center py-10">
-                                                <Code className="size-12 text-gray-600 mx-auto mb-4" />
-                                                <h3 className="text-lg font-medium text-gray-400 mb-2">
-                                                    No code runs yet
-                                                </h3>
-                                            </div>
-                                        )
-                                    )}
+                                        :
+                                        codeRuns.length === 0 &&
+                                        <div className="text-center py-10">
+                                            <Code className="size-12 text-gray-600 mx-auto mb-4" />
+                                            <h3 className="text-lg font-medium text-gray-400 mb-2">
+                                                No code runs yet
+                                            </h3>
+                                        </div>
+                                    }
                                     {/* Load more button */}
                                     {codeRunsStatus === "CanLoadMore" && (
                                         <div className="flex justify-center mt-8">
                                             <button
-                                                onClick={handleLoadMore}
+                                                onClick={async () => {
+                                                    if (codeRunsStatus === "CanLoadMore") loadMore(4);
+                                                }}
                                                 className="px-5 py-2 bg-indigo-500/10 hover:bg-indigo-500/20 text-indigo-400 rounded-lg flex items-center gap-2 transition-colors cursor-pointer"
                                             >
                                                 Load More
@@ -259,7 +253,7 @@ const ProfilePage = () => {
                     </AnimatePresence>
                 </div>
             </div>
-        </div>
+        </div >
     )
 }
 

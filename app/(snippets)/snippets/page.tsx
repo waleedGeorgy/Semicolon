@@ -12,11 +12,11 @@ import SnippetsSkeleton from "../_components/SnippetsSkeleton";
 const SnippetsPage = () => {
     const snippets = useQuery(api.snippets.getAllSnippets);
 
-    const [searchQuery, setSearchQuery] = useState<string>("");
+    const [searchQuery, setSearchQuery] = useState("");
     const [selectedLanguage, setSelectedLanguage] = useState<string | null>(null);
     const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
 
-    if (snippets === undefined) {
+    if (!snippets) {
         return (
             <div className="min-h-screen font-sans">
                 <Header />

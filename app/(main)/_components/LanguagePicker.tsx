@@ -34,7 +34,6 @@ const LanguagePicker = ({ hasAccess }: { hasAccess: boolean }) => {
         if (!hasAccess) setLanguage('javascript')
     }, [hasAccess]);
 
-
     const handleLanguageSelection = (languageId: string) => {
         if (!hasAccess && (languageId !== "javascript" && languageId !== "typescript")) return null;
 
@@ -115,9 +114,7 @@ const LanguagePicker = ({ hasAccess }: { hasAccess: boolean }) => {
                                                     }}
                                                 />
                                             )}
-                                            {isLocked && (
-                                                <LockKeyhole className="size-4 text-gray-400" />
-                                            )}
+                                            {isLocked && <LockKeyhole className="size-4 text-gray-400" />}
                                         </button>
                                     </motion.div>
                                 );

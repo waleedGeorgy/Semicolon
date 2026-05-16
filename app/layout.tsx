@@ -20,9 +20,9 @@ const geistMono = Geist_Mono({
 });
 
 const roboto = Roboto_Condensed({
+  variable: '--font-roboto-condensed',
   subsets: ['latin'],
   display: 'swap',
-  variable: '--font-roboto-condensed',
 })
 
 export const metadata: Metadata = {
@@ -38,7 +38,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <ConvexClientProvider>{children}</ConvexClientProvider>
           <Footer />
         </ClerkProvider>
-        <Toaster position="top-center" reverseOrder={false} />
+        <Toaster position="bottom-right" reverseOrder={false} />
       </body>
     </html>
   );

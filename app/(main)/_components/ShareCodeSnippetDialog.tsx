@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import { Loader2, X } from "lucide-react";
 import { useMutation } from "convex/react";
 import { api } from "@/convex/_generated/api";
@@ -13,7 +13,7 @@ const ShareCodeSnippetDialog = ({ closeDialog }: { closeDialog: () => void }) =>
 
     const createCodeSnippet = useMutation(api.snippets.createCodeSnippet);
 
-    const handleShareSnippet = async (e: React.FormEvent) => {
+    const handleShareSnippet = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
         setIsSnippetSharing(true);

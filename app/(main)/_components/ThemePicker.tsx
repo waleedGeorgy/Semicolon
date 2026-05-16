@@ -44,9 +44,9 @@ const ThemePicker = () => {
                     {currentTheme?.label}
                 </span>
                 {isOpen ?
-                    (<ChevronDown className="size-4 rotate-z-180 text-gray-400 group-hover:text-gray-300 transition-all duration-200 ml-auto" />)
+                    <ChevronDown className="size-4 rotate-z-180 text-gray-400 group-hover:text-gray-300 transition-all duration-200 ml-auto" />
                     :
-                    (<ChevronDown className="size-4 rotate-z-0 text-gray-400 group-hover:text-gray-300 transition-all duration-200 ml-auto" />)
+                    <ChevronDown className="size-4 rotate-z-0 text-gray-400 group-hover:text-gray-300 transition-all duration-200 ml-auto" />
                 }
             </motion.button>
             {/* Theme list */}
