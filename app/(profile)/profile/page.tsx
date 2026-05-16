@@ -58,7 +58,7 @@ const ProfilePage = () => {
             <Header />
             <div className="max-w-7xl mx-auto px-4 py-8">
                 {/* Profile hero */}
-                {userStats && userData && <ProfileHero userStats={userStats} userData={userData} user={user!} />}
+                {user && userStats && userData && <ProfileHero userStats={userStats} userData={userData} user={user} />}
                 {(userStats === undefined || !isLoaded) && <ProfileHeroSkeleton />}
                 {/* Code related section */}
                 <div className="overflow-hidden">

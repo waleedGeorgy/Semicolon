@@ -4,7 +4,7 @@ import Image from "next/image";
 import { RotateCcw, Share, Type } from "lucide-react";
 import { motion } from "framer-motion"
 import { Editor } from "@monaco-editor/react";
-import { SignedIn, SignedOut } from "@clerk/nextjs";
+import { Show } from '@clerk/nextjs'
 import { useCodeEditorStore } from "@/app/store/useCodeEditorStore"
 import useMounted from "@/app/hooks/useMounted";
 import ShareCodeSnippetDialog from "./ShareCodeSnippetDialog";
@@ -37,7 +37,7 @@ const EditorPanel = () => {
     const newCode = savedCode || LANGUAGE_CONFIG[language].defaultCode;
 
     if (editor) editor.setValue(newCode)
-  }, [language]);
+  }, [language, editor]);
 
   useEffect(() => {
     const savedFontSize = localStorage.getItem("editor-font-size");
@@ -79,11 +79,11 @@ const EditorPanel = () => {
           <RotateCcw className="size-4 text-gray-300" />
         </motion.button>
         {/* Run button */}
-        <SignedIn>
+        <Show when='signed-in'>
           <RunButton />
-        </SignedIn>
+        </Show>
         {/* Share code snippet button */}
-        <SignedIn>
+        <Show when='signed-in'>
           <motion.button
             whileTap={{ scale: 0.98 }}
             onClick={() => setIsShareDialogOpen(true)}
@@ -92,10 +92,10 @@ const EditorPanel = () => {
             <Share className="size-3.5 flex-shrink-0" />
             <span className="text-sm hidden md:inline-block">Share</span>
           </motion.button>
-        </SignedIn>
-        <SignedOut>
+        </Show>
+        <Show when='signed-out'>
           <p className="text-xs font-light opacity-50 ml-auto text-gray-200">Sign in to run and share your snippets</p>
-        </SignedOut>
+        </Show>
       </div>
       {/* Code editor body  */}
       <div className="group rounded overflow-hidden outline outline-slate-700">

@@ -32,7 +32,7 @@ const LanguagePicker = ({ hasAccess }: { hasAccess: boolean }) => {
 
     useEffect(() => {
         if (!hasAccess) setLanguage('javascript')
-    }, [hasAccess]);
+    }, [hasAccess, setLanguage]);
 
     const handleLanguageSelection = (languageId: string) => {
         if (!hasAccess && (languageId !== "javascript" && languageId !== "typescript")) return null;
