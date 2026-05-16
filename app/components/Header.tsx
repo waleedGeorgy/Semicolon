@@ -1,11 +1,11 @@
 "use client"
 import Link from "next/link"
 import Image from "next/image"
+import { Show, SignInButton } from "@clerk/nextjs"
 import { Code2, LogIn, Terminal } from "lucide-react"
 import ProfileButton from "./ProfileButton"
 import GoProButton from "./GoProButton"
 import SemicolonLogo from "@/public/semicolon.png"
-import { SignedIn, SignedOut, SignInButton } from "@clerk/nextjs"
 
 const Header = () => {
   return (
@@ -40,20 +40,20 @@ const Header = () => {
                 Editor
               </span>
             </Link>
-            <SignedIn>
+            <Show when='signed-in'>
               <GoProButton />
-            </SignedIn>
-            <SignedIn>
+            </Show>
+            <Show when='signed-in'>
               <ProfileButton />
-            </SignedIn>
-            <SignedOut>
+            </Show>
+            <Show when='signed-out'>
               <SignInButton mode="modal">
                 <button className="px-1 rounded-lg flex flex-row items-center gap-2 text-gray-300 transition-colors duration-300 overflow-hidden cursor-pointer group">
                   <LogIn className="size-4 group-hover:text-white transition-colors duration-300" />
                   <span className="text-sm group-hover:text-white transition-colors duration-300">Sign In</span>
                 </button>
               </SignInButton>
-            </SignedOut>
+            </Show>
           </div>
         </div>
       </div>

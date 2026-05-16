@@ -1,8 +1,8 @@
 import Image from "next/image";
 import { motion } from "framer-motion"
 import { Terminal, Timer, Star, Trophy, Code, TrendingUp, Mail } from "lucide-react";
-import { UserResource } from "@clerk/types";
 import { useQuery } from "convex/react";
+import { UserResource } from "@clerk/nextjs/types";
 import { api } from "@/convex/_generated/api";
 import { UserData, UserStats } from "@/app/types"
 

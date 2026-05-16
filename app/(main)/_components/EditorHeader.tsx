@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { SignedIn, SignedOut, SignInButton } from "@clerk/nextjs";
+import { Show, SignInButton } from "@clerk/nextjs";
 import { currentUser } from "@clerk/nextjs/server";
 import { Code2, Star, LogIn } from "lucide-react";
 import { ConvexHttpClient } from "convex/browser";
@@ -23,7 +23,12 @@ async function HeaderWithCodeButtons() {
             <div className="flex flex-wrap items-center lg:justify-between justify-center px-4 rounded-md gap-6">
                 <Link href="/" className="flex items-center gap-1.5 group relative">
                     <div className="absolute -inset-1 bg-gradient-to-r from-blue-400/30 to-indigo-400/30 opacity-0 group-hover:opacity-100 transition-all duration-300 blur-xl" />
-                    <Image src={SemicolonLogo} alt="Semicolon Logo" width={22} height={22} className="group-hover:rotate-y-180 transition-transform duration-500" />
+                    <Image
+                        src={SemicolonLogo}
+                        alt="Semicolon Logo"
+                        width={22} height={22}
+                        className="group-hover:rotate-y-180 transition-transform duration-500"
+                    />
                     <span className="text-2xl bg-gradient-to-r from-blue-400 to-indigo-400 text-transparent bg-clip-text font-roboto-condensed">
                         Semicolon
                     </span>
@@ -35,7 +40,7 @@ async function HeaderWithCodeButtons() {
                         <Code2 className="size-4 z-10 group-hover:rotate-z-180 transition-all duration-300 group-hover:text-white shrink-0" />
                         <span className="text-sm z-10 group-hover:text-white transition-colors font-roboto-condensed tracking-wide hidden md:inline-block">Snippets</span>
                     </Link>
-                    <SignedIn>
+                    <Show when='signed-in'>
                         {!convexUser?.isPro && (
                             <Link
                                 href="/pricing"
@@ -47,18 +52,18 @@ async function HeaderWithCodeButtons() {
                                 </span>
                             </Link>
                         )}
-                    </SignedIn>
-                    <SignedIn>
+                    </Show>
+                    <Show when='signed-in'>
                         <ProfileButton />
-                    </SignedIn>
-                    <SignedOut>
+                    </Show>
+                    <Show when='signed-out'>
                         <SignInButton mode="modal">
                             <button className="px-1 rounded-lg flex flex-row items-center gap-2 text-gray-300 transition-colors duration-300 overflow-hidden cursor-pointer group">
                                 <LogIn className="size-4 group-hover:text-white transition-colors duration-300" />
                                 <span className="text-sm group-hover:text-white transition-colors duration-300">Sign In</span>
                             </button>
                         </SignInButton>
-                    </SignedOut>
+                    </Show>
                 </nav>
             </div>
         </header>

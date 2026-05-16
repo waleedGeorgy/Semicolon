@@ -11,7 +11,6 @@ const ErrorPage = () => {
                 <span className="text-gray-500">|</span>
                 <Link href="/snippets" className="text-indigo-400 hover:underline">Browse Snippets</Link>
             </div>
-
         </div>
     )
 }

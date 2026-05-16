@@ -1,4 +1,4 @@
-import { SignedIn, SignedOut } from "@clerk/nextjs";
+import { Show } from "@clerk/nextjs";
 import { currentUser } from "@clerk/nextjs/server"
 import { Star } from "lucide-react";
 import { api } from "@/convex/_generated/api";
@@ -72,12 +72,12 @@ const PricingPage = async () => {
                                 </div>
                                 {/* CTA */}
                                 <div className="flex justify-center">
-                                    <SignedIn>
+                                    <Show when='signed-in'>
                                         <UpgradeButton userId={user!.id} userEmail={user?.emailAddresses[0].emailAddress as string} />
-                                    </SignedIn>
-                                    <SignedOut>
+                                    </Show>
+                                    <Show when='signed-out'>
                                         <LoginButton />
-                                    </SignedOut>
+                                    </Show>
                                 </div>
                             </div>
                         </div>
