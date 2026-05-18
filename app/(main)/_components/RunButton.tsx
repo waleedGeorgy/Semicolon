@@ -30,9 +30,9 @@ const RunButton = () => {
   return (
     <button disabled={isRunning} className="group flex flex-row items-center gap-1.5 border border-emerald-500/50 bg-emerald-400/20 px-2.5 py-1.5 rounded-md cursor-pointer hover:border-emerald-500 hover:bg-emerald-400/25 transition-colors duration-300 disabled:border-gray-500/20 disabled:bg-[#272727] disabled:cursor-not-allowed disabled:text-[#a0a0a0] disabled:opacity-70" onClick={handleCodeRun}>
       {isRunning ?
-        (<Loader2 className="size-4 animate-spin" />)
+        <Loader2 className="size-4 animate-spin" />
         :
-        (<Play className="size-4 text-emerald-400/60 group-hover:text-emerald-500 transition-colors duration-300" />)
+        <Play className="size-4 text-emerald-400/60 group-hover:text-emerald-500 transition-colors duration-300" />
       }
     </button>
   )

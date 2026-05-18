@@ -34,7 +34,7 @@ const PricingPage = async () => {
                     {/* Hero */}
                     <div className="text-center mb-8">
                         <div className="relative inline-block">
-                            <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 to-indigo-500 blur-2xl opacity-20 rounded-xl" />
+                            <div className="absolute -inset-1 bg-linear-to-r from-blue-500 to-indigo-500 blur-2xl opacity-20 rounded-xl" />
                             <h1 className="text-5xl md:text-6xl lg:text-7xl font-roboto-condensed mb-4 text-gray-300">
                                 Become A Pro Member
                             </h1>
@@ -45,10 +45,10 @@ const PricingPage = async () => {
                     </div>
                     {/* Pricing card */}
                     <div className="relative max-w-2xl mx-auto">
-                        <div className="absolute -inset-px bg-gradient-to-r from-blue-500 to-indigo-500 rounded-2xl blur opacity-25" />
+                        <div className="absolute -inset-px bg-linear-to-r from-blue-500 to-indigo-500 rounded-2xl blur opacity-25" />
                         <div className="relative bg-[#1b1b27] rounded-2xl">
-                            <div className="absolute inset-x-0 -top-px h-px bg-gradient-to-r from-transparent via-blue-500/50 to-transparent" />
-                            <div className="absolute inset-x-0 -bottom-px h-px bg-gradient-to-r from-transparent via-indigo-500/50 to-transparent" />
+                            <div className="absolute inset-x-0 -top-px h-px bg-linear-to-r from-transparent via-blue-500/50 to-transparent" />
+                            <div className="absolute inset-x-0 -bottom-px h-px bg-linear-to-r from-transparent via-indigo-500/50 to-transparent" />
                             <div className="relative p-8 md:p-10">
                                 {/* Pricing card header */}
                                 <div className="text-center mb-8 space-y-3">

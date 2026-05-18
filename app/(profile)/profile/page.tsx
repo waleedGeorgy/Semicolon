@@ -59,7 +59,7 @@ const ProfilePage = () => {
             <div className="max-w-7xl mx-auto px-4 py-8">
                 {/* Profile hero */}
                 {user && userStats && userData && <ProfileHero userStats={userStats} userData={userData} user={user} />}
-                {(userStats === undefined || !isLoaded) && <ProfileHeroSkeleton />}
+                {(!userStats || !isLoaded) && <ProfileHeroSkeleton />}
                 {/* Code related section */}
                 <div className="overflow-hidden">
                     {/* Switch tabs header */}
@@ -86,7 +86,11 @@ const ProfilePage = () => {
                                     {tab.icon}
                                     <p className="text-sm font-semibold relative z-10 flex flex-row items-center">
                                         <span className="mr-1.5">{tab.label}</span>
-                                        {tab.length === 0 || tab.length === undefined ? (<Loader2 className="size-4 animate-spin" />) : (`(${tab.length})`)}
+                                        {!tab || tab.length === 0 || tab.length === undefined ?
+                                            <Loader2 className="size-4 animate-spin" />
+                                            :
+                                            `(${tab.length})`
+                                        }
                                     </p>
                                 </button>
                             ))}
@@ -130,9 +134,9 @@ const ProfilePage = () => {
                                                         <div className="flex items-center gap-2">
                                                             <span className="font-roboto-condensed text-lg font-light text-gray-300">
                                                                 {codeRun.language === 'php' || codeRun.language === 'cpp' ?
-                                                                    (codeRun.language === 'php' ? ("PHP") : ("C++"))
+                                                                    codeRun.language === 'php' ? ("PHP") : ("C++")
                                                                     :
-                                                                    (codeRun.language[0].toUpperCase() + codeRun.language.slice(1,))
+                                                                    codeRun.language[0].toUpperCase() + codeRun.language.slice(1,)
                                                                 }
                                                             </span>
                                                             <span className="text-gray-400">•</span>
@@ -205,7 +209,7 @@ const ProfilePage = () => {
                                     {userSnippets?.map((snippet) => (
                                         <SnippetCard snippet={snippet} key={snippet._id} />
                                     ))}
-                                    {userSnippets === undefined ? (
+                                    {!userSnippets ? (
                                         <div className="col-span-full text-center py-10">
                                             <Loader2 className="size-12 text-gray-600 mx-auto mb-4 animate-spin" />
                                             <h3 className="text-lg font-medium text-gray-400 mb-2">
@@ -230,7 +234,7 @@ const ProfilePage = () => {
                                     {starredSnippets?.map((snippet) => (
                                         <SnippetCard snippet={snippet} key={snippet._id} />
                                     ))}
-                                    {starredSnippets === undefined ? (
+                                    {!starredSnippets ? (
                                         <div className="col-span-full text-center py-10">
                                             <Loader2 className="size-12 text-gray-600 mx-auto mb-4 animate-spin" />
                                             <h3 className="text-lg font-medium text-gray-400 mb-2">

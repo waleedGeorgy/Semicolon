@@ -1,12 +1,12 @@
-import { useState } from "react";
+import { FormEvent, KeyboardEvent, useState } from "react";
 import { Loader2, Send } from "lucide-react";
 import CommentFormatter from "./CommentFormatter";
 
 const CommentForm = ({ addComment, isSubmitting }: { isSubmitting: boolean, addComment: (contents: string) => Promise<void> }) => {
-    const [comment, setComment] = useState<string>("");
-    const [isPreview, setIsPreview] = useState<boolean>(false);
+    const [comment, setComment] = useState("");
+    const [isPreview, setIsPreview] = useState(false);
 
-    const handleAddComment = async (e: React.FormEvent) => {
+    const handleAddComment = async (e: FormEvent) => {
         e.preventDefault();
 
         if (!comment || comment.trim().length === 0) return;
@@ -17,7 +17,7 @@ const CommentForm = ({ addComment, isSubmitting }: { isSubmitting: boolean, addC
         setIsPreview(false);
     }
 
-    const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    const handleKeyDown = (e: KeyboardEvent<HTMLTextAreaElement>) => {
         if (e.key === "Tab") {
             e.preventDefault();
             const start = e.currentTarget.selectionStart;

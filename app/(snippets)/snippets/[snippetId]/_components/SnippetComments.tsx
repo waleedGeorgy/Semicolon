@@ -11,7 +11,7 @@ import SingleComment from "./SingleComment";
 const SnippetComments = ({ snippetId }: { snippetId: Id<"snippets"> }) => {
     const { user } = useUser();
 
-    const [isCommenting, setIsCommenting] = useState<boolean>(false);
+    const [isCommenting, setIsCommenting] = useState(false);
     const [commentToBeDeletedId, setCommentToBeDeletedId] = useState<string | null>(null);
 
     const comments = useQuery(api.snippets.getSnippetComments, { snippetId });
@@ -58,9 +58,9 @@ const SnippetComments = ({ snippetId }: { snippetId: Id<"snippets"> }) => {
             </div>
             {/* Sign in button in case user is not authenticated */}
             <div className="p-4">
-                {user ? (
+                {user ?
                     <CommentForm addComment={handleAddingComment} isSubmitting={isCommenting} />
-                ) : (
+                    :
                     <div className="bg-gray-950 rounded-xl p-6 text-center mb-4">
                         <p className="text-gray-400 mb-5">Sign in to join the discussion</p>
                         <SignInButton mode="modal">
@@ -69,7 +69,7 @@ const SnippetComments = ({ snippetId }: { snippetId: Id<"snippets"> }) => {
                             </button>
                         </SignInButton>
                     </div>
-                )}
+                }
                 {/* Comments */}
                 <div className="space-y-4">
                     {comments?.map((comment) => (

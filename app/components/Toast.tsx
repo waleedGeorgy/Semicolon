@@ -1,6 +1,6 @@
 import toast from "react-hot-toast";
 
-export const createToast = (state: string, contents: string) => {
+export const createToast = (state: "error" | "success", contents: string) => {
     const toastStyle = {
         style: {
             borderRadius: "16px",

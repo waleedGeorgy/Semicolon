@@ -20,7 +20,7 @@ const SnippetDetailsPage = () => {
     console.log(snippetDetails);
     const snippetComments = useQuery(api.snippets.getSnippetComments, { snippetId: snippetId as Id<"snippets"> });
 
-    if (snippetDetails === undefined) return <SnippetDetailsPageSkeleton />
+    if (!snippetDetails) return <SnippetDetailsPageSkeleton />
 
     return (
         <div className="min-h-screen bg-[#0e0e13]">

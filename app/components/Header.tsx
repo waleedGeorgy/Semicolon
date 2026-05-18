@@ -13,9 +13,7 @@ const Header = () => {
       <div className="max-w-7xl mx-auto px-4 py-2.5">
         <div className="relative flex flex-wrap items-center justify-between gap-2">
           <Link href="/" className="flex items-center gap-1.5 group relative">
-            <div
-              className="absolute -inset-2 bg-gradient-to-r from-blue-400/25 to-indigo-400/25 opacity-0 group-hover:opacity-100 transition-all duration-300 blur-xl"
-            />
+            <div className="absolute -inset-2 bg-gradient-to-r from-blue-400/25 to-indigo-400/25 opacity-0 group-hover:opacity-100 transition-all duration-300 blur-xl" />
             <Image src={SemicolonLogo} alt="Semicolon Logo" width={26} height={26} className="group-hover:rotate-y-180 transition-transform duration-500" />
             <span className="text-3xl bg-gradient-to-r from-blue-400 to-indigo-400 text-transparent bg-clip-text font-roboto-condensed">
               Semicolon
