@@ -70,7 +70,7 @@ const CommentForm = ({ addComment, isSubmitting }: { isSubmitting: boolean, addC
                     <button
                         type="submit"
                         disabled={isSubmitting || !comment.trim()}
-                        className="flex items-center gap-2 px-4 py-1.5 rounded-md border border-indigo-500/60 hover:border-indigo-400/60 hover:bg-gradient-to-r hover:from-blue-500/10 hover:to-purple-500/10 disabled:opacity-50 disabled:cursor-not-allowed transition-all ml-auto cursor-pointer"
+                        className="flex items-center gap-2 px-4 py-1.5 rounded-md border border-indigo-500/60 hover:border-indigo-400/60 hover:bg-linear-to-r hover:from-blue-500/10 hover:to-purple-500/10 disabled:opacity-50 disabled:cursor-not-allowed transition-all ml-auto cursor-pointer"
                     >
                         {isSubmitting ? (
                             <>

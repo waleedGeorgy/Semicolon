@@ -87,9 +87,9 @@ const EditorPanel = () => {
           <motion.button
             whileTap={{ scale: 0.98 }}
             onClick={() => setIsShareDialogOpen(true)}
-            className="inline-flex ml-auto items-center gap-1.5 px-3 py-1 rounded-md overflow-hidden text-gray-300 border border-indigo-500/60 hover:border-indigo-400/60 hover:bg-gradient-to-r hover:from-blue-500/10 hover:to-purple-500/10 transition-colors duration-300 cursor-pointer"
+            className="inline-flex ml-auto items-center gap-1.5 px-3 py-1 rounded-md overflow-hidden text-gray-300 border border-indigo-500/60 hover:border-indigo-400/60 hover:bg-linear-to-r hover:from-blue-500/10 hover:to-purple-500/10 transition-colors duration-300 cursor-pointer"
           >
-            <Share className="size-3.5 flex-shrink-0" />
+            <Share className="size-3.5 shrink-0" />
             <span className="text-sm hidden md:inline-block">Share</span>
           </motion.button>
         </Show>

@@ -105,7 +105,7 @@ const ProfileHero = ({ user, userStats, userData }: { userStats: UserStats, user
                         className="group relative bg-neutral-950 rounded-xl overflow-hidden shadow-black shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105"
                     >
                         {/* Glow effect */}
-                        <div className={`absolute inset-0 bg-gradient-to-r ${stat.color} opacity-0 group-hover:opacity-10 transition-all duration-500 ${stat.gradient}`} />
+                        <div className={`absolute inset-0 bg-linear-to-r ${stat.color} opacity-0 group-hover:opacity-10 transition-all duration-500 ${stat.gradient}`} />
                         {/* Contents */}
                         <div className="relative px-5 py-4">
                             <div className="flex items-start justify-between mb-4">
@@ -130,7 +130,7 @@ const ProfileHero = ({ user, userStats, userData }: { userStats: UserStats, user
                             </div>
                         </div>
                         {/* Reflection hover effect */}
-                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full duration-700 transition-transform" />
+                        <div className="absolute inset-0 bg-linear-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full duration-700 transition-transform" />
                     </motion.div>
                 ))}
             </div>

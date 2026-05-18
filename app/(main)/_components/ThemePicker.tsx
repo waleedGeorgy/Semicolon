@@ -36,7 +36,7 @@ const ThemePicker = () => {
             {/* Dropdown activator */}
             <motion.button
                 onClick={() => setIsOpen(!isOpen)}
-                className="group cursor-pointer truncate relative flex items-center gap-2 px-3 py-1 bg-[#1e1e2e]/80 rounded-lg border border-gray-700 min-w-40 hover:bg-gradient-to-r hover:from-blue-500/10 hover:to-purple-500/10 transition-colors duration-300"
+                className="group cursor-pointer truncate relative flex items-center gap-2 px-3 py-1 bg-[#1e1e2e]/80 rounded-lg border border-gray-700 min-w-40 hover:bg-linear-to-r hover:from-blue-500/10 hover:to-purple-500/10 transition-colors duration-300"
             >
                 {/* Hover state bg decorator */}
                 <div className="relative size-3.5 rounded-full border border-gray-600 group-hover:border-gray-500 transition-colors" style={{ background: currentTheme?.color }} />
@@ -69,7 +69,7 @@ const ThemePicker = () => {
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 transition={{ delay: index * 0.1 }}
-                                className={`relative group w-full flex items-center gap-2 px-3 py-2 cursor-pointer hover:bg-gradient-to-r hover:from-blue-500/10 hover:to-purple-500/10 ${theme === t.id ? "bg-blue-500/10 hover:bg-[#262637] text-blue-400" : "text-gray-300"}`}
+                                className={`relative group w-full flex items-center gap-2 px-3 py-2 cursor-pointer hover:bg-linear-to-r hover:from-blue-500/10 hover:to-purple-500/10 ${theme === t.id ? "bg-blue-500/10 hover:bg-[#262637] text-blue-400" : "text-gray-300"}`}
                                 onClick={() => setTheme(t.id)}
                             >
                                 {/* label */}

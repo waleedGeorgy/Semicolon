@@ -1,11 +1,11 @@
 import Link from "next/link"
 import { ArrowRight, Star } from "lucide-react"
-import Header from "@/app/components/Header"
+import SnippetsHeader from "@/app/components/SnippetsHeader"
 
 const ProPlanActivatedPage = () => {
   return (
     <div className="bg-[#0e0e13] h-screen font-sans">
-      <Header />
+      <SnippetsHeader />
       <div className="px-4 h-[80vh] flex items-center justify-center">
         <div className="min-w-xl mx-auto text-center">
           <div className="rounded-xl p-7 bg-[#1b1b27] border border-gray-700/50">
@@ -19,12 +19,12 @@ const ProPlanActivatedPage = () => {
               </div>
               <div className="h-1 w-1/2 bg-gray-700/50 mx-auto" />
               <div className="flex flex-row flex-wrap gap-2.5 items-center justify-center">
-                <Link href="/" className="inline-flex items-center text-sm justify-center gap-1.5 px-6 py-2.5 bg-gradient-to-r from-blue-500/20 to-indigo-500/20 hover:from-blue-500/30 hover:to-indigo-500/30 rounded-lg transition-all duration-300 group">
+                <Link href="/" className="inline-flex items-center text-sm justify-center gap-1.5 px-6 py-2.5 bg-linear-to-r from-blue-500/20 to-indigo-500/20 hover:from-blue-500/30 hover:to-indigo-500/30 rounded-lg transition-all duration-300 group">
                   <span className="text-gray-300">Open Editor</span>
                   <ArrowRight className="size-4 group-hover:translate-x-1.5 transition-transform duration-300 text-gray-300" />
                 </Link>
                 <h3 className="text-gray-400">Or</h3>
-                <Link href="/snippets" className="inline-flex items-center text-sm justify-center gap-1.5 px-6 py-2.5 bg-gradient-to-r from-blue-500/20 to-indigo-500/20 hover:bg-gradient-to-r hover:from-blue-500/30 hover:to-indigo-500/30 rounded-lg transition-all duration-300 group">
+                <Link href="/snippets" className="inline-flex items-center text-sm justify-center gap-1.5 px-6 py-2.5 bg-linear-to-r from-blue-500/20 to-indigo-500/20 hover:bg-linear-to-r hover:from-blue-500/30 hover:to-indigo-500/30 rounded-lg transition-all duration-300 group">
                   <span className="text-gray-300">View Snippets</span>
                   <ArrowRight className="size-4 group-hover:translate-x-1.5 transition-transform duration-300 text-gray-300" />
                 </Link>

@@ -64,7 +64,7 @@ const SnippetComments = ({ snippetId }: { snippetId: Id<"snippets"> }) => {
                     <div className="bg-gray-950 rounded-xl p-6 text-center mb-4">
                         <p className="text-gray-400 mb-5">Sign in to join the discussion</p>
                         <SignInButton mode="modal">
-                            <button className="px-4 py-1.5 rounded-lg text-gray-300 border border-indigo-500/60 hover:border-indigo-400/60 hover:bg-gradient-to-r hover:from-blue-500/10 hover:to-purple-500/10 transition-colors duration-300 cursor-pointer">
+                            <button className="px-4 py-1.5 rounded-lg text-gray-300 border border-indigo-500/60 hover:border-indigo-400/60 hover:bg-linear-to-r hover:from-blue-500/10 hover:to-purple-500/10 transition-colors duration-300 cursor-pointer">
                                 Sign In
                             </button>
                         </SignInButton>

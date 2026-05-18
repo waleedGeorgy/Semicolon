@@ -10,7 +10,7 @@ import { api } from "@/convex/_generated/api";
 import ProfileHeroSkeleton from "../_components/ProfileHeroSkeleton";
 import ProfileHero from "../_components/ProfileHero";
 import ExpandableCodeBlock from "../_components/ExpandableCodeBlock";
-import Header from "@/app/components/Header";
+import SnippetsHeader from "@/app/components/SnippetsHeader";
 import SnippetCard from "@/app/components/SnippetCard";
 
 const ProfilePage = () => {
@@ -55,7 +55,7 @@ const ProfilePage = () => {
 
     return (
         <div className="min-h-screen bg-[#0e0e13] font-sans">
-            <Header />
+            <SnippetsHeader />
             <div className="max-w-7xl mx-auto px-4 py-8">
                 {/* Profile hero */}
                 {user && userStats && userData && <ProfileHero userStats={userStats} userData={userData} user={user} />}
@@ -117,7 +117,7 @@ const ProfilePage = () => {
                                                 <div className="flex items-center gap-4">
                                                     <div className="relative">
                                                         <div
-                                                            className="absolute -inset-1 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-lg blur-sm opacity-50 group-hover:opacity-70 transition-all duration-300"
+                                                            className="absolute -inset-1 bg-linear-to-r from-blue-500 to-indigo-500 rounded-lg blur-sm opacity-50 group-hover:opacity-70 transition-all duration-300"
                                                             area-hidden="true"
                                                         />
                                                         <div className="relative p-1.5 rounded-lg outline outline-gray-700/50 bg-gray-900">

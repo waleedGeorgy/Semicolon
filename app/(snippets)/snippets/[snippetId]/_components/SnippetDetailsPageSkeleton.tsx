@@ -1,9 +1,9 @@
-import Header from "@/app/components/Header"
+import SnippetsHeader from "@/app/components/SnippetsHeader"
 
 const SnippetDetailsPageSkeleton = () => {
     return (
         <div className="min-h-screen bg-[#0e0e13]">
-            <Header />
+            <SnippetsHeader />
             <div className="p-4">
                 <div className="grid grid-col-1 lg:grid-cols-2 gap-5">
                     <section className="flex flex-col gap-2.5">

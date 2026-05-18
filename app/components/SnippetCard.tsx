@@ -48,7 +48,7 @@ const SnippetCard = ({ snippet }: { snippet: Snippet }) => {
                             <div className="flex items-center gap-3">
                                 <div className="relative">
                                     <div
-                                        className="absolute -inset-1.5 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-lg blur-sm opacity-30 group-hover:opacity-50 transition-all duration-300"
+                                        className="absolute -inset-1.5 bg-linear-to-r from-blue-500 to-indigo-500 rounded-lg blur-sm opacity-30 group-hover:opacity-50 transition-all duration-300"
                                         area-hidden="true"
                                     />
                                     <div className="relative p-1.5 rounded-lg outline outline-gray-700/50 hover:outline-gray-700 bg-gray-900 transition-all duration-300">

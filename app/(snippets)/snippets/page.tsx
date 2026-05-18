@@ -5,7 +5,7 @@ import { AnimatePresence, motion } from "framer-motion"
 import { Code2, Grid, Layers, Search, Tag, X } from "lucide-react";
 import { useQuery } from "convex/react"
 import { api } from "@/convex/_generated/api"
-import Header from "@/app/components/Header";
+import SnippetsHeader from "@/app/components/SnippetsHeader";
 import SnippetCard from "@/app/components/SnippetCard";
 import SnippetsSkeleton from "../_components/SnippetsSkeleton";
 
@@ -19,7 +19,7 @@ const SnippetsPage = () => {
     if (!snippets) {
         return (
             <div className="min-h-screen font-sans">
-                <Header />
+                <SnippetsHeader />
                 <SnippetsSkeleton />
             </div>
         )
@@ -41,18 +41,18 @@ const SnippetsPage = () => {
 
     return (
         <div className="min-h-screen bg-[#0e0e13] font-sans">
-            <Header />
+            <SnippetsHeader />
             <div className="relative max-w-7xl mx-auto px-4 py-12">
                 {/* Hero */}
                 <div className="text-center max-w-3xl mx-auto mb-10 space-y-5">
                     <motion.div
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="relative inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gradient-to-r from-blue-500/40 to-indigo-500/40 text-sm"
+                        className="relative inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-linear-to-r from-blue-500/40 to-indigo-500/40 text-sm"
                     >
                         <Code2 className="size-4 animate-wiggle text-gray-300" />
                         <span className="text-gray-200">Code Snippets Library</span>
-                        <div className="absolute -inset-1 bg-gradient-to-r from-blue-400/50 to-indigo-400/50 opacity-50 blur-lg" />
+                        <div className="absolute -inset-1 bg-linear-to-r from-blue-400/50 to-indigo-400/50 opacity-50 blur-lg" />
                     </motion.div>
                     <motion.h1
                         initial={{ opacity: 0, y: -20 }}
@@ -67,7 +67,7 @@ const SnippetsPage = () => {
                 <div className="relative max-w-5xl mx-auto mb-12 space-y-6">
                     {/* Search bar */}
                     <div className="relative group mb-3">
-                        <div className="absolute inset-0 bg-gradient-to-r from-blue-400/40 to-indigo-500/40 rounded-xl blur-xl opacity-0 group-hover:opacity-100 transition-all duration-300" />
+                        <div className="absolute inset-0 bg-linear-to-r from-blue-400/40 to-indigo-500/40 rounded-xl blur-xl opacity-0 group-hover:opacity-100 transition-all duration-300" />
                         <div className="relative flex items-center">
                             <Search className="absolute left-4 size-5 text-gray-500" />
                             <input
@@ -163,7 +163,7 @@ const SnippetsPage = () => {
                     >
                         <div className="text-center">
                             <div
-                                className="inline-flex items-center justify-center size-14 rounded-2xl bg-gradient-to-br from-blue-500/20 to-indigo-500/20 outline outline-gray-700/50"
+                                className="inline-flex items-center justify-center size-14 rounded-2xl bg-linear-to-br from-blue-500/20 to-indigo-500/20 outline outline-gray-700/50"
                             >
                                 <Code2 className="size-8 text-gray-400" />
                             </div>

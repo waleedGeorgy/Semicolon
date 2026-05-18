@@ -7,7 +7,7 @@ import ProPlanActivatedPage from "../_components/ProPlanActivatedPage";
 import FeatureCategory from "../_components/FeatureCategory";
 import FeatureItem from "../_components/FeatureItem";
 import UpgradeButton from "../_components/UpgradeButton";
-import Header from "@/app/components/Header";
+import SnippetsHeader from "@/app/components/SnippetsHeader";
 import LoginButton from "@/app/components/LoginButton";
 
 const PricingPage = async () => {
@@ -28,7 +28,7 @@ const PricingPage = async () => {
 
     return (
         <main className="relative min-h-screen bg-[#0e0e13] font-sans">
-            <Header />
+            <SnippetsHeader />
             <div className="relative py-14 px-4">
                 <div className="max-w-5xl mx-auto">
                     {/* Hero */}

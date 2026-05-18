@@ -46,7 +46,7 @@ const LanguagePicker = ({ hasAccess }: { hasAccess: boolean }) => {
         <div className="relative" ref={dropdownRef}>
             <motion.button
                 onClick={() => setIsOpen(!isOpen)}
-                className={`group cursor-pointer truncate flex items-center gap-1.5 px-3 py-1 min-w-40 bg-[#1e1e2e]/80 rounded-lg transition-colors duration-300 border border-gray-700 hover:bg-gradient-to-r hover:from-blue-500/10 hover:to-purple-500/10 ${!hasAccess && (language !== "javascript" && language !== "typescript") ? "opacity-50 cursor-not-allowed" : ""}`}
+                className={`group cursor-pointer truncate flex items-center gap-1.5 px-3 py-1 min-w-40 bg-[#1e1e2e]/80 rounded-lg transition-colors duration-300 border border-gray-700 hover:bg-linear-to-r hover:from-blue-500/10 hover:to-purple-500/10 ${!hasAccess && (language !== "javascript" && language !== "typescript") ? "opacity-50 cursor-not-allowed" : ""}`}
             >
                 <div className="size-5">
                     <Image
@@ -89,7 +89,7 @@ const LanguagePicker = ({ hasAccess }: { hasAccess: boolean }) => {
                                         className="relative group"
                                     >
                                         <button
-                                            className={`relative cursor-pointer w-full flex items-center gap-2.5 px-3 py-2 hover:bg-gradient-to-r hover:from-blue-500/10 hover:to-purple-500/10 transition-all duration-200 ${language === lang.id ? "bg-blue-500/10 text-blue-400" : "text-gray-300"} ${isLocked ? "opacity-50" : "hover:bg-[#262637]"}`}
+                                            className={`relative cursor-pointer w-full flex items-center gap-2.5 px-3 py-2 hover:bg-linear-to-r hover:from-blue-500/10 hover:to-purple-500/10 transition-all duration-200 ${language === lang.id ? "bg-blue-500/10 text-blue-400" : "text-gray-300"} ${isLocked ? "opacity-50" : "hover:bg-[#262637]"}`}
                                             onClick={() => handleLanguageSelection(lang.id)}
                                             disabled={isLocked}
                                         >

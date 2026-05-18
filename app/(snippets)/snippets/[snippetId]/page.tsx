@@ -7,7 +7,7 @@ import { useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import { Id } from "@/convex/_generated/dataModel";
 import { defineMonacoThemes, LANGUAGE_CONFIG } from "@/app/(main)/_constants";
-import Header from "@/app/components/Header";
+import SnippetsHeader from "@/app/components/SnippetsHeader";
 import SnippetDetailsPageSkeleton from "./_components/SnippetDetailsPageSkeleton";
 import CopyButton from "./_components/CopyButton";
 import SnippetComments from "./_components/SnippetComments";
@@ -24,7 +24,7 @@ const SnippetDetailsPage = () => {
 
     return (
         <div className="min-h-screen bg-[#0e0e13]">
-            <Header />
+            <SnippetsHeader />
             <div className="p-4">
                 <div className="xl:block hidden">
                     <ResizablePanelGroup direction="horizontal">
@@ -38,14 +38,14 @@ const SnippetDetailsPage = () => {
                                             {/* Snippet language icon */}
                                             <div className="relative">
                                                 <div
-                                                    className="absolute -inset-1.5 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-lg blur-sm opacity-50"
+                                                    className="absolute -inset-1.5 bg-linear-to-r from-blue-500 to-indigo-500 rounded-lg blur-sm opacity-50"
                                                     area-hidden="true"
                                                 />
                                                 <div className="relative p-1.5 rounded-lg outline outline-gray-700/50 bg-gray-900">
                                                     <Image
                                                         src={`/${snippetDetails.language}.png`}
                                                         alt={`${snippetDetails.language} logo`}
-                                                        className="size-10 object-contain relative z-10 flex-shrink-0"
+                                                        className="size-10 object-contain relative z-10 shrink-0"
                                                         width={120}
                                                         height={120}
                                                     />
@@ -122,16 +122,16 @@ const SnippetDetailsPage = () => {
                         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
                             <div className="flex items-center gap-3.5 min-w-0 flex-1">
                                 {/* Snippet language icon */}
-                                <div className="relative flex-shrink-0">
+                                <div className="relative shrink-0">
                                     <div
-                                        className="absolute -inset-1.5 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-lg blur-sm opacity-50"
+                                        className="absolute -inset-1.5 bg-linear-to-r from-blue-500 to-indigo-500 rounded-lg blur-sm opacity-50"
                                         area-hidden="true"
                                     />
                                     <div className="relative p-1.5 rounded-lg outline outline-gray-700/50 bg-gray-900">
                                         <Image
                                             src={`/${snippetDetails.language}.png`}
                                             alt={`${snippetDetails.language} logo`}
-                                            className="size-10 object-contain relative z-10 flex-shrink-0"
+                                            className="size-10 object-contain relative z-10 shrink-0"
                                             width={100}
                                             height={100}
                                         />
