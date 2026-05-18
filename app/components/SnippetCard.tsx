@@ -109,7 +109,7 @@ const SnippetCard = ({ snippet }: { snippet: Snippet }) => {
                             </div>
                             {/* Snippet code */}
                             <div className="relative group/code">
-                                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-indigo-500/5 rounded-lg opacity-0 group-hover/code:opacity-100 transition-all" />
+                                <div className="absolute inset-0 bg-linear-to-br from-blue-500/10 to-indigo-500/5 rounded-lg opacity-0 group-hover/code:opacity-100 transition-all" />
                                 <pre className="relative bg-black/30 rounded-lg px-3 py-2 overflow-hidden text-sm text-gray-300 font-mono line-clamp-7 outline outline-gray-700/50">
                                     {snippet.code}
                                 </pre>

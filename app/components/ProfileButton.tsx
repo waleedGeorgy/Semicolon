@@ -1,13 +1,12 @@
 "use client";
-import { Show, useClerk, UserButton, useUser } from "@clerk/nextjs";
+import { useEffect, useState } from "react";
+import { Show, UserButton, useUser } from "@clerk/nextjs";
 import { User2 } from "lucide-react";
 import LoginButton from "./LoginButton";
 import useMounted from "../hooks/useMounted";
-import { useEffect, useState } from "react";
 
 const ProfileButton = () => {
-  const { isLoaded, isSignedIn, user } = useUser();
-  const { openSignIn } = useClerk();
+  const { isLoaded } = useUser();
   const isMounted = useMounted();
 
   const [clerkError, setClerkError] = useState(false)

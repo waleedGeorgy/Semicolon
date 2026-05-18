@@ -12,7 +12,7 @@ import SemicolonLogo from "@/public/semicolon.png";
 
 async function HeaderWithCodeButtons() {
     const convex = new ConvexHttpClient(process.env.NEXT_PUBLIC_CONVEX_URL!);
-    
+
     const user = await currentUser();
 
     const convexUser = await convex.query(api.users.getUser, {
@@ -36,7 +36,7 @@ async function HeaderWithCodeButtons() {
                 </Link>
                 <nav className="flex items-center gap-3">
                     <ThemePicker />
-                    <LanguagePicker hasAccess={convexUser?.isPro!} />
+                    <LanguagePicker hasAccess={Boolean(convexUser?.isPro)} />
                     <Link href="/snippets" className="group flex items-center gap-2 px-3.5 md:py-1 py-1.5 rounded-lg text-gray-300 border border-indigo-500/60 hover:border-indigo-400/60 hover:bg-linear-to-r hover:from-blue-500/10 hover:to-purple-500/10 transition-colors duration-300 overflow-hidden">
                         <Code2 className="size-4 z-10 group-hover:rotate-z-180 transition-all duration-300 group-hover:text-white shrink-0" />
                         <span className="text-sm z-10 group-hover:text-white transition-colors font-roboto-condensed tracking-wide hidden md:inline-block">Snippets</span>
