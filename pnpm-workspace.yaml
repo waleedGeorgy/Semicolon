@@ -6,3 +6,4 @@ allowBuilds:
 overrides:
   postcss: ">=8.5.10"
   prismjs: ">=1.30.0"
+  ws: ">=8.20.1"
