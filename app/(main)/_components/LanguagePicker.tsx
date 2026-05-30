@@ -61,11 +61,12 @@ const LanguagePicker = ({ hasAccess }: { hasAccess: boolean }) => {
                     {languageData.label}
                 </span>
                 <ChevronDownIcon
-                    className={`size-4 text-gray-400 ml-auto transition-all duration-300 group-hover:text-gray-300 ${isOpen ? "rotate-180" : ""}`}
+                    className={`size-4 text-gray-400 ml-auto transition-all duration-300 group-hover:text-gray-300 
+                        ${isOpen && "rotate-180"}`}
                 />
             </motion.button>
             <AnimatePresence>
-                {isOpen && (
+                {isOpen &&
                     <motion.div
                         initial={{ opacity: 0, y: -12, scale: 1 }}
                         animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -104,7 +105,7 @@ const LanguagePicker = ({ hasAccess }: { hasAccess: boolean }) => {
                                                 {lang.label}
                                             </span>
                                             {/* selected language border */}
-                                            {language === lang.id && (
+                                            {language === lang.id &&
                                                 <motion.div
                                                     className="absolute inset-0 border-2 border-blue-500/30"
                                                     transition={{
@@ -113,7 +114,7 @@ const LanguagePicker = ({ hasAccess }: { hasAccess: boolean }) => {
                                                         duration: 0.6,
                                                     }}
                                                 />
-                                            )}
+                                            }
                                             {isLocked && <LockKeyhole className="size-4 text-gray-400" />}
                                         </button>
                                     </motion.div>
@@ -121,7 +122,7 @@ const LanguagePicker = ({ hasAccess }: { hasAccess: boolean }) => {
                             })}
                         </div>
                     </motion.div>
-                )}
+                }
             </AnimatePresence>
         </div>
     )

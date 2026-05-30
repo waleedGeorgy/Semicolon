@@ -6,7 +6,7 @@ import CopyButton from "./CopyButton";
 const CodeBlock = ({ language, code }: { language: string; code: string }) => {
     const trimmedCode = code
         .split("\n")
-        .map((line) => line.trimEnd())
+        .map(line => line.trimEnd())
         .join("\n");
 
     const formattedLanguage = language === "cpp" ? "C++" : language[0].toLocaleUpperCase() + language.slice(1,);

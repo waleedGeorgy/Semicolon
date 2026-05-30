@@ -25,7 +25,7 @@ const ExpandableCodeBlock = ({ code, language }: { code: string; language: strin
             >
                 {displayCode}
             </SyntaxHighlighter>
-            {lines.length > 6 && (
+            {lines.length > 6 &&
                 <button
                     onClick={() => setIsExpanded(!isExpanded)}
                     className="absolute bottom-2 right-2 px-2 py-1 bg-indigo-500/20 text-indigo-400 rounded text-xs hover:bg-indigo-500/30 transition-colors cursor-pointer"
@@ -36,7 +36,7 @@ const ExpandableCodeBlock = ({ code, language }: { code: string; language: strin
                         <span className="flex flex-row items-center gap-1">Show More <ChevronDown className="size-3" /></span>
                     }
                 </button>
-            )}
+            }
         </div>
     );
 };

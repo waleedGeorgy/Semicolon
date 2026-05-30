@@ -66,7 +66,7 @@ const ProfileHero = ({ user, userStats, userData }: { userStats: UserStats, user
             {/* User profile info */}
             <div className="relative flex items-center gap-5">
                 <div className="relative group">
-                    <div className="absolute -inset-1 bg-gradient-to-br from-blue-500 to-indigo-500 rounded-full blur-lg opacity-60" />
+                    <div className="absolute -inset-1 bg-linear-to-br from-blue-500 to-indigo-500 rounded-full blur-lg opacity-60" />
                     <Image
                         src={user.imageUrl}
                         alt="Profile"
@@ -78,11 +78,11 @@ const ProfileHero = ({ user, userStats, userData }: { userStats: UserStats, user
                 <div className="flex flex-col justify-center gap-1">
                     <div className="flex items-center gap-3 mb-2">
                         <h1 className="text-5xl font-roboto-condensed text-gray-300">{userData.name}</h1>
-                        {userData.isPro && (
+                        {userData.isPro &&
                             <span className="px-3 py-1 bg-yellow-500/10 text-yellow-400 rounded-full text-sm">
                                 Pro Member
                             </span>
-                        )}
+                        }
                     </div>
                     <p className="flex items-center gap-1.5">
                         <Mail className="size-4 text-indigo-400" />
@@ -115,7 +115,7 @@ const ProfileHero = ({ user, userStats, userData }: { userStats: UserStats, user
                                     </h3>
                                     <p className="text-sm text-gray-400 mt-1">{stat.label}</p>
                                 </div>
-                                <div className={`p-2 rounded-xl bg-gradient-to-br ${stat.color}`}>
+                                <div className={`p-2 rounded-xl bg-linear-to-br ${stat.color}`}>
                                     <stat.icon className="size-5 text-white" />
                                 </div>
                             </div>
@@ -125,7 +125,7 @@ const ProfileHero = ({ user, userStats, userData }: { userStats: UserStats, user
                                 <span className="text-sm font-medium text-gray-300">
                                     {typeof stat.metric.value === "string" && stat.metric.value === "C++" && ("C++")}
                                     {typeof stat.metric.value === "string" && stat.metric.value !== "C++" && (stat.metric.value[0].toUpperCase() + stat.metric.value.slice(1,))}
-                                    {typeof stat.metric.value === "number" && (stat.metric.value)}
+                                    {typeof stat.metric.value === "number" && stat.metric.value}
                                 </span>
                             </div>
                         </div>

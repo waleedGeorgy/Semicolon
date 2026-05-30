@@ -17,7 +17,7 @@ const SingleComment = ({ comment, isDeleting, currentUserId, onDelete }: singleC
                 {/* Comment header */}
                 <div className="flex items-start sm:items-center justify-between gap-2 mb-4">
                     <div className="flex items-center gap-2.5">
-                        <div className="size-9 rounded-full border-2 border-indigo-400 text-indigo-400 flex items-center justify-center flex-shrink-0">
+                        <div className="size-9 rounded-full border-2 border-indigo-400 text-indigo-400 flex items-center justify-center shrink-0">
                             <User2 className="size-5" />
                         </div>
                         <div className="min-w-0 space-y-0.5">
@@ -27,16 +27,16 @@ const SingleComment = ({ comment, isDeleting, currentUserId, onDelete }: singleC
                             </span>
                         </div>
                     </div>
-                    {comment.userId === currentUserId && (
+                    {comment.userId === currentUserId &&
                         <button
                             onClick={() => onDelete(comment._id)}
                             disabled={isDeleting}
                             className="p-2 hover:bg-red-500/10 rounded-lg transition-all cursor-pointer"
                             title="Delete comment"
                         >
-                            {isDeleting ? (<Loader className="size-5 animate-spin text-red-400" />) : (<Trash2 className="size-5 text-red-400" />)}
+                            {isDeleting ? <Loader className="size-5 animate-spin text-red-400" /> : <Trash2 className="size-5 text-red-400" />}
                         </button>
-                    )}
+                    }
                 </div>
                 <CommentFormatter contents={comment.contents} />
             </div>

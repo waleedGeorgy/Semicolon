@@ -73,7 +73,7 @@ const PricingPage = async () => {
                                 {/* CTA */}
                                 <div className="flex justify-center">
                                     <Show when='signed-in'>
-                                        <UpgradeButton userId={user!.id} userEmail={user?.emailAddresses[0].emailAddress as string} />
+                                        {user?.emailAddresses[0].emailAddress && <UpgradeButton userId={user!.id} userEmail={user?.emailAddresses[0].emailAddress} />}
                                     </Show>
                                     <Show when='signed-out'>
                                         <LoginButton />

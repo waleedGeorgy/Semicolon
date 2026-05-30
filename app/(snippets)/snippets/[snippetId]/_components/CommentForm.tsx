@@ -1,4 +1,4 @@
-import { FormEvent, KeyboardEvent, useState } from "react";
+import { KeyboardEvent, SubmitEvent, useState } from "react";
 import { Loader2, Send } from "lucide-react";
 import CommentFormatter from "./CommentFormatter";
 
@@ -6,7 +6,7 @@ const CommentForm = ({ addComment, isSubmitting }: { isSubmitting: boolean, addC
     const [comment, setComment] = useState("");
     const [isPreview, setIsPreview] = useState(false);
 
-    const handleAddComment = async (e: FormEvent) => {
+    const handleAddComment = async (e: SubmitEvent) => {
         e.preventDefault();
 
         if (!comment || comment.trim().length === 0) return;
@@ -42,11 +42,11 @@ const CommentForm = ({ addComment, isSubmitting }: { isSubmitting: boolean, addC
                     </button>
                 </div>
                 {/* Comment form body */}
-                {isPreview ? (
+                {isPreview ?
                     <div className="min-h-32 p-3">
                         <CommentFormatter contents={comment} />
                     </div>
-                ) : (
+                    :
                     <textarea
                         id="snippet-comment"
                         value={comment}
@@ -56,7 +56,7 @@ const CommentForm = ({ addComment, isSubmitting }: { isSubmitting: boolean, addC
                         placeholder="Add comment..."
                         className="w-full bg-transparent border-0 text-gray-200 placeholder:text-gray-400 outline-none resize-none min-h-32 px-4 py-2 font-mono text-sm"
                     />
-                )}
+                }
                 {/* Comment form footer */}
                 <div className="flex items-center justify-between gap-4 px-4 py-3 bg-neutral-950 border-t border-gray-700/50">
                     <div className="hidden sm:block text-xs text-gray-400 space-y-0.5">
@@ -72,17 +72,17 @@ const CommentForm = ({ addComment, isSubmitting }: { isSubmitting: boolean, addC
                         disabled={isSubmitting || !comment.trim()}
                         className="flex items-center gap-2 px-4 py-1.5 rounded-md border border-indigo-500/60 hover:border-indigo-400/60 hover:bg-linear-to-r hover:from-blue-500/10 hover:to-purple-500/10 disabled:opacity-50 disabled:cursor-not-allowed transition-all ml-auto cursor-pointer"
                     >
-                        {isSubmitting ? (
+                        {isSubmitting ?
                             <>
                                 <Loader2 className="size-3.5 animate-spin text-gray-300" />
                                 <span className="text-sm text-gray-300">Commenting</span>
                             </>
-                        ) : (
+                            :
                             <>
                                 <Send className="size-3.5 text-gray-300" />
                                 <span className="text-sm text-gray-300">Comment</span>
                             </>
-                        )}
+                        }
                     </button>
                 </div>
             </div>

@@ -17,7 +17,6 @@ const SnippetDetailsPage = () => {
     const { snippetId } = useParams();
 
     const snippetDetails = useQuery(api.snippets.getSnippetById, { snippetId: snippetId as Id<"snippets"> });
-    console.log(snippetDetails);
     const snippetComments = useQuery(api.snippets.getSnippetComments, { snippetId: snippetId as Id<"snippets"> });
 
     if (!snippetDetails) return <SnippetDetailsPageSkeleton />

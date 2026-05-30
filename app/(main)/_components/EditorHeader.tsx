@@ -42,7 +42,7 @@ async function HeaderWithCodeButtons() {
                         <span className="text-sm z-10 group-hover:text-white transition-colors font-roboto-condensed tracking-wide hidden md:inline-block">Snippets</span>
                     </Link>
                     <Show when='signed-in'>
-                        {!convexUser?.isPro && (
+                        {!convexUser?.isPro &&
                             <Link
                                 href="/pricing"
                                 className="flex group items-center gap-2 px-3.5 md:py-1 py-1.5 rounded-lg border border-amber-400/20 hover:border-amber-400/60 bg-linear-to-r from-amber-400/10 to-orange-400/10 hover:from-amber-400/20 hover:to-orange-400/20 transition-colors duration-300"
@@ -52,7 +52,7 @@ async function HeaderWithCodeButtons() {
                                     Go Pro
                                 </span>
                             </Link>
-                        )}
+                        }
                     </Show>
                     <Show when='signed-in'>
                         <ProfileButton />

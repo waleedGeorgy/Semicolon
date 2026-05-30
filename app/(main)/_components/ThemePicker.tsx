@@ -1,7 +1,7 @@
 "use client"
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { ChevronDown } from "lucide-react";
+import { ChevronDownIcon } from "lucide-react";
 import { THEMES } from "../_constants";
 import { useCodeEditorStore } from "@/app/store/useCodeEditorStore";
 import useMounted from "@/app/hooks/useMounted";
@@ -43,11 +43,10 @@ const ThemePicker = () => {
                 <span className="text-gray-300 text-left group-hover:text-white transition-colors text-sm tracking-wide font-roboto-condensed">
                     {currentTheme?.label}
                 </span>
-                {isOpen ?
-                    <ChevronDown className="size-4 rotate-z-180 text-gray-400 group-hover:text-gray-300 transition-all duration-200 ml-auto" />
-                    :
-                    <ChevronDown className="size-4 rotate-z-0 text-gray-400 group-hover:text-gray-300 transition-all duration-200 ml-auto" />
-                }
+                <ChevronDownIcon
+                    className={`size-4 text-gray-400 ml-auto transition-all duration-300 group-hover:text-gray-300 
+                        ${isOpen && "rotate-180"}`}
+                />
             </motion.button>
             {/* Theme list */}
             <AnimatePresence>
