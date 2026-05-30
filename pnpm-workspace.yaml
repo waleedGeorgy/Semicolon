@@ -1,5 +1,5 @@
 allowBuilds:
-  '@clerk/shared': true
+  "@clerk/shared": true
   esbuild: true
   sharp: true
   unrs-resolver: true
@@ -7,3 +7,4 @@ overrides:
   postcss: ">=8.5.10"
   prismjs: ">=1.30.0"
   ws: ">=8.20.1"
+  js-cookie: ">=3.0.7"
