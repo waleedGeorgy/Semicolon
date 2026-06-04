@@ -1,40 +1,89 @@
 "use client";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { atomOneDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
 
 const ExpandableCodeBlock = ({ code, language }: { code: string; language: string }) => {
     const [isExpanded, setIsExpanded] = useState(false);
+    const [collapsedHeight, setCollapsedHeight] = useState<number>(0);
+    const collapsedRef = useRef<HTMLDivElement>(null);
+    const expandedRef = useRef<HTMLDivElement>(null);
 
     const lines = code.split("\n");
-    const displayCode = isExpanded ? code : lines.slice(0, 6).join("\n");
+    const collapsedCode = lines.slice(0, 6).join("\n");
+
+    useEffect(() => {
+        if (collapsedRef.current) {
+            setCollapsedHeight(collapsedRef.current.scrollHeight);
+        }
+    }, [collapsedCode]);
+
+    const expandedHeight = expandedRef.current?.scrollHeight || 0;
 
     return (
         <div className="relative">
-            <SyntaxHighlighter
-                language={language.toLowerCase()}
-                style={atomOneDark}
-                customStyle={{
-                    padding: "1rem",
-                    borderRadius: "0.5rem",
-                    backgroundColor: '#171717',
-                    border: "1px solid rgba(54, 65, 83, 0.5)",
-                    margin: 0,
-                }}
+            <div ref={collapsedRef} className="absolute invisible" aria-hidden="true">
+                <SyntaxHighlighter
+                    language={language.toLowerCase()}
+                    style={atomOneDark}
+                    customStyle={{
+                        padding: "1rem",
+                        borderRadius: "0.5rem",
+                        backgroundColor: '#171717',
+                        border: "1px solid rgba(54, 65, 83, 0.5)",
+                        margin: 0,
+                        fontSize: "0.875rem",
+                    }}
+                >
+                    {collapsedCode}
+                </SyntaxHighlighter>
+            </div>
+            <div ref={expandedRef} className="absolute invisible" aria-hidden="true">
+                <SyntaxHighlighter
+                    language={language.toLowerCase()}
+                    style={atomOneDark}
+                    customStyle={{
+                        padding: "1rem",
+                        borderRadius: "0.5rem",
+                        backgroundColor: '#171717',
+                        border: "1px solid rgba(54, 65, 83, 0.5)",
+                        margin: 0,
+                        fontSize: "0.875rem",
+                    }}
+                >
+                    {code}
+                </SyntaxHighlighter>
+            </div>
+            <div
+                className="overflow-hidden transition-all duration-500 ease-in-out"
+                style={{ maxHeight: isExpanded ? `${expandedHeight}px` : `${collapsedHeight}px` }}
             >
-                {displayCode}
-            </SyntaxHighlighter>
-            {lines.length > 6 &&
+                <SyntaxHighlighter
+                    language={language.toLowerCase()}
+                    style={atomOneDark}
+                    customStyle={{
+                        padding: "1rem",
+                        borderRadius: "0.5rem",
+                        backgroundColor: '#171717',
+                        border: "1px solid rgba(54, 65, 83, 0.5)",
+                        margin: 0,
+                        fontSize: "0.875rem",
+                    }}
+                >
+                    {code}
+                </SyntaxHighlighter>
+            </div>
+
+            {lines.length > 5 &&
                 <button
                     onClick={() => setIsExpanded(!isExpanded)}
-                    className="absolute bottom-2 right-2 px-2 py-1 bg-indigo-500/20 text-indigo-400 rounded text-xs hover:bg-indigo-500/30 transition-colors cursor-pointer"
+                    className="absolute bottom-2 right-2 px-2 py-1 bg-indigo-500/20 text-indigo-400 rounded text-xs hover:bg-indigo-500/30 transition-colors cursor-pointer group"
                 >
-                    {isExpanded ?
-                        <span className="flex flex-row items-center gap-1">Show Less <ChevronUp className="size-3" /></span>
-                        :
-                        <span className="flex flex-row items-center gap-1">Show More <ChevronDown className="size-3" /></span>
-                    }
+                    <span className="flex flex-row items-center gap-1">
+                        {isExpanded ? "Show Less" : "Show More"}
+                        <ChevronDown className={`size-3 transition-transform duration-500 ${isExpanded ? "rotate-180" : ""}`} />
+                    </span>
                 </button>
             }
         </div>

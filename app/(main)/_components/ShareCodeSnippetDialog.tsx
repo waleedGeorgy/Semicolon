@@ -1,5 +1,6 @@
 import { SubmitEvent, useState } from "react";
 import { Loader2, X } from "lucide-react";
+import { useShallow } from "zustand/shallow";
 import { useMutation } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import { createToast } from "@/app/components/Toast";
@@ -9,7 +10,10 @@ const ShareCodeSnippetDialog = ({ closeDialog }: { closeDialog: () => void }) =>
     const [snippetTitle, setSnippetTitle] = useState("");
     const [isSnippetSharing, setIsSnippetSharing] = useState(false);
 
-    const { language, getCode } = useCodeEditorStore();
+    const { language, getCode } = useCodeEditorStore(useShallow(state => ({
+        language: state.language,
+        getCode: state.getCode
+    })));
 
     const createCodeSnippet = useMutation(api.snippets.createCodeSnippet);
 
@@ -66,8 +70,8 @@ const ShareCodeSnippetDialog = ({ closeDialog }: { closeDialog: () => void }) =>
                         </button>
                         <button
                             type="submit"
-                            disabled={isSnippetSharing}
-                            className="px-4 py-1 rounded-md text-gray-300 hover:text-gray-200 border border-indigo-500/60 hover:border-indigo-400/60 hover:bg-linear-to-r hover:from-blue-500/10 hover:to-purple-500/10 transition-colors duration-300 cursor-pointer disabled:opacity-50 text-sm"
+                            disabled={isSnippetSharing || !snippetTitle.trim()}
+                            className="px-4 py-1 rounded-md text-gray-300 hover:text-gray-200 border border-indigo-500/60 hover:border-indigo-400/60 hover:bg-linear-to-r hover:from-blue-500/10 hover:to-purple-500/10 transition-colors duration-300 cursor-pointer text-sm disabled:opacity-60 disabled:pointer-events-none"
                         >
                             {isSnippetSharing ?
                                 <span className="flex flex-row items-center gap-2">

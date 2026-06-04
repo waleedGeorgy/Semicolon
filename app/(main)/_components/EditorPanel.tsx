@@ -5,6 +5,7 @@ import { RotateCcw, Share, Type } from "lucide-react";
 import { motion } from "framer-motion"
 import { Editor } from "@monaco-editor/react";
 import { Show } from '@clerk/nextjs'
+import { useShallow } from "zustand/shallow";
 import { useCodeEditorStore } from "@/app/store/useCodeEditorStore"
 import useMounted from "@/app/hooks/useMounted";
 import ShareCodeSnippetDialog from "./ShareCodeSnippetDialog";
@@ -12,7 +13,14 @@ import RunButton from "./RunButton";
 import { defineMonacoThemes, LANGUAGE_CONFIG } from "../_constants";
 
 const EditorPanel = () => {
-  const { editor, fontSize, theme, language, setFontSize, setEditor } = useCodeEditorStore();
+  const { editor, fontSize, theme, language, setFontSize, setEditor } = useCodeEditorStore(useShallow(state => ({
+    editor: state.editor,
+    fontSize: state.fontSize,
+    theme: state.theme,
+    language: state.language,
+    setFontSize: state.setFontSize,
+    setEditor: state.setEditor
+  })));
 
   const [isShareDialogOpen, setIsShareDialogOpen] = useState(false);
 

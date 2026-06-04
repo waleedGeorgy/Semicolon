@@ -9,6 +9,7 @@ import ThemePicker from "./ThemePicker";
 import LanguagePicker from "./LanguagePicker";
 import ProfileButton from "../../components/ProfileButton";
 import SemicolonLogo from "@/public/semicolon.png";
+import GoProButton from "@/app/components/GoProButton";
 
 async function HeaderWithCodeButtons() {
     const convex = new ConvexHttpClient(process.env.NEXT_PUBLIC_CONVEX_URL!);
@@ -20,26 +21,25 @@ async function HeaderWithCodeButtons() {
     });
 
     return (
-        <header className="mb-3">
-            <div className="flex flex-wrap items-center lg:justify-between justify-center px-4 rounded-md gap-6">
+        <header className="p-3">
+            <div className="flex flex-wrap items-center lg:justify-between justify-center rounded-md gap-6">
                 <Link href="/" className="flex items-center gap-1.5 group relative">
-                    <div className="absolute -inset-1 bg-linear-to-r from-blue-400/30 to-indigo-400/30 opacity-0 group-hover:opacity-100 transition-all duration-300 blur-xl" />
                     <Image
                         src={SemicolonLogo}
                         alt="Semicolon Logo"
                         width={22} height={22}
-                        className="group-hover:rotate-y-180 transition-transform duration-500"
+                        className="group-hover:rotate-0 -rotate-45 transition-transform duration-500"
                     />
-                    <span className="text-2xl bg-linear-to-r from-blue-400 to-indigo-400 text-transparent bg-clip-text font-roboto-condensed">
+                    <span className="text-2xl bg-linear-to-r from-indigo-400 to-blue-400 text-transparent bg-clip-text font-mono tracking-wide hover:brightness-125 transition-all duration-500">
                         Semicolon
                     </span>
                 </Link>
-                <nav className="flex items-center gap-3">
+                <nav className="flex items-center gap-2.5">
                     <ThemePicker />
                     <LanguagePicker hasAccess={Boolean(convexUser?.isPro)} />
                     <Link href="/snippets" className="group flex items-center gap-2 px-3.5 md:py-1 py-1.5 rounded-lg text-gray-300 border border-indigo-500/60 hover:border-indigo-400/60 hover:bg-linear-to-r hover:from-blue-500/10 hover:to-purple-500/10 transition-colors duration-300 overflow-hidden">
                         <Code2 className="size-4 z-10 group-hover:rotate-z-180 transition-all duration-300 group-hover:text-white shrink-0" />
-                        <span className="text-sm z-10 group-hover:text-white transition-colors font-roboto-condensed tracking-wide hidden md:inline-block">Snippets</span>
+                        <span className="text-sm z-10 group-hover:text-white transition-colors hidden md:inline-block">Snippets</span>
                     </Link>
                     <Show when='signed-in'>
                         {!convexUser?.isPro &&
@@ -48,13 +48,14 @@ async function HeaderWithCodeButtons() {
                                 className="flex group items-center gap-2 px-3.5 md:py-1 py-1.5 rounded-lg border border-amber-400/20 hover:border-amber-400/60 bg-linear-to-r from-amber-400/10 to-orange-400/10 hover:from-amber-400/20 hover:to-orange-400/20 transition-colors duration-300"
                             >
                                 <Star className="size-4 text-amber-400 group-hover:text-amber-300" />
-                                <span className="text-sm text-amber-400/90 group-hover:text-amber-300 hidden md:inline-block tracking-wide font-roboto-condensed">
+                                <span className="text-sm text-amber-400/90 group-hover:text-amber-300 hidden md:inline-block">
                                     Go Pro
                                 </span>
                             </Link>
                         }
                     </Show>
                     <Show when='signed-in'>
+                        <GoProButton />
                         <ProfileButton />
                     </Show>
                     <Show when='signed-out'>

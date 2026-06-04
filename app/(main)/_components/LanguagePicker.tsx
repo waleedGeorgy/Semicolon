@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronDownIcon, LockKeyhole } from "lucide-react";
+import { useShallow } from "zustand/shallow";
 import { LANGUAGE_CONFIG } from "../_constants";
 import { useCodeEditorStore } from "@/app/store/useCodeEditorStore";
 import useMounted from "@/app/hooks/useMounted";
@@ -14,7 +15,10 @@ const LanguagePicker = ({ hasAccess }: { hasAccess: boolean }) => {
 
     const dropdownRef = useRef<HTMLDivElement>(null);
 
-    const { language, setLanguage } = useCodeEditorStore();
+    const { language, setLanguage } = useCodeEditorStore(useShallow(state => ({
+        language: state.language,
+        setLanguage: state.setLanguage
+    })));
 
     const languageData = LANGUAGE_CONFIG[language];
 
@@ -46,7 +50,7 @@ const LanguagePicker = ({ hasAccess }: { hasAccess: boolean }) => {
         <div className="relative" ref={dropdownRef}>
             <motion.button
                 onClick={() => setIsOpen(!isOpen)}
-                className={`group cursor-pointer truncate flex items-center gap-1.5 px-3 py-1 min-w-40 bg-[#1e1e2e]/80 rounded-lg transition-colors duration-300 border border-gray-700 hover:bg-linear-to-r hover:from-blue-500/10 hover:to-purple-500/10 ${!hasAccess && (language !== "javascript" && language !== "typescript") ? "opacity-50 cursor-not-allowed" : ""}`}
+                className={`group cursor-pointer truncate flex items-center gap-1.5 px-2 py-1 min-w-40 bg-[#1e1e2e]/80 rounded-lg transition-colors duration-300 border border-gray-700 hover:bg-linear-to-r hover:from-blue-500/10 hover:to-purple-500/10 ${!hasAccess && (language !== "javascript" && language !== "typescript") && "opacity-50 cursor-not-allowed"}`}
             >
                 <div className="size-5">
                     <Image
@@ -57,7 +61,7 @@ const LanguagePicker = ({ hasAccess }: { hasAccess: boolean }) => {
                         className="w-full h-full object-contain relative z-10"
                     />
                 </div>
-                <span className="text-gray-200 group-hover:text-white transition-colors text-sm font-roboto-condensed">
+                <span className="text-gray-200 group-hover:text-white transition-colors text-sm">
                     {languageData.label}
                 </span>
                 <ChevronDownIcon
@@ -75,7 +79,7 @@ const LanguagePicker = ({ hasAccess }: { hasAccess: boolean }) => {
                         className="absolute top-full left-0 mt-1.5 min-w-48 bg-[#1e1e2e]/95 backdrop-blur-xl rounded-lg outline outline-gray-700 shadow-xl z-50"
                     >
                         <div className="px-3 py-2">
-                            <p className="text-xs font-medium text-gray-400">Select a language</p>
+                            <p className="text-sm font-roboto-condensed text-gray-400">Select a language</p>
                         </div>
                         <div className="overflow-y-auto overflow-x-hidden">
                             {Object.values(LANGUAGE_CONFIG).map((lang, index) => {
@@ -90,7 +94,7 @@ const LanguagePicker = ({ hasAccess }: { hasAccess: boolean }) => {
                                         className="relative group"
                                     >
                                         <button
-                                            className={`relative cursor-pointer w-full flex items-center gap-2.5 px-3 py-2 hover:bg-linear-to-r hover:from-blue-500/10 hover:to-purple-500/10 transition-all duration-200 ${language === lang.id ? "bg-blue-500/10 text-blue-400" : "text-gray-300"} ${isLocked ? "opacity-50" : "hover:bg-[#262637]"}`}
+                                            className={`relative cursor-pointer w-full flex items-center gap-2.5 px-2.5 py-2 hover:bg-linear-to-r hover:from-blue-500/10 hover:to-purple-500/10 transition-all duration-200 ${language === lang.id ? "bg-blue-500/10 text-blue-400" : "text-gray-300"} ${isLocked ? "opacity-50" : "hover:bg-[#262637]"}`}
                                             onClick={() => handleLanguageSelection(lang.id)}
                                             disabled={isLocked}
                                         >
@@ -101,7 +105,7 @@ const LanguagePicker = ({ hasAccess }: { hasAccess: boolean }) => {
                                                 alt={`${lang.label} logo`}
                                                 className="object-contain relative z-10 w-auto h-auto group-hover:scale-[115%] transition-all duration-200"
                                             />
-                                            <span className="flex-1 text-left group-hover:text-white transition-colors  font-roboto-condensed">
+                                            <span className="flex-1 text-left group-hover:text-white transition-colors">
                                                 {lang.label}
                                             </span>
                                             {/* selected language border */}

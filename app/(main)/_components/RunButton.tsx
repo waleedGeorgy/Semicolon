@@ -1,6 +1,7 @@
 "use client"
 import { useUser } from "@clerk/nextjs"
 import { useMutation } from "convex/react";
+import { useShallow } from "zustand/shallow";
 import { api } from "@/convex/_generated/api";
 import { Loader2, Play } from "lucide-react"
 import { getCodeRunResults, useCodeEditorStore } from "@/app/store/useCodeEditorStore";
@@ -8,7 +9,11 @@ import { getCodeRunResults, useCodeEditorStore } from "@/app/store/useCodeEditor
 const RunButton = () => {
   const user = useUser();
 
-  const { runCode, isRunning, language } = useCodeEditorStore();
+  const { runCode, isRunning, language } = useCodeEditorStore(useShallow(state => ({
+    runCode: state.runCode,
+    isRunning: state.isRunning,
+    language: state.language
+  })));
 
   const saveCodeRun = useMutation(api.codeRuns.saveCodeRun);
 

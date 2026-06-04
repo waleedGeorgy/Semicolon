@@ -56,7 +56,7 @@ const ProfilePage = () => {
     return (
         <div className="min-h-screen bg-[#0e0e13] font-sans">
             <SnippetsHeader />
-            <div className="max-w-7xl mx-auto px-4 py-8">
+            <div className="max-w-6xl mx-auto py-8">
                 {/* Profile hero */}
                 {user && userStats && userData && <ProfileHero userStats={userStats} userData={userData} user={user} />}
                 {(!userStats || !isLoaded) && <ProfileHeroSkeleton />}
@@ -69,10 +69,10 @@ const ProfilePage = () => {
                                 <button
                                     key={tab.id}
                                     onClick={() => setActiveTab(tab.id as "codeRuns" | "starred")}
-                                    className={`group flex items-center gap-1.5 px-3.5 py-2 rounded-lg transition-all duration-200 relative overflow-hidden cursor-pointer ${activeTab === tab.id ? "text-indigo-400" : "text-gray-400 hover:text-gray-300"
-                                        }`}
+                                    className={`group flex items-center gap-1.5 px-3.5 py-2 rounded-lg transition-all duration-200 relative overflow-hidden cursor-pointer 
+                                        ${activeTab === tab.id ? "text-indigo-400" : "text-gray-400 hover:text-gray-300"}`}
                                 >
-                                    {activeTab === tab.id && (
+                                    {activeTab === tab.id &&
                                         <motion.div
                                             layoutId="activeTab"
                                             className="absolute inset-0 bg-indigo-500/10 rounded-lg"
@@ -82,7 +82,7 @@ const ProfilePage = () => {
                                                 duration: 0.5,
                                             }}
                                         />
-                                    )}
+                                    }
                                     {tab.icon}
                                     <p className="text-sm font-semibold relative z-10 flex flex-row items-center">
                                         <span className="mr-1.5">{tab.label}</span>
@@ -108,12 +108,12 @@ const ProfilePage = () => {
                         >
                             {/* Code runs tab */}
                             {activeTab === "codeRuns" && (
-                                <div className="space-y-6 px-7">
+                                <div className="space-y-6">
                                     {codeRuns?.map((codeRun) => (
                                         /* Individual code run */
-                                        <div key={codeRun._id} className="group rounded-xl overflow-hidden outline outline-gray-700/50 hover:outline-1 hover:outline-indigo-400/50 transition-all ease-in-out duration-300">
+                                        <div key={codeRun._id} className="group rounded-xl overflow-hidden border border-gray-700/50 hover:border hover:border-indigo-400/50 transition-all ease-in-out duration-300">
                                             {/* Individual code run header */}
-                                            <div className="flex items-center justify-between px-4 py-3.5 bg-neutral-900 group-hover:bg-indigo-950 transition-colors duration-300 rounded-t-xl">
+                                            <div className="flex items-center justify-between px-4 py-3.5 bg-[#1b1b27] group-hover:bg-indigo-950 transition-colors duration-300 rounded-t-xl">
                                                 <div className="flex items-center gap-4">
                                                     <div className="relative">
                                                         <div
@@ -162,7 +162,7 @@ const ProfilePage = () => {
                                                 {(codeRun.output || codeRun.error) && (
                                                     <div className="mt-4 px-4 py-2 rounded-lg bg-neutral-900 outline outline-gray-700/50">
                                                         <h4 className="text-sm font-semibold text-gray-400 mb-2">Output</h4>
-                                                        <pre className={`text-sm ${codeRun.error ? "text-red-400" : "text-green-400"}`}>
+                                                        <pre className={`text-sm truncate ${codeRun.error ? "text-red-400" : "text-green-400"}`}>
                                                             {codeRun.error || codeRun.output}
                                                         </pre>
                                                     </div>
@@ -188,7 +188,7 @@ const ProfilePage = () => {
                                         </div>
                                     }
                                     {/* Load more button */}
-                                    {codeRunsStatus === "CanLoadMore" && (
+                                    {codeRunsStatus === "CanLoadMore" &&
                                         <div className="flex justify-center mt-8">
                                             <button
                                                 onClick={async () => {
@@ -200,11 +200,11 @@ const ProfilePage = () => {
                                                 <MoreHorizontal className="size-4" />
                                             </button>
                                         </div>
-                                    )}
+                                    }
                                 </div>
                             )}
                             {/* User snippets tab */}
-                            {activeTab === "userSnippets" && (
+                            {activeTab === "userSnippets" &&
                                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-2">
                                     {userSnippets?.map((snippet) => (
                                         <SnippetCard snippet={snippet} key={snippet._id} />
@@ -217,19 +217,18 @@ const ProfilePage = () => {
                                             </h3>
                                         </div>
                                         :
-                                        !userSnippets || userSnippets.length === 0 && (
-                                            <div className="col-span-full text-center py-10">
-                                                <Code className="w-12 h-12 text-gray-600 mx-auto mb-4" />
-                                                <h3 className="text-lg font-medium text-gray-400 mb-2">
-                                                    You haven&apos;t published any snippets yet
-                                                </h3>
-                                            </div>
-                                        )
+                                        !userSnippets || userSnippets.length === 0 &&
+                                        <div className="col-span-full text-center py-10">
+                                            <Code className="w-12 h-12 text-gray-600 mx-auto mb-4" />
+                                            <h3 className="text-lg font-medium text-gray-400 mb-2">
+                                                You haven&apos;t published any snippets yet
+                                            </h3>
+                                        </div>
                                     }
                                 </div>
-                            )}
+                            }
                             {/* Starred snippets tab */}
-                            {activeTab === "starred" && (
+                            {activeTab === "starred" &&
                                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-2">
                                     {starredSnippets?.map(snippet => (
                                         <SnippetCard snippet={snippet} key={snippet._id} />
@@ -251,7 +250,7 @@ const ProfilePage = () => {
                                         </div>
                                     }
                                 </div>
-                            )}
+                            }
                         </motion.div>
                     </AnimatePresence>
                 </div>

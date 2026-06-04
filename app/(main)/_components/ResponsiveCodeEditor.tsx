@@ -10,7 +10,7 @@ export default function ResponsiveResizableGroup() {
     return (
         <ResizablePanelGroup
             direction={isLgScreen ? "horizontal" : "vertical"}
-            className={isLgScreen ? "min-h-full" : "min-h-screen"}
+            className={`px-3 ${isLgScreen ? "min-h-full" : "min-h-screen"}`}
         >
             <ResizablePanel defaultSize={50} minSize={isLgScreen ? 0 : 6.5}>
                 <EditorPanel />
