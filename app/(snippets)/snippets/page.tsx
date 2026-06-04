@@ -121,9 +121,11 @@ const SnippetsPage = () => {
                             {!snippets ?
                                 <div className="w-20 h-8 bg-gray-800 rounded-md animate-pulse" />
                                 :
-                                <span className="text-sm font-semibold text-gray-400">
-                                    {filteredSnippets?.length} {filteredSnippets?.length! > 1 ? ("snippets") : ("snippet")}
-                                </span>
+                                <p className="text-sm font-semibold text-gray-400">
+                                    {filteredSnippets && 
+                                        <span>{filteredSnippets.length} {filteredSnippets.length > 1 ? "snippets" : "snippet"}</span>
+                                    }
+                                </p>
                             }
                             {/* View Toggle */}
                             <div className="flex items-center gap-1 px-2 py-1 bg-[#1b1b27] rounded-lg outline outline-gray-700">

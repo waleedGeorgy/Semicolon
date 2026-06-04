@@ -29,6 +29,7 @@ const StarSnippetButton = ({ snippetId }: { snippetId: Id<"snippets"> }) => {
         try {
             await starCodeSnippet({ snippetId });
         } catch (error) {
+            console.error(error);
             setSnippetStarCount(getSnippetStarCount ?? 0);
         }
     }
