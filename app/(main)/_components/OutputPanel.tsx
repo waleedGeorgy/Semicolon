@@ -1,10 +1,15 @@
 "use client"
 import { useState } from "react";
+import { useShallow } from "zustand/shallow";
 import { AlertTriangle, CheckCheck, Copy, CopyCheck, Hourglass, TerminalSquare } from "lucide-react";
 import { useCodeEditorStore } from "@/app/store/useCodeEditorStore"
 
 const OutputPanel = () => {
-  const { output, error, isRunning } = useCodeEditorStore();
+  const { output, error, isRunning } = useCodeEditorStore(useShallow(state => ({
+    output: state.output,
+    error: state.error,
+    isRunning: state.isRunning
+  })));
 
   const [isOutputCopied, setIsOutputCopied] = useState(false);
 

@@ -1,6 +1,7 @@
 "use client"
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { useShallow } from "zustand/shallow";
 import { ChevronDownIcon } from "lucide-react";
 import { THEMES } from "../_constants";
 import { useCodeEditorStore } from "@/app/store/useCodeEditorStore";
@@ -11,7 +12,10 @@ const ThemePicker = () => {
 
     const mounted = useMounted();
 
-    const { theme, setTheme } = useCodeEditorStore();
+    const { theme, setTheme } = useCodeEditorStore(useShallow(state => ({
+        theme: state.theme,
+        setTheme: state.setTheme
+    })));
 
     const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -36,11 +40,11 @@ const ThemePicker = () => {
             {/* Dropdown activator */}
             <motion.button
                 onClick={() => setIsOpen(!isOpen)}
-                className="group cursor-pointer truncate relative flex items-center gap-2 px-3 py-1 bg-[#1e1e2e]/80 rounded-lg border border-gray-700 min-w-40 hover:bg-linear-to-r hover:from-blue-500/10 hover:to-purple-500/10 transition-colors duration-300"
+                className="group cursor-pointer truncate relative flex items-center gap-2 px-2 py-1 bg-[#1e1e2e]/80 rounded-lg border border-gray-700 min-w-40 hover:bg-linear-to-r hover:from-blue-500/10 hover:to-purple-500/10 transition-colors duration-300"
             >
                 {/* Hover state bg decorator */}
                 <div className="relative size-3.5 rounded-full border border-gray-600 group-hover:border-gray-500 transition-colors" style={{ background: currentTheme?.color }} />
-                <span className="text-gray-300 text-left group-hover:text-white transition-colors text-sm tracking-wide font-roboto-condensed">
+                <span className="text-gray-300 text-left group-hover:text-white transition-colors text-sm">
                     {currentTheme?.label}
                 </span>
                 <ChevronDownIcon
@@ -59,7 +63,7 @@ const ThemePicker = () => {
                         className="absolute top-full left-0 mt-1.5 w-full min-w-48 bg-[#1e1e2e]/95 backdrop-blur-xl outline outline-gray-700 shadow-xl z-50 rounded-lg"
                     >
                         <div className="px-3 py-2">
-                            <p className="text-xs font-medium text-gray-400">Select a theme</p>
+                            <p className="text-sm text-gray-400 font-roboto-condensed">Select a theme</p>
                         </div>
                         {/* Themes list */}
                         {THEMES.map((t, index) => (
@@ -68,11 +72,11 @@ const ThemePicker = () => {
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 transition={{ delay: index * 0.1 }}
-                                className={`relative group w-full flex items-center gap-2 px-3 py-2 cursor-pointer hover:bg-linear-to-r hover:from-blue-500/10 hover:to-purple-500/10 ${theme === t.id ? "bg-blue-500/10 hover:bg-[#262637] text-blue-400" : "text-gray-300"}`}
+                                className={`relative group w-full flex items-center gap-2 px-2.5 py-2 cursor-pointer hover:bg-linear-to-r hover:from-blue-500/10 hover:to-purple-500/10 ${theme === t.id ? "bg-blue-500/10 hover:bg-[#262637] text-blue-400" : "text-gray-300"}`}
                                 onClick={() => setTheme(t.id)}
                             >
                                 {/* label */}
-                                <span className="flex-1 text-left group-hover:text-white transition-colors font-roboto-condensed">
+                                <span className="flex-1 text-left group-hover:text-white transition-colors">
                                     {t.label}
                                 </span>
                                 {/* color indicator */}
@@ -81,12 +85,12 @@ const ThemePicker = () => {
                                     style={{ background: t.color }}
                                 />
                                 {/* active theme border */}
-                                {theme === t.id && (
+                                {theme === t.id &&
                                     <motion.div
                                         className="absolute inset-0 border border-blue-500/30"
                                         transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                                     />
-                                )}
+                                }
                             </motion.button>
                         ))}
                     </motion.div>

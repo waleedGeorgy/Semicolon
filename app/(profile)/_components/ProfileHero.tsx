@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { motion } from "framer-motion"
-import { Terminal, Timer, Star, Trophy, Code, TrendingUp, Mail } from "lucide-react";
+import { Terminal, Timer, Star, Edit, Trophy, Code, TrendingUp, Mail } from "lucide-react";
 import { useQuery } from "convex/react";
 import { UserResource } from "@clerk/nextjs/types";
 import { api } from "@/convex/_generated/api";
@@ -26,7 +26,7 @@ const ProfileHero = ({ user, userStats, userData }: { userStats: UserStats, user
         {
             label: "Total snippets created",
             value: userSnippets?.length ?? 0,
-            icon: Star,
+            icon: Edit,
             color: "from-blue-600 to-cyan-600",
             gradient: "group-hover:via-blue-400",
             metric: {
@@ -79,9 +79,10 @@ const ProfileHero = ({ user, userStats, userData }: { userStats: UserStats, user
                     <div className="flex items-center gap-3 mb-2">
                         <h1 className="text-5xl font-roboto-condensed text-gray-300">{userData.name}</h1>
                         {userData.isPro &&
-                            <span className="px-3 py-1 bg-yellow-500/10 text-yellow-400 rounded-full text-sm">
-                                Pro Member
-                            </span>
+                            <div className="px-3 py-1 bg-yellow-500/10 text-yellow-400 rounded-full text-sm flex items-center gap-1.5">
+                                <Star className="size-4 fill-yellow-400" />
+                                <span>Pro Member</span>
+                            </div>
                         }
                     </div>
                     <p className="flex items-center gap-1.5">
@@ -123,8 +124,8 @@ const ProfileHero = ({ user, userStats, userData }: { userStats: UserStats, user
                                 <stat.metric.icon className="size-4 text-gray-400" />
                                 <span className="text-sm text-gray-400">{stat.metric.label}:</span>
                                 <span className="text-sm font-medium text-gray-300">
-                                    {typeof stat.metric.value === "string" && stat.metric.value === "C++" && ("C++")}
-                                    {typeof stat.metric.value === "string" && stat.metric.value !== "C++" && (stat.metric.value[0].toUpperCase() + stat.metric.value.slice(1,))}
+                                    {typeof stat.metric.value === "string" && stat.metric.value === "C++" && "C++"}
+                                    {typeof stat.metric.value === "string" && stat.metric.value !== "C++" && stat.metric.value[0].toUpperCase() + stat.metric.value.slice(1,)}
                                     {typeof stat.metric.value === "number" && stat.metric.value}
                                 </span>
                             </div>

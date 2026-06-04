@@ -12,6 +12,8 @@ import SnippetDetailsPageSkeleton from "./_components/SnippetDetailsPageSkeleton
 import CopyButton from "./_components/CopyButton";
 import SnippetComments from "./_components/SnippetComments";
 import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from "@/components/ui/resizable";
+import StarSnippetButton from "@/app/components/StarSnippetButton";
+import DeleteSnippetButton from "@/app/components/DeleteSnippetButton";
 
 const SnippetDetailsPage = () => {
     const { snippetId } = useParams();
@@ -32,12 +34,12 @@ const SnippetDetailsPage = () => {
                             <section className="flex flex-col gap-2.5">
                                 {/* Snippet details header */}
                                 <div className="bg-[#1b1b27] border border-gray-700/50 rounded-lg px-4 py-5">
-                                    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
-                                        <div className="flex items-center gap-3.5">
+                                    <div className="flex flex-col sm:flex-row">
+                                        <div className="flex items-center gap-4">
                                             {/* Snippet language icon */}
                                             <div className="relative">
                                                 <div
-                                                    className="absolute -inset-1.5 bg-linear-to-r from-blue-500 to-indigo-500 rounded-lg blur-sm opacity-50"
+                                                    className="absolute -inset-1 bg-linear-to-r from-blue-500 to-indigo-500 rounded-lg blur-sm opacity-75"
                                                     area-hidden="true"
                                                 />
                                                 <div className="relative p-1.5 rounded-lg outline outline-gray-700/50 bg-gray-900">
@@ -52,9 +54,9 @@ const SnippetDetailsPage = () => {
                                             </div>
                                             {/* Snippet details */}
                                             <div className="truncate">
-                                                <h1 className="text-xl sm:text-2xl font-roboto-condensed mb-1 text-gray-300 truncate">
+                                                <h2 className="text-xl sm:text-2xl font-roboto-condensed mb-1 text-gray-300 truncate">
                                                     {snippetDetails.title}
-                                                </h1>
+                                                </h2>
                                                 <div className="flex items-center gap-x-4 gap-y-2 text-sm">
                                                     <div className="flex items-center gap-1 text-gray-400">
                                                         <User2 className="size-4 text-indigo-400" />
@@ -85,6 +87,10 @@ const SnippetDetailsPage = () => {
                                         <Code className="size-4" />
                                         <span className="text-sm">Source Code</span>
                                     </div>
+                                    <div className="flex items-center gap-2">
+                                        <StarSnippetButton snippetId={snippetId as Id<"snippets">} />
+                                        <DeleteSnippetButton snippetId={snippetId as Id<"snippets">} />
+                                    </div>
                                     <CopyButton code={snippetDetails.code} />
                                 </div>
                                 <Editor
@@ -100,7 +106,6 @@ const SnippetDetailsPage = () => {
                                         automaticLayout: true,
                                         scrollBeyondLastLine: false,
                                         padding: { top: 12, bottom: 12 },
-                                        renderWhitespace: "selection",
                                         fontFamily: '"Fira Code", "Cascadia Code", Consolas, monospace',
                                         fontLigatures: true,
                                         scrollbar: {
@@ -108,7 +113,6 @@ const SnippetDetailsPage = () => {
                                             horizontalScrollbarSize: 8,
                                         },
                                         smoothScrolling: true,
-                                        lineHeight: 1.6
                                     }}
                                 />
                             </section>
@@ -165,7 +169,10 @@ const SnippetDetailsPage = () => {
                                 <Code className="size-4" />
                                 <span className="text-sm">Source Code</span>
                             </div>
-                            <CopyButton code={snippetDetails.code} />
+                            <div className="flex items-center gap-2">
+                                <StarSnippetButton snippetId={snippetId as Id<"snippets">} />
+                                <CopyButton code={snippetDetails.code} />
+                            </div>
                         </div>
                         <Editor
                             height="580px"

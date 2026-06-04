@@ -36,7 +36,8 @@ const CommentForm = ({ addComment, isSubmitting }: { isSubmitting: boolean, addC
                     <button
                         type="button"
                         onClick={() => setIsPreview(!isPreview)}
-                        className={`text-sm px-3.5 py-1 cursor-pointer rounded-md transition-colors ${isPreview ? "bg-indigo-500/10 text-indigo-400" : "hover:bg-[#ffffff08] text-gray-400 hover:text-gray-300"}`}
+                        className={`text-sm px-3 py-1 cursor-pointer rounded transition-colors outline 
+                            ${isPreview ? "bg-indigo-500/10 text-indigo-400 outline-indigo-900" : "bg-blue-500/10 text-blue-400 outline-blue-900"}`}
                     >
                         {isPreview ? "Edit" : "Preview"}
                     </button>
@@ -70,7 +71,7 @@ const CommentForm = ({ addComment, isSubmitting }: { isSubmitting: boolean, addC
                     <button
                         type="submit"
                         disabled={isSubmitting || !comment.trim()}
-                        className="flex items-center gap-2 px-4 py-1.5 rounded-md border border-indigo-500/60 hover:border-indigo-400/60 hover:bg-linear-to-r hover:from-blue-500/10 hover:to-purple-500/10 disabled:opacity-50 disabled:cursor-not-allowed transition-all ml-auto cursor-pointer"
+                        className="flex items-center gap-2 px-4 py-1.5 rounded-md border border-indigo-500/60 hover:border-indigo-400/60 hover:bg-linear-to-r hover:from-blue-500/10 hover:to-purple-500/10 disabled:opacity-50 disabled:pointer-events-none transition-all ml-auto cursor-pointer"
                     >
                         {isSubmitting ?
                             <>
