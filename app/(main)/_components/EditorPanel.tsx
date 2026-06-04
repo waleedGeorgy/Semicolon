@@ -69,7 +69,7 @@ const EditorPanel = () => {
               max="24"
               value={fontSize}
               onChange={(e) => handleFontSizeChange(parseInt(e.target.value))}
-              className="w-24 h-1 cursor-grab"
+              className="cursor-grab appearance-none bg-transparent slider"
             />
             <span className="text-sm text-gray-300">
               {fontSize}
