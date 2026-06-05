@@ -16,10 +16,10 @@ const SnippetsPage = () => {
     const [selectedLanguage, setSelectedLanguage] = useState<string | null>(null);
     const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
 
-    const snippetLanguages = [...new Set(snippets?.map((s) => s.language))];
+    const snippetLanguages = [...new Set(snippets?.map(s => s.language))];
     const popularSnippetLanguages = snippetLanguages.slice(0, 4);
 
-    const filteredSnippets = snippets?.filter((snippet) => {
+    const filteredSnippets = snippets?.filter(snippet => {
         const searchMatches =
             snippet.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
             snippet.username.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -122,7 +122,7 @@ const SnippetsPage = () => {
                                 <div className="w-20 h-8 bg-gray-800 rounded-md animate-pulse" />
                                 :
                                 <p className="text-sm font-semibold text-gray-400">
-                                    {filteredSnippets && 
+                                    {filteredSnippets &&
                                         <span>{filteredSnippets.length} {filteredSnippets.length > 1 ? "snippets" : "snippet"}</span>
                                     }
                                 </p>

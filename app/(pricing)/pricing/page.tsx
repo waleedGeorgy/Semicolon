@@ -16,13 +16,11 @@ const PricingPage = async () => {
     const convex = new ConvexHttpClient(process.env.NEXT_PUBLIC_CONVEX_URL!);
     const convexUser = await convex.query(api.users.getUser, { userId: user?.id || "" });
 
-    const FEATURES = {
-        development: [
-            "Access to all coding languages",
-            "Access to every available theme",
-            "...more features down the line",
-        ]
-    };
+    const FEATURES = [
+        "Access to all coding languages",
+        "Access to every available theme",
+        "...more features down the line",
+    ];
 
     if (convexUser?.isPro) return <ProPlanActivatedPage />
 
@@ -65,7 +63,7 @@ const PricingPage = async () => {
                                 {/* Features list */}
                                 <div className="flex flex-col items-center mb-10">
                                     <FeatureCategory label="Features">
-                                        {FEATURES.development.map((feature, idx) => (
+                                        {FEATURES.map((feature, idx) => (
                                             <FeatureItem key={idx}>{feature}</FeatureItem>
                                         ))}
                                     </FeatureCategory>

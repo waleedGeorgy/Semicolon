@@ -6,7 +6,8 @@ import { atomOneDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
 
 const ExpandableCodeBlock = ({ code, language }: { code: string; language: string }) => {
     const [isExpanded, setIsExpanded] = useState(false);
-    const [collapsedHeight, setCollapsedHeight] = useState<number>(0);
+    const [collapsedHeight, setCollapsedHeight] = useState(0);
+
     const collapsedRef = useRef<HTMLDivElement>(null);
     const expandedRef = useRef<HTMLDivElement>(null);
 
@@ -74,7 +75,6 @@ const ExpandableCodeBlock = ({ code, language }: { code: string; language: strin
                     {code}
                 </SyntaxHighlighter>
             </div>
-
             {lines.length > 5 &&
                 <button
                     onClick={() => setIsExpanded(!isExpanded)}

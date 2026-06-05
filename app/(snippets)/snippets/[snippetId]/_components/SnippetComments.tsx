@@ -26,7 +26,7 @@ const SnippetComments = ({ snippetId }: { snippetId: Id<"snippets"> }) => {
             await addComment({ snippetId, contents });
             createToast("success", "Comment added successfully!");
         } catch (error) {
-            console.log(error);
+            console.error(error);
             createToast("error", "Failed to add the comment.")
         } finally {
             setIsCommenting(false);

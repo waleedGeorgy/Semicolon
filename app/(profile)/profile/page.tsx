@@ -159,14 +159,14 @@ const ProfilePage = () => {
                                             {/* Individual code run body */}
                                             <div className="p-4 bg-neutral-950 rounded-b-xl">
                                                 <ExpandableCodeBlock code={codeRun.code} language={codeRun.language} />
-                                                {(codeRun.output || codeRun.error) && (
+                                                {(codeRun.output || codeRun.error) &&
                                                     <div className="mt-4 px-4 py-2 rounded-lg bg-neutral-900 outline outline-gray-700/50">
                                                         <h4 className="text-sm font-semibold text-gray-400 mb-2">Output</h4>
                                                         <pre className={`text-sm truncate ${codeRun.error ? "text-red-400" : "text-green-400"}`}>
                                                             {codeRun.error || codeRun.output}
                                                         </pre>
                                                     </div>
-                                                )}
+                                                }
                                             </div>
                                         </div>
                                     ))}
@@ -206,7 +206,7 @@ const ProfilePage = () => {
                             {/* User snippets tab */}
                             {activeTab === "userSnippets" &&
                                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-2">
-                                    {userSnippets?.map((snippet) => (
+                                    {userSnippets?.map(snippet => (
                                         <SnippetCard snippet={snippet} key={snippet._id} />
                                     ))}
                                     {!userSnippets ?

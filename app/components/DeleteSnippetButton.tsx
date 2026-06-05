@@ -33,10 +33,11 @@ const DeleteSnippetButton = ({ snippetId }: { snippetId: Id<"snippets"> }) => {
     }
 
     return (
-        <div onClick={(e) => {
-            e.preventDefault()
-            e.stopPropagation()
-        }}
+        <div
+            onClick={(e) => {
+                e.preventDefault()
+                e.stopPropagation()
+            }}
         >
             <button
                 onClick={handleDeleteSnippet}

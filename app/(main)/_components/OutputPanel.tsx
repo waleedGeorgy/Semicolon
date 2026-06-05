@@ -56,7 +56,8 @@ const OutputPanel = () => {
       <div className="relative bg-[#1e1e2e] outline outline-slate-700 rounded px-4 py-3 h-150 font-mono overflow-hidden">
         {isRunning ?
           <h2 className="font-mono animate-pulse text-gray-400">Working...</h2>
-          : error ?
+          :
+          error ?
             <>
               <div className="flex items-center gap-2 text-red-400 mb-2">
                 <AlertTriangle className="size-6 shrink-0 pb-1" />
@@ -64,7 +65,8 @@ const OutputPanel = () => {
               </div>
               <pre className="whitespace-pre-wrap text-red-400/75">{error}</pre>
             </>
-            : output ?
+            :
+            output ?
               <>
                 <div className="flex items-center gap-2 text-emerald-400 mb-2">
                   <CheckCheck className="size-5 shrink-0" />
